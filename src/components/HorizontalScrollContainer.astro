@@ -1,0 +1,71 @@
+---
+const { containerClassName, className } = Astro.props;
+---
+
+<div
+  class={`horizontal-scroll-container relative contain-paint ${containerClassName}`}
+>
+  <ul
+    class={`horizontal-scroll-content-wrapper overflow-x-hidden sticky top-0 ${className}`}
+  >
+    <slot />
+  </ul>
+</div>
+
+<script>
+  import { scroll } from "motion";
+
+  const containerList = document.querySelectorAll(
+    ".horizontal-scroll-container"
+  );
+
+  containerList.forEach((container) => {
+    const contentWrapper = container.querySelector(
+      ".horizontal-scroll-content-wrapper"
+    ) as HTMLUListElement;
+
+    const updateContainerHeight = () => {
+      if (!container) return;
+      (container as HTMLDivElement).style.height =
+        `${contentWrapper.scrollWidth}px`;
+    };
+    updateContainerHeight();
+    window.addEventListener("resize", updateContainerHeight);
+
+    scroll(
+      (progress: number) => {
+        const scrollMul = obtainScrollableSpace(contentWrapper) * progress;
+        contentWrapper.scrollTo({
+          left: contentWrapper.scrollWidth * scrollMul,
+        });
+      },
+      { target: container }
+    );
+
+    //ACCESSIBILITY
+    contentWrapper
+      .querySelectorAll("a, button, input, textarea")
+      .forEach((focusable) => {
+        (focusable as HTMLElement).addEventListener("focus", () => {
+          const containerDocumentPosition =
+            window.scrollY + container.getBoundingClientRect().top;
+          const focusableLeftDistanceFromContentWrapper =
+            focusable.getBoundingClientRect().left + contentWrapper.scrollLeft;
+
+          window.scrollTo({
+            top:
+              containerDocumentPosition +
+              focusableLeftDistanceFromContentWrapper,
+          });
+        });
+      });
+  });
+
+  function obtainScrollableSpace(contentWrapper: HTMLElement) {
+    const items = contentWrapper.children;
+    const lastItem = items[items.length - 1];
+    const lastItemWidth = lastItem ? (lastItem as HTMLElement).offsetWidth : 0;
+
+    return 1 - lastItemWidth / contentWrapper.scrollWidth;
+  }
+</script>
