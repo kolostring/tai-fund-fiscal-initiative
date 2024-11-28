@@ -1,0 +1,40 @@
+---
+import HorizontalScrollContainer from "../components/HorizontalScrollContainer.astro";
+import { Image } from "astro:assets";
+
+import FiscalSpace from "../assets/fiscal-space.png"
+import CountriesStruggling from "../assets/countries-struggling.svg"
+import ManagementHelp from "../assets/management-help.svg"
+import WhatCanWeDoToday from "../assets/what-can-we-do.svg"
+---
+
+
+<HorizontalScrollContainer className="flex w-svw font-bold text-[4.92vh] leading-tight -tracking-[1%] [&_li]:min-w-fit [&_li]:min-h-svh [&_li]:px-[12.68vw] [&_li]:grid [&_li]:grid-cols-2 [&_li]:items-center [&_li]:before:absolute [&_li]:before:-z-50 [&_li]:before:h-[0.1vh] [&_li]:before:w-full [&_li]:before:bg-[#1672F7] [&_li]:before:bottom-[calc(100%_/_6)]">
+  {
+    <li>
+      <p class="max-w-[15ch]">If you care about health, education, climate or another development challenge, then you need to care about fiscal space.</p>
+      <Image class="h-2/3 translate-y-[4%] object-contain object-right" alt="Care about fiscal space" src={FiscalSpace}/>
+    
+    </li>
+    <li>
+      <p class="max-w-[15ch]">Countries are struggling to find and manage the funds to support climate and development investments</p>
+      <Image class="h-2/3 translate-y-[4%] object-contain object-left" alt="Countries struggling" src={CountriesStruggling}/>
+    
+    </li>
+    <li>
+      <p>This makes it all the more important to help them manage debt, resource mobilization and spending effectively, fairly and accountably</p>
+      <Image class="h-2/3 -translate-y-[0.9px]" alt="Countries struggling" src={ManagementHelp}/>
+    
+    </li>
+    <li class="before:-translate-x-[12.68vw]">
+      <div>
+        <h1 class="text-[8vh] leading-tight mb-6 max-w-[15ch] text-pretty">
+          What can we do today?
+        </h1>
+        <p class="text-[2.3vh] leading-normal font-normal max-w-[45ch] ">Lorem ipsum dolor sit amet consectetur. Vel id integer imperdiet venenatis viverra rhoncus nulla. Sed orci neque ornare sed. Ac mattis posuere lectus nulla ullamcorper pretium ultricies. </p>
+      </div>
+      <Image class="h-2/3 -translate-y-3" alt="Countries struggling" src={WhatCanWeDoToday}/>
+    
+    </li>
+  }
+</HorizontalScrollContainer>
