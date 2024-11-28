@@ -7,7 +7,6 @@ import react from '@astrojs/react';
 
 // https://astro.build/config
 export default defineConfig({
-  site: 'https://kolostring.github.io',
-  base: 'tai-fund-fiscal-initiative',
+  site: 'https://tai-fund-fiscal-initiative.vercel.app',
   integrations: [react(), tailwind() ]
 });
