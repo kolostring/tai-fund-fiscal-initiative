@@ -1,0 +1,39 @@
+---
+import PreventScrollRestauration from "./PreventScrollRestauration.astro";
+
+const { className, href } = Astro.props;
+---
+
+<div class={`scroll-trigger-link ${className}`}>
+  <a class="hidden" href={href}>THIS SHOULD NOT BE VISIBLE</a>
+  <slot />
+</div>
+
+<PreventScrollRestauration />
+
+<script>
+  import { navigate } from "astro:transitions/client";
+  import { inView } from "motion";
+
+  initEventListeners();
+  document.addEventListener("astro:page-load", ()=>{
+    initEventListeners();
+  })
+
+  function initEventListeners() {
+    const linkList = document.querySelectorAll(".scroll-trigger-link");
+
+    linkList.forEach((link) => {
+      const href = link.querySelector("a")?.getAttribute("href") ?? "#";
+      inView(
+        link,
+        () => {
+          navigate(href);
+        },
+        {
+          amount: 0.99,
+        }
+      );
+    });
+  }
+</script>
