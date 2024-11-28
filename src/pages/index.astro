@@ -1,12 +1,43 @@
 ---
+import ScrollTriggerLink from "../components/ScrollTriggerLink.astro";
 import Layout from "../layouts/Layout.astro";
 import WelcomePresentation from "../sections/WelcomePresentation.astro";
 ---
 
-
-
 <Layout title="Welcome to Astro.">
   <main>
-    <WelcomePresentation/>
+    <WelcomePresentation />
+    <section class="bg-[#0128A2]">
+      <div
+        class="flex h-svh flex-col items-center justify-center leading-tight tracking-tighter"
+      >
+        <h2 class="text-center text-[135px] font-bold text-[#02B5D1]">
+          <span> Welcome to </span><br /><span class="uppercase">
+            The Fiscal Space:
+          </span>
+        </h2>
+        <p class="max-w-[35ch] text-center text-3xl text-white">
+          for funders to explore why fiscal issues matter and how to offer
+          impactful support.
+        </p>
+      </div>
+
+      <div class="container mx-auto grid max-w-7xl grid-cols-2 gap-8">
+        {
+          ["", "", "", ""].map(() => {
+            return <div class="aspect-video rounded-3xl bg-white/20" />;
+          })
+        }
+      </div>
+    </section>
   </main>
+  <ScrollTriggerLink href="/urgent-oportunities">
+    <aside class="flex h-svh flex-col items-center justify-center bg-[#0128A2]">
+      <h2
+        class="text-center text-[135px] font-bold leading-tight tracking-tighter text-[#02B5D1]"
+      >
+        <span> Urgent </span><br /><span> Oportunities </span>
+      </h2>
+    </aside>
+  </ScrollTriggerLink>
 </Layout>
