@@ -1,25 +1,8 @@
 ---
 import HorizontalScrollContainer from "../components/HorizontalScrollContainer.astro";
+import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
-
-const content = [
-  [
-    "Limited funding",
-    "limited funding for helping countries create fiscal space that is equitable and accountable compared to funding for other issues, but that an increase would make a big difference to advancing all those other societal goals",
-  ],
-  [
-    "Typical grants/budgets",
-    "Lorem ipsum dolor sit amet consectetur. Vel id integer imperdiet venenatis viverra rhoncus nulla. Sed orci neque ornare sed. Ac mattis posuere lectus nulla ullamcorper pretium ultricies. Quis condimentum orci mattis duis. A adipiscing molestie ultrices risus elit elit est viverra. Tortor tempus maecenas feugiat libero phasellus diam sit. Enim aliquam tellus imperdiet condimentum pulvinar volutpat venenatis.",
-  ],
-  [
-    "Links to data",
-    "Lorem ipsum dolor sit amet consectetur. Vel id integer imperdiet venenatis viverra rhoncus nulla. Sed orci neque ornare sed. Ac mattis posuere lectus nulla ullamcorper pretium ultricies. Quis condimentum orci mattis duis. A adipiscing molestie ultrices risus elit elit est viverra. Tortor tempus maecenas feugiat libero phasellus diam sit. Enim aliquam tellus imperdiet condimentum pulvinar volutpat venenatis.",
-  ],
-  [
-    "tai tax minisite",
-    "Lorem ipsum dolor sit amet consectetur. Vel id integer imperdiet venenatis viverra rhoncus nulla. Sed orci neque ornare sed. Ac mattis posuere lectus nulla ullamcorper pretium ultricies. Quis condimentum orci mattis duis. A adipiscing molestie ultrices risus elit elit est viverra. Tortor tempus maecenas feugiat libero phasellus diam sit. Enim aliquam tellus imperdiet condimentum pulvinar volutpat venenatis.",
-  ],
-];
+import ChallengePresentation from "../sections/ChallengePresentation.astro";
 
 const evidences = [
   ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
@@ -29,6 +12,7 @@ const evidences = [
 ---
 
 <Layout title="Welcome to Astro.">
+  <Navbar />
   <header class="grid h-svh place-items-center">
     <h1
       class="text-center text-[135px] font-bold leading-tight tracking-tighter text-[#02B5D1]"
@@ -38,44 +22,22 @@ const evidences = [
   </header>
 
   <main>
-    <section>
-      <HorizontalScrollContainer
-        className="flex w-svw px-[max(1rem,100vw_-_1280px)]"
-      >
-        <h2
-          class="sticky left-0 max-w-0 text-nowrap pt-8 text-6xl font-bold tracking-tight text-[#090045]"
-        >
-          The challenge
-        </h2>
-        {
-          content.map(([title, p]) => (
-            <article class="mr-72 mt-16 flex min-h-svh min-w-[574px] flex-col justify-center gap-12 last:mr-0 odd:flex-col-reverse">
-              <div>
-                <h3 class="mb-6 text-3xl font-bold uppercase tracking-tight text-[#1672F7]">
-                  {title}
-                </h3>
-                <p class="text-lg">{p}</p>
-              </div>
-              <div class="aspect-square w-64 rounded-3xl bg-[#CDF1F3]" />
-            </article>
-          ))
-        }
-      </HorizontalScrollContainer>
-    </section>
+    
+    <ChallengePresentation />
 
     <section
       class="container mx-auto flex max-w-7xl flex-col items-center py-24"
     >
       <h2
-        class="max-w-[16ch] mb-20 text-center text-6xl font-bold tracking-tight text-[#090045]"
+        class="mb-20 max-w-[16ch] text-center text-6xl font-bold tracking-tight text-[#090045]"
       >
         Evidence that fiscal accountability matters
       </h2>
       <ul class="grid grid-cols-3 gap-x-8">
         {
           evidences.map(([title, href]) => (
-            <li class="rounded-2xl shadow-[0px_4px_8.8px_-1px_rgba(0,0,0,0.1)] overflow-hidden">
-              <a href={href} >
+            <li class="overflow-hidden rounded-2xl shadow-[0px_4px_8.8px_-1px_rgba(0,0,0,0.1)]">
+              <a href={href}>
                 <div class="aspect-video bg-[#CDF1F3]" />
                 <div class="p-9">
                   <p class="mb-9 text-4xl font-medium">{title}</p>
