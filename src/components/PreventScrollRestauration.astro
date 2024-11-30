@@ -2,6 +2,12 @@
   if (history.scrollRestoration) {
     history.scrollRestoration = "manual";
   }
-
-  window.scrollTo({top: 0});
+  window.scrollTo({ top: 0 });
+  
+  document.addEventListener("astro:page-load", () => {
+    if (history.scrollRestoration) {
+      history.scrollRestoration = "manual";
+      window.scrollTo({ top: 0 });
+    }
+  });
 </script>
