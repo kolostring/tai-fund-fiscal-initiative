@@ -1,0 +1,121 @@
+---
+const timeline: string[] = [
+  `
+    <h3>Lorem ipsum dolor</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Nunc dictum mauris sit netus. Ut
+      auctor curabitur morbi augue ut purus et consequat. At egestas gravida
+      volutpat parturient nulla.
+    </p>
+  `,
+  `
+    <h3>Lorem ipsum dolor</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Nunc dictum mauris sit netus. Ut
+      auctor curabitur morbi augue ut purus et consequat. At egestas gravida
+      volutpat parturient nulla.
+    </p>
+  `,
+  `
+    <h3>Lorem ipsum dolor</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Nunc dictum mauris sit netus. Ut
+      auctor curabitur morbi augue ut purus et consequat. At egestas gravida
+      volutpat parturient nulla.
+    </p>
+  `,
+  `
+    <h3>Lorem ipsum dolor</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Nunc dictum mauris sit netus. Ut
+      auctor curabitur morbi augue ut purus et consequat. At egestas gravida
+      volutpat parturient nulla.
+    </p>
+  `,`
+    <h3>Lorem ipsum dolor</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Nunc dictum mauris sit netus. Ut
+      auctor curabitur morbi augue ut purus et consequat. At egestas gravida
+      volutpat parturient nulla.
+    </p>
+  `,`
+    <h3>Lorem ipsum dolor</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Nunc dictum mauris sit netus. Ut
+      auctor curabitur morbi augue ut purus et consequat. At egestas gravida
+      volutpat parturient nulla.
+    </p>
+  `,`
+    <h3>Lorem ipsum dolor</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Nunc dictum mauris sit netus. Ut
+      auctor curabitur morbi augue ut purus et consequat. At egestas gravida
+      volutpat parturient nulla.
+    </p>
+  `,`
+    <h3>Lorem ipsum dolor</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Nunc dictum mauris sit netus. Ut
+      auctor curabitur morbi augue ut purus et consequat. At egestas gravida
+      volutpat parturient nulla.
+    </p>
+  `,`
+    <h3>Lorem ipsum dolor</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Nunc dictum mauris sit netus. Ut
+      auctor curabitur morbi augue ut purus et consequat. At egestas gravida
+      volutpat parturient nulla.
+    </p>
+  `,`
+    <h3>Lorem ipsum dolor</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Nunc dictum mauris sit netus. Ut
+      auctor curabitur morbi augue ut purus et consequat. At egestas gravida
+      volutpat parturient nulla.
+    </p>
+  `,`
+    <h3>Lorem ipsum dolor</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Nunc dictum mauris sit netus. Ut
+      auctor curabitur morbi augue ut purus et consequat. At egestas gravida
+      volutpat parturient nulla.
+    </p>
+  `,`
+    <h3>Lorem ipsum dolor</h3>
+    <p>
+      Lorem ipsum dolor sit amet consectetur. Nunc dictum mauris sit netus. Ut
+      auctor curabitur morbi augue ut purus et consequat. At egestas gravida
+      volutpat parturient nulla.
+    </p>
+  `,
+];
+---
+
+<section class="py-36 bg-gradient-to-b to-[#CDF1F3] from-[#FFFFFF]"> 
+    <h2 class="text-center font-bold text-[55px] leading-tight mb-20"> 
+      <span>
+       What actions are 
+      </span>
+      <br>
+      <span>
+       being taken
+      </span>
+       </h2>
+
+       <div class="max-w-7xl mx-auto grid grid-cols-2">
+
+       
+  {
+
+    timeline.map((item, index) => (
+      <>
+        {index % 2 == 0 ? <div/> : <></>}
+        <article class="px-11 [&_h3]:text-4xl [&_h3]:leading-none [&_h3]:mb-6 relative before:absolute before:top-8 before:-bottom-2 before:bg-[#1672F7] before:w-1 odd:before:left-full odd:before:-translate-x-1/2 even:before:translate-x-1/2 odd:text-end even:before:right-full after:absolute after:h-6 after:w-6 after:rounded-full after:border-4 after:border-[#1672F7] after:top-2 odd:after:left-full even:after:right-full odd:after:-translate-x-1/2 even:after:translate-x-1/2 last-of-type:before:hidden">
+          <Fragment set:html={item} />
+        </article>
+        {index % 2 > 0 ? <div/> : <></>}
+      </>
+    ))
+  }
+  </div>
+</section>

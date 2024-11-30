@@ -3,6 +3,7 @@ import HorizontalScrollContainer from "../components/HorizontalScrollContainer.a
 import Navbar from "../components/Navbar.astro";
 import Layout from "../layouts/Layout.astro";
 import ChallengePresentation from "../sections/ChallengePresentation.astro";
+import TimelineSection from "../sections/TimelineSection.astro";
 
 const evidences = [
   ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
@@ -12,7 +13,7 @@ const evidences = [
 ---
 
 <Layout title="Welcome to Astro.">
-  <Navbar />
+  <Navbar className='[&_[fill=white]]:invert' />
   <header class="grid h-svh place-items-center">
     <h1
       class="text-center text-[135px] font-bold leading-tight tracking-tighter text-[#02B5D1]"
@@ -49,5 +50,7 @@ const evidences = [
         }
       </ul>
     </section>
+
+    <TimelineSection />
   </main>
 </Layout>
