@@ -11,17 +11,21 @@ const { className, href } = Astro.props;
   import { navigate } from "astro:transitions/client";
   import { inView } from "motion";
 
+  const cleanupFunctions: VoidFunction[] = [];
+
   initEventListeners();
-  document.addEventListener("astro:page-load", ()=>{
-    initEventListeners();
-  })
+  document.addEventListener("astro:page-load", initEventListeners);
+  document.addEventListener("astro:before-preparation", () => {
+    cleanupFunctions.forEach((fn) => fn());
+    cleanupFunctions.length = 0;
+  });
 
   function initEventListeners() {
     const linkList = document.querySelectorAll(".scroll-trigger-link");
 
     linkList.forEach((link) => {
       const href = link.querySelector("a")?.getAttribute("href") ?? "#";
-      inView(
+      const inViewCallback = inView(
         link,
         () => {
           navigate(href);
@@ -30,6 +34,8 @@ const { className, href } = Astro.props;
           amount: 0.99,
         }
       );
+
+      cleanupFunctions.push(inViewCallback);
     });
   }
 </script>

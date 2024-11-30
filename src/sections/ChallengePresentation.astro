@@ -63,20 +63,27 @@ const content = [
 <script>
   import { animate, scroll } from "motion";
 
+  const cleanupFunctions: VoidFunction[] = [];
+
   initEventListeners();
-  document.addEventListener("astro:page-load", () => {
-    initEventListeners();
+  document.addEventListener("astro:after-swap", initEventListeners);
+  document.addEventListener("astro:before-preparation", () => {
+    cleanupFunctions.forEach((fn) => fn());
+    cleanupFunctions.length = 0;
   });
 
   function initEventListeners() {
-    const rope = document.querySelector(".rope") as SVGSVGElement;
+    const rope = document.querySelector(".rope") as SVGSVGElement | null;
+    const ropePath = rope?.querySelector("path") as SVGPathElement | null;
+
+    if (!rope || !ropePath) return;
     const container = document.querySelector(
       ".horizontal-scroll-container"
     ) as HTMLUListElement;
 
-    scroll(
+    const scrollCallback = scroll(
       animate(
-        "path",
+        ropePath,
         {
           pathLength: [0, 1],
         },
@@ -87,10 +94,14 @@ const content = [
       { target: container, offset: [0, 0.9] }
     );
 
+    cleanupFunctions.push(scrollCallback);
+
     calculateRopeWidth();
     window.addEventListener("resize", calculateRopeWidth);
 
     function calculateRopeWidth() {
+      if (!rope || !ropePath) return;
+
       const from = document.querySelector(
         ".challenge-content > li:nth-child(1) .aspect-square"
       ) as HTMLLIElement;
@@ -102,9 +113,8 @@ const content = [
         from.offsetTop - from.parentElement!.offsetTop + from.offsetHeight / 4;
       const ropeLeft = from.offsetLeft + from.getBoundingClientRect().width / 2;
       const ropeWidth =
-      to.offsetLeft - ropeLeft + to.getBoundingClientRect().width / 2;
+        to.offsetLeft - ropeLeft + to.getBoundingClientRect().width / 2;
       const ropeHeight = (ropeWidth * 390) / 2577;
-
 
       rope.style.top = ropeTop + "px";
       rope.style.left = ropeLeft + "px";

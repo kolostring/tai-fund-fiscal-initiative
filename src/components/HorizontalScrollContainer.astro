@@ -15,8 +15,14 @@ const { containerClassName, className } = Astro.props;
 <script>
   import { scroll } from "motion";
 
+  const cleanupFunctions: VoidFunction[] = [];
+
   initContainers();
   document.addEventListener("astro:page-load", initContainers);
+  document.addEventListener("astro:before-preparation", ()=>{
+    cleanupFunctions.forEach(fn=>fn());
+    cleanupFunctions.length = 0;
+  })
 
   function initContainers() {
     const containerList = document.querySelectorAll(
@@ -36,15 +42,16 @@ const { containerClassName, className } = Astro.props;
       updateContainerHeight();
       window.addEventListener("resize", updateContainerHeight);
 
-      scroll(
+      const scrollCallback = scroll(
         (progress: number) => {
           const scrollMul = obtainScrollableSpace(container as HTMLElement, contentWrapper) * progress;
           contentWrapper.scrollTo({
             left: contentWrapper.scrollWidth * scrollMul,
           });
         },
-        { target: container }
+        { target: container,  },
       );
+      cleanupFunctions.push(scrollCallback);
 
       //ACCESSIBILITY
       contentWrapper
