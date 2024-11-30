@@ -1,15 +1,17 @@
 ---
+import PreventScrollRestauration from "./PreventScrollRestauration.astro";
+
 const { containerClassName, className } = Astro.props;
 ---
 
 <div
   class={`horizontal-scroll-container relative contain-paint ${containerClassName}`}
 >
-  <ul
+  <div
     class={`horizontal-scroll-content-wrapper overflow-x-hidden sticky top-0 ${className}`}
   >
     <slot />
-  </ul>
+  </div>
 </div>
 
 <script>
@@ -38,7 +40,7 @@ const { containerClassName, className } = Astro.props;
 
       scroll(
         (progress: number) => {
-          const scrollMul = obtainScrollableSpace(contentWrapper) * progress;
+          const scrollMul = obtainScrollableSpace(container as HTMLElement, contentWrapper) * progress;
           contentWrapper.scrollTo({
             left: contentWrapper.scrollWidth * scrollMul,
           });
@@ -66,14 +68,8 @@ const { containerClassName, className } = Astro.props;
         });
     });
 
-    function obtainScrollableSpace(contentWrapper: HTMLElement) {
-      const items = contentWrapper.children;
-      const lastItem = items[items.length - 1];
-      const lastItemWidth = lastItem
-        ? (lastItem as HTMLElement).offsetWidth
-        : 0;
-
-      return 1 - lastItemWidth / contentWrapper.scrollWidth;
+    function obtainScrollableSpace(container: HTMLElement, contentWrapper: HTMLElement) {
+      return 1 - (container.clientWidth) / contentWrapper.scrollWidth;
     }
   }
 </script>
