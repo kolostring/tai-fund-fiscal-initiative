@@ -1,5 +1,6 @@
 ---
 import { ViewTransitions } from 'astro:transitions';
+import PreventScrollRestauration from '../components/PreventScrollRestauration.astro';
 
 interface Props {
   title: string;
@@ -9,7 +10,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="en" transition:animate="initial">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -35,3 +36,5 @@ const { title } = Astro.props;
     @apply outline outline-red-400;
   }
 </style>
+
+<PreventScrollRestauration />

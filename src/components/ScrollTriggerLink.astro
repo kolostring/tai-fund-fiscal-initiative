@@ -1,6 +1,4 @@
 ---
-import PreventScrollRestauration from "./PreventScrollRestauration.astro";
-
 const { className, href } = Astro.props;
 ---
 
@@ -8,8 +6,6 @@ const { className, href } = Astro.props;
   <a class="hidden" href={href}>THIS SHOULD NOT BE VISIBLE</a>
   <slot />
 </div>
-
-<PreventScrollRestauration />
 
 <script>
   import { navigate } from "astro:transitions/client";
