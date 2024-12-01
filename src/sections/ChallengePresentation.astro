@@ -21,8 +21,8 @@ const content = [
 ];
 ---
 
-<section class="-z-50">
-  <HorizontalScrollContainer className="pl-[max(1rem,100vw_-_1280px)]">
+<section>
+  <HorizontalScrollContainer className="pl-[max(1rem,(100vw_-_1280px)_/_2)]">
     <svg
       class="rope absolute left-0"
       width="2577"
@@ -45,7 +45,7 @@ const content = [
     <ul class="challenge-content flex">
       {
         content.map(([title, p]) => (
-          <li class="z-10 mr-[25vw] box-content flex min-h-svh min-w-[574px] flex-col justify-center gap-12 last:mr-0 last:pr-[max(1rem,100vw_-_1280px)] odd:flex-col-reverse [&:nth-last-child(2)]:-z-10">
+          <li class="z-10 mr-[25vw] box-content flex min-h-svh min-w-[574px] flex-col justify-center gap-12 last:mr-0 last:pr-[max(1rem,(100vw_-_1280px)_/_2)] odd:flex-col-reverse [&:nth-last-child(2)]:-z-10">
             <div>
               <h3 class="mb-6 text-3xl font-bold uppercase tracking-tight text-[#1672F7]">
                 {title}
