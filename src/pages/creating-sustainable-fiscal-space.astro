@@ -1,4 +1,5 @@
 ---
+import AnimateText from "../components/AnimateText.astro";
 import Navbar from "../components/Navbar.astro";
 import ScrollTriggerLink from "../components/ScrollTriggerLink.astro";
 import Layout from "../layouts/Layout.astro";
@@ -119,7 +120,7 @@ import HowTaiCanHelp from "../sections/HowTaiCanHelp.astro";
       <h2
         class="text-center text-[135px] font-bold leading-tight tracking-tighter text-[#02B5D1]"
       >
-        <span> What is The </span><br /><span> Fiscal Space </span>
+        <AnimateText textList={["What is The", "Fiscal Space"]} />
       </h2>
     </aside>
   </ScrollTriggerLink>

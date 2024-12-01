@@ -1,4 +1,5 @@
 ---
+import AnimateText from "../components/AnimateText.astro";
 import Navbar from "../components/Navbar.astro";
 import ScrollTriggerLink from "../components/ScrollTriggerLink.astro";
 import Layout from "../layouts/Layout.astro";
@@ -17,8 +18,10 @@ import Footer from "../sections/Footer.astro";
     </header>
     <main class="pb-40 text-white">
       <section class="container mx-auto grid max-w-7xl grid-cols-2 gap-x-14">
-        <div class="h-full row-span-2 w-full rounded-3xl bg-white/20"></div>
-        <h2 class="pt-14 pb-12 max-w-[5ch] text-6xl font-bold leading-tight">Today’s opportunity</h2>
+        <div class="row-span-2 h-full w-full rounded-3xl bg-white/20"></div>
+        <h2 class="pb-12 pt-14 text-6xl font-bold leading-tight">
+          <AnimateText textList={["Today’s", "opportunity"]} />
+        </h2>
         <p class="pb-14 text-lg">
           Lorem ipsum dolor sit amet consectetur. Vel id integer imperdiet
           venenatis viverra rhoncus nulla. Sed orci neque ornare sed. Ac mattis
@@ -43,8 +46,12 @@ import Footer from "../sections/Footer.astro";
     </main>
   </div>
   <ScrollTriggerLink href="/challenge">
-    <aside class="h-svh grid place-items-center">
-      <h2 class="text-center text-[135px] font-bold leading-tight tracking-tighter text-[#02B5D1]">Challenge </h2>
+    <aside class="grid h-svh place-items-center">
+      <h2
+        class="text-center text-[135px] font-bold leading-tight tracking-tighter text-[#02B5D1]"
+      >
+      <AnimateText textList={["Challenge"]} />
+      </h2>
     </aside>
   </ScrollTriggerLink>
   <Footer className="hidden" />

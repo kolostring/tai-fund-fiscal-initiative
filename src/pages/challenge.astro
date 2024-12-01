@@ -1,4 +1,5 @@
 ---
+import AnimateText from "../components/AnimateText.astro";
 import HorizontalScrollContainer from "../components/HorizontalScrollContainer.astro";
 import Navbar from "../components/Navbar.astro";
 import ScrollTriggerLink from "../components/ScrollTriggerLink.astro";
@@ -25,16 +26,15 @@ const evidences = [
   </header>
 
   <main>
-    
     <ChallengePresentation />
 
     <section
       class="container mx-auto flex max-w-7xl flex-col items-center py-24"
     >
       <h2
-        class="mb-20 max-w-[16ch] text-center text-6xl font-bold tracking-tight text-[#090045]"
+        class="mb-20 text-center text-6xl font-bold tracking-tight text-[#090045]"
       >
-        Evidence that fiscal accountability matters
+      <AnimateText textList={["Evidence that fiscal", "accountability matters"]} />
       </h2>
       <ul class="grid grid-cols-3 gap-x-8">
         {
@@ -56,15 +56,13 @@ const evidences = [
     <TimelineSection />
   </main>
 
-    <ScrollTriggerLink href="/creating-sustainable-fiscal-space">
+  <ScrollTriggerLink href="/creating-sustainable-fiscal-space">
     <aside class="bg-[#02B5D1] text-white">
       <div class="flex h-svh flex-col items-center justify-center">
         <h2
           class="text-center text-[135px] font-bold leading-tight tracking-tighter"
         >
-          <span> Creating </span><br /><span> Sustainable </span><br /><span>
-            Fiscal Space
-          </span>
+          <AnimateText textList={["Creating", "Sustainable", "Fiscal Space"]} />
         </h2>
         <p class="max-w-[16ch] text-center text-3xl">
           What We Know and What We Can Do

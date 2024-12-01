@@ -1,4 +1,5 @@
 ---
+import AnimateText from "../components/AnimateText.astro";
 import ScrollTriggerLink from "../components/ScrollTriggerLink.astro";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../sections/Footer.astro";
@@ -13,9 +14,7 @@ import WelcomePresentation from "../sections/WelcomePresentation.astro";
         class="flex h-svh flex-col items-center justify-center leading-tight tracking-tighter"
       >
         <h2 class="text-center text-[135px] font-bold text-[#02B5D1]">
-          <span> Welcome to </span><br /><span class="uppercase">
-            The Fiscal Space:
-          </span>
+          <AnimateText textList={["Welcome to", "The Fiscal Space:"]} />
         </h2>
         <p class="max-w-[35ch] text-center text-3xl text-white">
           for funders to explore why fiscal issues matter and how to offer
@@ -37,7 +36,7 @@ import WelcomePresentation from "../sections/WelcomePresentation.astro";
       <h2
         class="text-center text-[135px] font-bold leading-tight tracking-tighter text-[#02B5D1]"
       >
-        <span> Urgent </span><br /><span> Oportunities </span>
+      <AnimateText textList={["Urgent", "Oportunities"]} />
       </h2>
     </aside>
   </ScrollTriggerLink>

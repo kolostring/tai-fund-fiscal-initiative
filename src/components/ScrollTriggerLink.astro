@@ -28,7 +28,10 @@ const { className, href } = Astro.props;
       const inViewCallback = inView(
         link,
         () => {
-          navigate(href);
+          setTimeout(()=> {
+            navigate(href);
+          }, 200)
+          // navigate(href);
         },
         {
           amount: 0.99,

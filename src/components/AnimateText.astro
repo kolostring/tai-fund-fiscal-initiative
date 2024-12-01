@@ -1,0 +1,65 @@
+---
+interface Props {
+  className?: string;
+  textList: string[];
+}
+
+const { className, textList } = Astro.props as Props;
+---
+
+<>
+  {textList.map((text) => (
+    <div
+      class={`animate-text ${className}`}
+    >
+      <span>{text}</span>
+    </div>
+  ))}
+</>
+
+<style>
+  .animate-text {
+    @apply block overflow-y-hidden;
+  }
+
+  .animate-text > * {
+    @apply block translate-y-full;
+  }
+</style>
+
+<script>
+  import { animate, inView } from "motion";
+
+  const cleanupFunctions: VoidFunction[] = [];
+
+  initEventListeners();
+  document.addEventListener("astro:page-load", initEventListeners);
+  document.addEventListener("astro:before-preparation", () => {
+    cleanupFunctions.forEach((fn) => fn());
+    cleanupFunctions.length = 0;
+  });
+
+  function initEventListeners() {
+    const containers = document.querySelectorAll(".animate-text") as NodeListOf<HTMLElement>;
+    
+    containers.forEach((container) => {
+      const text = container.querySelector("span") as HTMLElement;
+
+      const inViewCallback = inView(
+        container,
+        () => {
+          animate(text, {
+            y: [text.offsetHeight, 0],
+          }, {ease: "easeOut", onComplete: ()=> {
+            container.style.overflowY = "visible";
+          }});
+        },
+        {
+          amount: 1,
+        }
+      );
+
+      cleanupFunctions.push(inViewCallback);
+    });
+  }
+</script>
