@@ -1,0 +1,87 @@
+---
+import { Image } from "astro:assets";
+
+import ArrowIcon from "../assets/Arrow.svg?raw";
+import Logo from "../assets/logo.svg?raw";
+import TAILogo from "../assets/tai-logo.png";
+
+import LinkedinLogo from "../assets/linkedin.svg?raw";
+import XLogo from "../assets/x.svg?raw";
+
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props as Props;
+---
+
+<footer class={`mx-auto grid max-w-7xl gap-y-20 pb-24 ${className}`}>
+  <div class="grid grid-cols-4">
+    <div
+      class="bg- col-span-2 flex justify-items-center [&_[fill=white]]:fill-black"
+    >
+      <Fragment set:html={Logo} />
+      <Image
+        class="ml-14 h-fit border-l border-[#090045] pl-14"
+        src={TAILogo}
+        alt="TAI Logo"
+      />
+    </div>
+    <section class="flex flex-col gap-5">
+      <h2 class="pb-2 font-semibold uppercase text-[#1672F7]">Contact Us</h2>
+      <a href="mailto:jlah@taicollaborative.org">jlah@taicollaborative.org</a>
+      <p>1100 13th St NW, Suite 800 Washington, DC 20005, United States</p>
+    </section>
+    <section class="flex flex-col gap-5">
+      <h2 class="pb-2 font-semibold uppercase text-[#1672F7]">
+        Links to Related Content
+      </h2>
+      <a href="#">Privacy Policy</a>
+      <a href="#">Terms of Service</a>
+      <a href="#">About TAI Collaborative</a>
+    </section>
+  </div>
+
+  <div class="grid grid-cols-5">
+    <section
+      class="grid grid-cols-4 items-center border border-l-0 border-[#090045] pl-0"
+    >
+      <h2 class="col-span-2 text-pretty font-semibold text-[#1672F7]">
+        Follow us for more details
+      </h2>
+      <a href="#"
+        ><span class="sr-only">Linkedin</span><Fragment
+          set:html={LinkedinLogo}
+        /></a
+      >
+      <a href="#"><span class="sr-only">X</span><Fragment set:html={XLogo} /></a
+      >
+    </section>
+    <section
+      class="col-span-4 flex items-center border-y border-[#090045] p-12 pr-0"
+    >
+      <h2>Keep updated with TAI WEEKLY</h2>
+      <form
+        onsubmit="return false"
+        class="relative ml-auto flex w-full max-w-[425px] items-center rounded-full bg-[#CDF1F3] p-1"
+      >
+        <label class="w-full rounded-full">
+          <span class="sr-only">Your Email</span>
+          <input
+            type="email"
+            class="w-full rounded-full bg-transparent p-3 placeholder:text-[#090045]"
+            name="user-email"
+            placeholder="Enter your Email"
+          />
+        </label>
+        <button
+          class="absolute inset-1 left-auto text-[#090045] [&_svg]:h-full [&_svg]:w-full"
+          type="submit"
+        >
+          <Fragment set:html={ArrowIcon} />
+          <span class="sr-only">Subscribe</span>
+        </button>
+      </form>
+    </section>
+  </div>
+</footer>

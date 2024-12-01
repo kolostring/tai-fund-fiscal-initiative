@@ -1,8 +1,10 @@
 ---
 import HorizontalScrollContainer from "../components/HorizontalScrollContainer.astro";
 import Navbar from "../components/Navbar.astro";
+import ScrollTriggerLink from "../components/ScrollTriggerLink.astro";
 import Layout from "../layouts/Layout.astro";
 import ChallengePresentation from "../sections/ChallengePresentation.astro";
+import Footer from "../sections/Footer.astro";
 import TimelineSection from "../sections/TimelineSection.astro";
 
 const evidences = [
@@ -13,7 +15,7 @@ const evidences = [
 ---
 
 <Layout title="Welcome to Astro.">
-  <Navbar className='[&_[fill=white]]:invert' />
+  <Navbar />
   <header class="grid h-svh place-items-center">
     <h1
       class="text-center text-[135px] font-bold leading-tight tracking-tighter text-[#02B5D1]"
@@ -53,4 +55,22 @@ const evidences = [
 
     <TimelineSection />
   </main>
+
+    <ScrollTriggerLink href="/creating-sustainable-fiscal-space">
+    <aside class="bg-[#02B5D1] text-white">
+      <div class="flex h-svh flex-col items-center justify-center">
+        <h2
+          class="text-center text-[135px] font-bold leading-tight tracking-tighter"
+        >
+          <span> Creating </span><br /><span> Sustainable </span><br /><span>
+            Fiscal Space
+          </span>
+        </h2>
+        <p class="max-w-[16ch] text-center text-3xl">
+          What We Know and What We Can Do
+        </p>
+      </div>
+    </aside>
+  </ScrollTriggerLink>
+  <Footer className="hidden" />
 </Layout>

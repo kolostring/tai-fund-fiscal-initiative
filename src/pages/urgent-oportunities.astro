@@ -2,11 +2,12 @@
 import Navbar from "../components/Navbar.astro";
 import ScrollTriggerLink from "../components/ScrollTriggerLink.astro";
 import Layout from "../layouts/Layout.astro";
+import Footer from "../sections/Footer.astro";
 ---
 
 <Layout title="Welcome to Astro.">
   <div class="bg-gradient-to-b from-[#0128A2] to-[#02B5D1]">
-    <Navbar className="text-white" />
+    <Navbar />
     <header class="flex h-svh flex-col items-center justify-center">
       <h1
         class="text-center text-[135px] font-bold leading-tight tracking-tighter text-[#02B5D1]"
@@ -46,4 +47,5 @@ import Layout from "../layouts/Layout.astro";
       <h2 class="text-center text-[135px] font-bold leading-tight tracking-tighter text-[#02B5D1]">Challenge </h2>
     </aside>
   </ScrollTriggerLink>
+  <Footer className="hidden" />
 </Layout>
