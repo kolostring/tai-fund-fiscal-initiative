@@ -1,5 +1,4 @@
 ---
-import { Image } from "astro:assets";
 import LogoIcon from "../assets/logo.svg?raw";
 
 interface Props {
@@ -7,13 +6,10 @@ interface Props {
 }
 
 const { className } = Astro.props as Props;
-
 ---
 
-<div id="navbar" class="fixed top-0 w-full z-50">
-  <nav
-    class={`mx-auto flex max-w-7xl justify-between py-1 ${className}`}
-  >
+<div id="navbar" class="fixed py-2 -translate-y-full top-0 z-50 w-full text-white bg-[#0128A2] bg-opacity-60 backdrop-blur">
+  <nav class={`mx-auto flex max-w-7xl justify-between py-1 ${className}`}>
     <a href="/">
       <!-- <Image src={LogoIcon} alt="Logo" /> -->
       <Fragment set:html={LogoIcon} />
@@ -27,8 +23,56 @@ const { className } = Astro.props as Props;
         <a href="/challenge">Challenge</a>
       </li>
       <li>
-        <a href="/">Creating</a>
+        <a href="/creating-sustainable-fiscal-space">Creating</a>
       </li>
     </ul>
   </nav>
 </div>
+
+<script>
+  import { scroll } from "motion";
+
+  const cleanupFunctions: VoidFunction[] = [];
+
+  initEventListeners();
+  document.addEventListener("astro:page-load", initEventListeners);
+  document.addEventListener("astro:before-preparation", () => {
+    cleanupFunctions.forEach((fn) => fn());
+    cleanupFunctions.length = 0;
+  });
+
+  function initEventListeners() {
+    const navbar = document.querySelector("#navbar") as HTMLDivElement | null;
+
+    if (!navbar) return;
+    let scrollPosition = 0;
+
+    const scrollCallback = scroll((progress: number) => {
+      const documentHeight = document.documentElement.scrollHeight;
+      const scrolledPixels = progress * documentHeight;
+      
+      const delta = scrolledPixels - scrollPosition;
+      scrollPosition = scrolledPixels;
+
+      const oldTranslateY = getTranslateXY(navbar).translateY;
+
+      const translateY = Math.max(
+        -navbar.offsetHeight,
+        Math.min(oldTranslateY - delta, 0)
+      );
+
+      navbar.style.transform = `translateY(${translateY}px)`;
+    });
+
+    cleanupFunctions.push(scrollCallback);
+  }
+
+  function getTranslateXY(element: HTMLElement) {
+    const style = window.getComputedStyle(element);
+    const matrix = new DOMMatrixReadOnly(style.transform);
+    return {
+      translateX: matrix.m41,
+      translateY: matrix.m42,
+    };
+  }
+</script>
