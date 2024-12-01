@@ -1,0 +1,70 @@
+---
+import Navbar from "../components/Navbar.astro";
+import Layout from "../layouts/Layout.astro";
+import Footer from "../sections/Footer.astro";
+import KeepUpdated from "../sections/KeepUpdated.astro";
+import WhatIsFiscalSpaceSection from "../sections/WhatIsFiscalSpaceSection.astro";
+
+const resources = [
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+];
+---
+
+<Layout title="Welcome to Astro.">
+  <Navbar />
+  <header class="pb-40">
+    <h1
+      class="mb-12 mt-[calc((100svh_-_141px_*_2.4)_/_2)] text-center text-[135px] font-bold leading-tight tracking-tighter text-[#02B5D1]"
+    >
+      <span> What is The </span><br /><span> Fiscal Space </span>
+    </h1>
+    <p class="mx-auto max-w-[81ch] text-center text-lg">
+      is supported by New Venture Fund, builds on TAI member programming and
+      learningsQuis condimentum orci mattis duis. A adipiscing molestie ultrices
+      risus elit elit est viverra. Tortor tempus maecenas feugiat libero
+      phasellus diam sit. Enim aliquam tellus imperdiet condimentum pulvinar
+      volutpat venenatis. Enim nibh quis velit adipiscing massa cursus id ante
+      vivamus. <br />
+      Nisl et diam cras purus et. Maecenas vestibulum id adipiscing fermentum. Morbi
+      interdum sit aliquam sit et. Nisl enim adipiscing accumsan pulvinar. Tellus
+      id nulla tortor lectus. Laoreet cras nec nunc in phasellus tellus ultrices.
+      Fusce id vulputate turpis purus tempor donec. Dictum ultrices orci maecenas
+      libero amet. Volutpat aliquet purus in fermentum viverra nec habitant cras
+      pellentesque. Morbi metus mauris nisi morbi dolor urna malesuada nisi. Molestie
+      mauris sed nascetur nisi. Fringilla consequat ac non sit.
+    </p>
+  </header>
+  <main>
+    <section
+      class="container mx-auto flex max-w-7xl flex-col items-center py-24"
+    >
+      <h2
+        class="mb-20 max-w-[16ch] text-center text-6xl font-bold tracking-tight text-[#090045]"
+      >
+        Fiscal space resources
+      </h2>
+      <ul class="grid grid-cols-3 gap-x-8">
+        {
+          resources.map(([title, href]) => (
+            <li class="overflow-hidden rounded-2xl shadow-[0px_4px_8.8px_-1px_rgba(0,0,0,0.1)]">
+              <a href={href}>
+                <div class="aspect-video bg-[#CDF1F3]" />
+                <div class="p-9">
+                  <p class="mb-9 text-4xl font-medium">{title}</p>
+                  <div class="aspect-square h-12 rounded-full bg-black" />
+                </div>
+              </a>
+            </li>
+          ))
+        }
+      </ul>
+    </section>
+
+    <WhatIsFiscalSpaceSection />
+
+    <KeepUpdated />
+  </main>
+  <Footer />
+</Layout>

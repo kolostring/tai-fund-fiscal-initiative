@@ -1,0 +1,45 @@
+---
+import HorizontalScrollContainer from "../components/HorizontalScrollContainer.astro";
+
+const content = [
+  [
+    "Advise on funding priorities",
+    "Lorem ipsum dolor sit amet consectetur. Vel id integer imperdiet venenatis viverra rhoncus nulla. Sed orci neque ornare sed. Ac mattis posuere lectus nulla ullamcorper pretium ultricies. Quis condimentum orci mattis duis. A adipiscing molestie ultrices risus elit elit est viverra. Tortor tempus maecenas feugiat libero phasellus diam sit. Enim aliquam tellus imperdiet condimentum pulvinar volutpat venenatis.",
+  ],
+  [
+    "Connect to existing funders",
+    "Lorem ipsum dolor sit amet consectetur. Vel id integer imperdiet venenatis viverra rhoncus nulla. Sed orci neque ornare sed. Ac mattis posuere lectus nulla ullamcorper pretium ultricies. Quis condimentum orci mattis duis. A adipiscing molestie ultrices risus elit elit est viverra. Tortor tempus maecenas feugiat libero phasellus diam sit. Enim aliquam tellus imperdiet condimentum pulvinar volutpat venenatis.",
+  ],
+  [
+    "field mappings and evidence",
+    "Lorem ipsum dolor sit amet consectetur. Vel id integer imperdiet venenatis viverra rhoncus nulla. Sed orci neque ornare sed. Ac mattis posuere lectus nulla ullamcorper pretium ultricies. Quis condimentum orci mattis duis. A adipiscing molestie ultrices risus elit elit est viverra. Tortor tempus maecenas feugiat libero phasellus diam sit. Enim aliquam tellus imperdiet condimentum pulvinar volutpat venenatis.",
+  ],
+  [
+    "monthly digests of news",
+    "Lorem ipsum dolor sit amet consectetur. Vel id integer imperdiet venenatis viverra rhoncus nulla. Sed orci neque ornare sed. Ac mattis posuere lectus nulla ullamcorper pretium ultricies. Quis condimentum orci mattis duis. A adipiscing molestie ultrices risus elit elit est viverra. Tortor tempus maecenas feugiat libero phasellus diam sit. Enim aliquam tellus imperdiet condimentum pulvinar volutpat venenatis.",
+  ],
+];
+---
+
+<section>
+  <HorizontalScrollContainer className="pl-[max(1rem,(100vw_-_1280px)_/_2)]">
+    <h2
+      class="sticky left-0 text-nowrap text-6xl font-bold tracking-tight text-white"
+    >
+      How TAI Can Help
+    </h2>
+    <ul class="challenge-content flex after:pr-[max(1rem,(100vw_-_1280px)_/_2)]">
+      {
+        content.map(([title, p]) => (
+          <li class="z-10 mr-14 box-content flex min-h-fit py-[82px] px-24 min-w-[750px] flex-col bg-white rounded-3xl text-black">
+            <div class="aspect-square w-64 rounded-3xl bg-[#CDF1F3] mb-12" />
+            <h3 class="mb-6 text-3xl font-bold uppercase tracking-tight text-[#1672F7]">
+              {title}
+            </h3>
+            <p class="text-lg">{p}</p>
+          </li>
+        ))
+      }
+    </ul>
+  </HorizontalScrollContainer>
+</section>

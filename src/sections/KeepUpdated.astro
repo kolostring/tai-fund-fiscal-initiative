@@ -1,0 +1,39 @@
+---
+import ArrowIcon from "../assets/Arrow.svg?raw";
+---
+
+<section
+  class="mx-auto mb-24 flex aspect-[1430/634] max-w-7xl flex-col items-center justify-center rounded-3xl bg-[#1672F7] text-white"
+>
+  <h2 class="mb-8 text-center text-8xl font-bold leading-tight -tracking-[1%]">
+    <span> Keep updated </span><br />
+    <span> with TAI WEEKLY </span>
+  </h2>
+
+  <p class="mb-14 max-w-[40ch] text-center">
+    Everything you need to know about accountability, inclusive participation
+    and trust, delivered to your inbox.
+  </p>
+
+  <form
+    onsubmit="return false"
+    class="relative flex w-full max-w-[425px] items-center rounded-full bg-[#CDF1F3] p-1"
+  >
+    <label class="w-full rounded-full">
+      <span class="sr-only">Your Email</span>
+      <input
+        type="email"
+        class="w-full rounded-full bg-transparent p-3 placeholder:text-[#090045]"
+        name="user-email"
+        placeholder="Enter your Email"
+      />
+    </label>
+    <button
+      class="absolute inset-1 left-auto text-[#090045] [&_svg]:h-full [&_svg]:w-full"
+      type="submit"
+    >
+      <Fragment set:html={ArrowIcon} />
+      <span class="sr-only">Subscribe</span>
+    </button>
+  </form>
+</section>
