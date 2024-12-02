@@ -1,0 +1,111 @@
+---
+import Arrow from "../assets/ArrowPagination.svg?raw";
+
+const publicationTypes = [
+  ["Reports", "reports"],
+  ["Publications", "publications"],
+  ["Success Stories", "success-stories"],
+];
+
+const placeholders = [
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+];
+---
+
+<section class="mx-auto max-w-7xl py-24 relative">
+  <h2 class="mb-8 text-center text-[55px] font-bold leading-tight">
+    Reports & Publications
+  </h2>
+  <p class="mb-20 text-center text-2xl">
+    Access to the latest research, blogs, reports, and publications from Fund
+    Fiscal.
+  </p>
+
+  <form action="" class="grid" onsubmit="return false">
+    <fieldset
+      class="mb-14 flex justify-center gap-8 border-b border-b-gray-300 sticky top-0 bg-white"
+    >
+      <legend class="sr-only">Select a type of publication</legend>
+      {
+        publicationTypes.map(([title, value], index) => (
+          <label class="cursor-pointer text-sm">
+            <input
+              class="peer appearance-none"
+              type="radio"
+              name="publication-type"
+              value={value}
+              checked={index === 0}
+            />
+            <span class="ml-2 grid select-none font-medium text-gray-500 after:-mx-1 after:mt-4 after:h-[2px] peer-checked:font-bold peer-checked:text-[#1672F7] peer-checked:after:bg-[#1672F7]">
+              {title}
+            </span>
+          </label>
+        ))
+      }
+    </fieldset>
+
+    <ul class="grid grid-cols-3 gap-8">
+      {
+        placeholders.map(([title, href]) => (
+          <li class="overflow-hidden rounded-2xl shadow-[0px_4px_8.8px_-1px_rgba(0,0,0,0.1)]">
+            <a href={href}>
+              <div class="aspect-video bg-[#CDF1F3]" />
+              <div class="p-9">
+                <p class="mb-9 text-4xl font-medium">{title}</p>
+                <div class="aspect-square h-12 rounded-full bg-black" />
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+
+    <fieldset
+      class="mt-14 flex items-end border-t border-b-gray-300 text-sm text-gray-500"
+    >
+      <legend class="sr-only">Select a page</legend>
+      <button class="mr-auto flex items-center gap-x-3">
+        <div>
+          <Fragment set:html={Arrow} />
+        </div>
+        Previous
+      </button>
+
+      <div class="flex">
+        {
+          ["1", "2", "3", "...", "8", "9", "10"].map((item, index) => {
+            return (
+              <label class="flex min-w-9 cursor-pointer flex-col-reverse text-sm">
+                <input
+                  class="peer appearance-none"
+                  type="radio"
+                  name="pagination"
+                  value={item}
+                  checked={index === 0}
+                />
+                <span class="grid select-none text-center font-medium text-gray-500 before:-mx-1 before:mb-4 before:h-[2px] peer-checked:font-bold peer-checked:text-[#1672F7] peer-checked:before:bg-[#1672F7]">
+                  {item}
+                </span>
+              </label>
+            );
+          })
+        }
+      </div>
+
+      <button class="ml-auto flex items-center gap-x-3">
+        Next
+        <div class="-scale-x-100">
+          <Fragment set:html={Arrow} />
+        </div>
+      </button>
+    </fieldset>
+  </form>
+</section>
