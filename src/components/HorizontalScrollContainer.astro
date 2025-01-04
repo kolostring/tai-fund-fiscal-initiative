@@ -1,9 +1,15 @@
 ---
-const { containerClassName, className } = Astro.props;
+interface Props {
+  containerClassName?: string;
+  className?: string;
+  stickyParent?: boolean;
+}
+
+const { containerClassName, className, stickyParent } = Astro.props;
 ---
 
 <div
-  class={`horizontal-scroll-container relative contain-paint ${containerClassName}`}
+  class={`${stickyParent && "with-sticky-parent"} horizontal-scroll-container relative contain-paint ${containerClassName}`}
 >
   <div
     class={`horizontal-scroll-content-wrapper overflow-x-hidden sticky top-0 ${className}`}
@@ -19,10 +25,10 @@ const { containerClassName, className } = Astro.props;
 
   initContainers();
   document.addEventListener("astro:page-load", initContainers);
-  document.addEventListener("astro:before-preparation", ()=>{
-    cleanupFunctions.forEach(fn=>fn());
+  document.addEventListener("astro:before-preparation", () => {
+    cleanupFunctions.forEach((fn) => fn());
     cleanupFunctions.length = 0;
-  })
+  });
 
   function initContainers() {
     const containerList = document.querySelectorAll(
@@ -32,7 +38,7 @@ const { containerClassName, className } = Astro.props;
     containerList.forEach((container) => {
       const contentWrapper = container.querySelector(
         ".horizontal-scroll-content-wrapper"
-      ) as HTMLUListElement;
+      ) as HTMLDivElement;
 
       const updateContainerHeight = () => {
         if (!container) return;
@@ -42,14 +48,25 @@ const { containerClassName, className } = Astro.props;
       updateContainerHeight();
       window.addEventListener("resize", updateContainerHeight);
 
+      const isParentSticky = container.classList.contains("with-sticky-parent");
+
       const scrollCallback = scroll(
         (progress: number) => {
-          const scrollMul = obtainScrollableSpace(container as HTMLElement, contentWrapper) * progress;
+          const scrollMul =
+            obtainScrollableSpace(container as HTMLElement, contentWrapper) *
+            progress;
           contentWrapper.scrollTo({
-            left: contentWrapper.scrollWidth * scrollMul,
+            left:
+              contentWrapper.scrollWidth * scrollMul +
+              (isParentSticky
+                ? Math.abs(
+                    container.offsetTop -
+                      container.parentElement!.parentElement!.offsetTop
+                  )
+                : 0),
           });
         },
-        { target: container,  },
+        { target: container }
       );
       cleanupFunctions.push(scrollCallback);
 
@@ -73,8 +90,11 @@ const { containerClassName, className } = Astro.props;
         });
     });
 
-    function obtainScrollableSpace(container: HTMLElement, contentWrapper: HTMLElement) {
-      return 1 - (container.clientWidth) / contentWrapper.scrollWidth;
+    function obtainScrollableSpace(
+      container: HTMLElement,
+      contentWrapper: HTMLElement
+    ) {
+      return 1 - container.clientWidth / contentWrapper.scrollWidth;
     }
   }
 </script>

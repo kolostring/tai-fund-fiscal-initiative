@@ -15,28 +15,32 @@ import Navbar from "../components/Navbar.astro";
   </header>
 
   <main>
-    <WelcomePresentation />
-    <section class="bg-[#0128A2] pb-40">
-      <div
-        class="flex h-svh flex-col items-center justify-center leading-tight tracking-tighter"
-      >
-        <h2 class="text-center text-[135px] font-bold text-[#02B5D1]">
-          <AnimateText textList={["Welcome to", "The Fiscal Space:"]} />
-        </h2>
-        <p class="max-w-[35ch] text-center text-3xl text-white">
-          for funders to explore why fiscal issues matter and how to offer
-          impactful support.
-        </p>
+    <div class="relative">
+      <div class="sticky top-0 -z-[10]">
+        <WelcomePresentation />
       </div>
+      <section class="bg-[#0128A2] py-40">
+        <div
+          class="mb- mb-36 flex flex-col items-center justify-center leading-tight tracking-tighter"
+        >
+          <h2 class="text-center text-[135px] font-bold text-[#02B5D1]">
+            <AnimateText textList={["Welcome to", "The Fiscal Space:"]} />
+          </h2>
+          <p class="max-w-[35ch] text-center text-4xl text-white">
+            for funders to explore why fiscal issues matter and how to offer
+            impactful support.
+          </p>
+        </div>
 
-      <div class="container mx-auto grid max-w-7xl grid-cols-2 gap-8">
-        {
-          ["", "", "", ""].map(() => {
-            return <div class="aspect-video rounded-3xl bg-white/20" />;
-          })
-        }
-      </div>
-    </section>
+        <div class="container mx-auto grid max-w-7xl grid-cols-2 gap-8">
+          {
+            ["", "", "", ""].map(() => {
+              return <div class="aspect-video rounded-3xl bg-white/20" />;
+            })
+          }
+        </div>
+      </section>
+    </div>
     <div class="relative">
       <Navbar />
       <UrgentOportunities />
