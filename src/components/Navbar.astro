@@ -8,28 +8,32 @@ interface Props {
 const { className } = Astro.props as Props;
 ---
 
-<div id="navbar" class="fixed py-2 -translate-y-full top-0 z-50 w-full text-white bg-[#0128A2] bg-opacity-60 backdrop-blur">
-  <nav class={`mx-auto flex max-w-7xl justify-between py-1 ${className}`}>
-    <a href="/">
-      <!-- <Image src={LogoIcon} alt="Logo" /> -->
-      <Fragment set:html={LogoIcon} />
-    </a>
+<div class="sticky top-0">
+  <div
+    id="navbar"
+    class="absolute z-50 w-full -translate-y-full bg-[#0128A2] bg-opacity-60 py-2 text-white backdrop-blur"
+  >
+    <nav class={`mx-auto flex max-w-7xl justify-between py-1 ${className}`}>
+      <a href="/">
+        <!-- <Image src={LogoIcon} alt="Logo" /> -->
+        <Fragment set:html={LogoIcon} />
+      </a>
 
-    <ul class="ml-auto flex gap-6 shrink-0 items-center justify-evenly">
-      <li>
-        <a href="/urgent-oportunities">Urgent Oportunities</a>
-      </li>
-      <li>
-        <a href="/challenge">Challenge</a>
-      </li>
-      <li>
-        <a href="/creating-sustainable-fiscal-space">Creating Sustainable Fiscal Space</a>
-      </li>
-      <li>
-        <a href="/what-is-fiscal-space">What is Fiscal Space</a>
-      </li>
-    </ul>
-  </nav>
+      <ul class="ml-auto flex shrink-0 items-center justify-evenly gap-6">
+        <li>
+          <a href="/urgent-oportunities">Urgent Oportunities</a>
+        </li>
+        <li>
+          <a href="/creating-sustainable-fiscal-space"
+            >Creating Sustainable Fiscal Space</a
+          >
+        </li>
+        <li>
+          <a href="/what-is-fiscal-space">What is Fiscal Space</a>
+        </li>
+      </ul>
+    </nav>
+  </div>
 </div>
 
 <script>
@@ -53,7 +57,7 @@ const { className } = Astro.props as Props;
     const scrollCallback = scroll((progress: number) => {
       const documentHeight = document.documentElement.scrollHeight;
       const scrolledPixels = progress * documentHeight;
-      
+
       const delta = scrolledPixels - scrollPosition;
       scrollPosition = scrolledPixels;
 
@@ -64,7 +68,11 @@ const { className } = Astro.props as Props;
         Math.min(oldTranslateY - delta, 0)
       );
 
-      navbar.style.transform = `translateY(${translateY}px)`;
+      const transformable =
+        navbar.parentElement &&
+        navbar.parentElement.getBoundingClientRect().top <= 0;
+
+      navbar.style.transform = `translateY(${(transformable ? translateY : 0)}px)`;
     });
 
     cleanupFunctions.push(scrollCallback);

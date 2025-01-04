@@ -22,7 +22,7 @@ const content = [
 ];
 ---
 
-<section>
+<section id="challenge-presentation">
   <HorizontalScrollContainer className="pl-[max(1rem,(100vw_-_1280px)_/_2)]">
     <svg
       class="rope absolute left-0"
@@ -38,11 +38,11 @@ const content = [
         stroke-width="2"></path>
     </svg>
 
-    <h2
+    <h3
       class="sticky left-0 text-nowrap text-6xl font-bold tracking-tight text-[#090045]"
     >
       <AnimateText textList={["The Challenge"]} />
-    </h2>
+    </h3>
     <ul class="challenge-content flex">
       {
         content.map(([title, p]) => (
@@ -64,6 +64,8 @@ const content = [
 <script>
   import { animate, scroll } from "motion";
 
+  console.log("CHALLENGE PRESENTATION");
+
   const cleanupFunctions: VoidFunction[] = [];
 
   initEventListeners();
@@ -79,7 +81,7 @@ const content = [
 
     if (!rope || !ropePath) return;
     const container = document.querySelector(
-      ".horizontal-scroll-container"
+      "#challenge-presentation .horizontal-scroll-container"
     ) as HTMLUListElement;
 
     const scrollCallback = scroll(

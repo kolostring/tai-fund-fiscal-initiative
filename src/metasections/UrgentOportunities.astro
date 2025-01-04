@@ -1,0 +1,80 @@
+---
+import AnimateText from "../components/AnimateText.astro";
+import ChallengePresentation from "../sections/ChallengePresentation.astro";
+import TimelineSection from "../sections/TimelineSection.astro";
+
+const evidences = [
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+];
+---
+
+<section>
+  <div class="bg-gradient-to-b from-[#0128A2] to-[#02B5D1] pb-40">
+    <div class="flex h-svh flex-col items-center justify-center">
+      <h2
+        class="text-center text-[135px] font-bold leading-tight tracking-tighter text-[#02B5D1]"
+      >
+        <AnimateText textList={["Urgent", "Oportunities"]} />
+      </h2>
+    </div>
+    <section
+      class="container mx-auto grid max-w-7xl grid-cols-2 gap-x-14 pb-40 text-white"
+    >
+      <div class="row-span-2 h-full w-full rounded-3xl bg-white/20"></div>
+      <h3 class="pb-12 pt-14 text-6xl font-bold leading-tight">
+        <AnimateText textList={["Today’s", "opportunity"]} />
+      </h3>
+      <p class="pb-14 text-lg">
+        Lorem ipsum dolor sit amet consectetur. Vel id integer imperdiet
+        venenatis viverra rhoncus nulla. Sed orci neque ornare sed. Ac mattis
+        posuere lectus nulla ullamcorper pretium ultricies. Quis condimentum
+        orci mattis duis. A adipiscing molestie ultrices risus elit elit est
+        viverra. Tortor tempus maecenas feugiat libero phasellus diam sit. Enim
+        aliquam tellus imperdiet condimentum pulvinar volutpat venenatis. Enim
+        nibh quis velit adipiscing massa cursus id ante vivamus. Purus sit a sem
+        maecenas volutpat vestibulum fermentum. Proin ultrices non odio aliquet
+        vitae at. Dignissim vitae nunc tincidunt elit enim. Donec fermentum
+        vitae vitae id accumsan faucibus eget nulla. Sit eget risus ut eu
+        condimentum mattis aliquam aliquet. <br /> Nisl et diam cras purus et. Maecenas
+        vestibulum id adipiscing fermentum. Morbi interdum sit aliquam sit et. Nisl
+        enim adipiscing accumsan pulvinar. Tellus id nulla tortor lectus. Laoreet
+        cras nec nunc in phasellus tellus ultrices. Fusce id vulputate turpis purus
+        tempor donec. Dictum ultrices orci maecenas libero amet. Volutpat aliquet
+        purus in fermentum viverra nec habitant cras pellentesque. Morbi metus mauris
+        nisi morbi dolor urna malesuada nisi. Molestie mauris sed nascetur nisi.
+        Fringilla consequat ac non sit.
+      </p>
+    </section>
+  </div>
+
+  <ChallengePresentation />
+
+  <section class="container mx-auto flex max-w-7xl flex-col items-center py-24">
+    <h2
+      class="mb-20 text-center text-6xl font-bold tracking-tight text-[#090045]"
+    >
+      <AnimateText
+        textList={["Evidence that fiscal", "accountability matters"]}
+      />
+    </h2>
+    <ul class="grid grid-cols-3 gap-x-8">
+      {
+        evidences.map(([title, href]) => (
+          <li class="overflow-hidden rounded-2xl shadow-[0px_4px_8.8px_-1px_rgba(0,0,0,0.1)]">
+            <a href={href}>
+              <div class="aspect-video bg-[#CDF1F3]" />
+              <div class="p-9">
+                <p class="mb-9 text-4xl font-medium">{title}</p>
+                <div class="aspect-square h-12 rounded-full bg-black" />
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
+
+  <TimelineSection />
+</section>

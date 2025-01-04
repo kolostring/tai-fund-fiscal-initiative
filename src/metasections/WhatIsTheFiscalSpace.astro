@@ -14,14 +14,13 @@ const resources = [
 ];
 ---
 
-<Layout title="What is Fiscal Space">
-  <Navbar />
-  <header class="pb-40">
-    <h1
+<section>
+  <div class="pb-40">
+    <h2
       class="mb-12 mt-[calc((100svh_-_141px_*_2.4)_/_2)] text-center text-[135px] font-bold leading-tight tracking-tighter text-[#02B5D1]"
     >
-      <span> What is The </span><br /><span> Fiscal Space </span>
-    </h1>
+      <AnimateText textList={["What is The", "Fiscal Space"]} />
+    </h2>
     <p class="mx-auto max-w-[81ch] text-center text-lg">
       is supported by New Venture Fund, builds on TAI member programming and
       learningsQuis condimentum orci mattis duis. A adipiscing molestie ultrices
@@ -37,38 +36,33 @@ const resources = [
       pellentesque. Morbi metus mauris nisi morbi dolor urna malesuada nisi. Molestie
       mauris sed nascetur nisi. Fringilla consequat ac non sit.
     </p>
-  </header>
-  <main>
-    <section
-      class="container mx-auto flex max-w-7xl flex-col items-center py-24"
+  </div>
+  <section class="container mx-auto flex max-w-7xl flex-col items-center py-24">
+    <h3
+      class="mb-20 max-w-[16ch] text-center text-6xl font-bold tracking-tight text-[#090045]"
     >
-      <h2
-        class="mb-20 max-w-[16ch] text-center text-6xl font-bold tracking-tight text-[#090045]"
-      >
-        <AnimateText textList={["Fiscal space resources"]} />
-      </h2>
-      <ul class="grid grid-cols-3 gap-x-8">
-        {
-          resources.map(([title, href]) => (
-            <li class="overflow-hidden rounded-2xl shadow-[0px_4px_8.8px_-1px_rgba(0,0,0,0.1)]">
-              <a href={href}>
-                <div class="aspect-video bg-[#CDF1F3]" />
-                <div class="p-9">
-                  <p class="mb-9 text-4xl font-medium">{title}</p>
-                  <div class="aspect-square h-12 rounded-full bg-black" />
-                </div>
-              </a>
-            </li>
-          ))
-        }
-      </ul>
-    </section>
+      <AnimateText textList={["Fiscal space resources"]} />
+    </h3>
+    <ul class="grid grid-cols-3 gap-x-8">
+      {
+        resources.map(([title, href]) => (
+          <li class="overflow-hidden rounded-2xl shadow-[0px_4px_8.8px_-1px_rgba(0,0,0,0.1)]">
+            <a href={href}>
+              <div class="aspect-video bg-[#CDF1F3]" />
+              <div class="p-9">
+                <p class="mb-9 text-4xl font-medium">{title}</p>
+                <div class="aspect-square h-12 rounded-full bg-black" />
+              </div>
+            </a>
+          </li>
+        ))
+      }
+    </ul>
+  </section>
 
-    <WhatIsFiscalSpaceSection />
+  <WhatIsFiscalSpaceSection />
 
-    <ReportsPublications />
+  <ReportsPublications />
 
-    <KeepUpdated />
-  </main>
-  <Footer />
-</Layout>
+  <KeepUpdated />
+</section>

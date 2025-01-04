@@ -4,12 +4,16 @@ import ScrollTriggerLink from "../components/ScrollTriggerLink.astro";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../sections/Footer.astro";
 import WelcomePresentation from "../sections/WelcomePresentation.astro";
+import UrgentOportunities from "../metasections/UrgentOportunities.astro";
+import WhatIsTheFiscalSpace from "../metasections/WhatIsTheFiscalSpace.astro";
+import CreatingSustainableFiscalSpace from "../metasections/CreatingSustainableFiscalSpace.astro";
+import Navbar from "../components/Navbar.astro";
 ---
 
 <Layout title="Welcome">
   <main>
     <WelcomePresentation />
-    <section class="bg-[#0128A2]">
+    <section class="bg-[#0128A2] pb-40">
       <div
         class="flex h-svh flex-col items-center justify-center leading-tight tracking-tighter"
       >
@@ -30,16 +34,12 @@ import WelcomePresentation from "../sections/WelcomePresentation.astro";
         }
       </div>
     </section>
+    <div class="relative">
+      <Navbar />
+      <UrgentOportunities />
+      <CreatingSustainableFiscalSpace />
+      <WhatIsTheFiscalSpace />
+    </div>
   </main>
-  <ScrollTriggerLink href="/urgent-oportunities">
-    <aside class="flex h-svh flex-col items-center justify-center bg-[#0128A2]">
-      <h2
-        class="text-center text-[135px] font-bold leading-tight tracking-tighter text-[#02B5D1]"
-      >
-      <AnimateText textList={["Urgent", "Oportunities"]} />
-      </h2>
-    </aside>
-  </ScrollTriggerLink>
-
   <Footer className="hidden" />
 </Layout>
