@@ -23,41 +23,45 @@ const content = [
 ---
 
 <section id="challenge-presentation">
-  <HorizontalScrollContainer className="pl-[max(1rem,(100vw_-_1280px)_/_2)]">
-    <svg
-      class="rope absolute left-0"
-      width="2577"
-      height="390"
-      viewBox="0 0 2577 333"
-      fill="none"
-      xmlns="http://www.w3.org/2000/svg"
-    >
-      <path
-        d="M0 1C332.5 1 474 315.5 838 331C1202 346.5 1440 1 1746.5 1C2053 1 2239 331 2577 331"
-        stroke="#1672F7"
-        stroke-width="2"></path>
-    </svg>
-
-    <h3
-      class="sticky left-0 text-nowrap text-6xl font-bold tracking-tight text-[#090045]"
-    >
-      <AnimateText textList={["The Challenge"]} />
-    </h3>
-    <ul class="challenge-content flex">
-      {
-        content.map(([title, p]) => (
-          <li class="z-10 mr-[25vw] box-content flex min-h-svh min-w-[574px] flex-col justify-center gap-12 last:mr-0 last:pr-[max(1rem,(100vw_-_1280px)_/_2)] odd:flex-col-reverse [&:nth-last-child(2)]:-z-10">
-            <div>
-              <h3 class="mb-6 text-3xl font-bold uppercase tracking-tight text-[#1672F7]">
-                {title}
-              </h3>
-              <p class="text-lg">{p}</p>
-            </div>
-            <div class="aspect-square w-64 rounded-3xl bg-[#CDF1F3]" />
-          </li>
-        ))
-      }
-    </ul>
+  <HorizontalScrollContainer
+    className="flex h-svh items-center pl-[max(1rem,(100vw_-_1280px)_/_2)]"
+  >
+    <div class="relative flex h-full max-h-[770px] flex-col justify-between">
+      <h3
+        class="sticky left-0 w-fit text-nowrap text-6xl font-bold tracking-tight text-[#090045]"
+      >
+        <AnimateText textList={["The Challenge"]} />
+      </h3>
+      <ul class="challenge-content flex pr-[max(1rem,(100vw_-_1280px)_/_2)]">
+        {
+          content.map(([title, p]) => (
+            <li class="z-10 mr-[25vw] flex min-w-[574px] flex-col justify-center gap-12 last:mr-0 odd:flex-col-reverse">
+              <div>
+                <h3 class="mb-6 text-3xl font-bold uppercase tracking-tight text-[#1672F7]">
+                  {title}
+                </h3>
+                <p class="text-lg">{p}</p>
+              </div>
+              <div class="aspect-square w-64 rounded-3xl bg-[#CDF1F3]" />
+            </li>
+          ))
+        }
+      </ul>
+      <svg
+        class="rope absolute left-0"
+        width="2577"
+        height="390"
+        viewBox="0 0 2577 333"
+        preserveAspectRatio="none"
+        fill="none"
+        xmlns="http://www.w3.org/2000/svg"
+      >
+        <path
+          d="M0 1C332.5 1 474 315.5 838 331C1202 346.5 1440 1 1746.5 1C2053 1 2239 331 2577 331"
+          stroke="#1672F7"
+          stroke-width="2"></path>
+      </svg>
+    </div>
   </HorizontalScrollContainer>
 </section>
 
@@ -112,12 +116,11 @@ const content = [
         ".challenge-content > li:nth-last-child(1) .aspect-square"
       ) as HTMLLIElement;
 
-      const ropeTop =
-        from.offsetTop - from.parentElement!.offsetTop + from.offsetHeight / 4;
+      const ropeTop = from.offsetTop + from.offsetHeight / 4;
       const ropeLeft = from.offsetLeft + from.getBoundingClientRect().width / 2;
       const ropeWidth =
         to.offsetLeft - ropeLeft + to.getBoundingClientRect().width / 2;
-      const ropeHeight = (ropeWidth * 390) / 2577;
+      const ropeHeight = to.offsetHeight * (4 / 3);
 
       rope.style.top = ropeTop + "px";
       rope.style.left = ropeLeft + "px";

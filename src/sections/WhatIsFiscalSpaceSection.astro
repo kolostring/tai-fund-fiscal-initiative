@@ -18,18 +18,15 @@ const content = [
 ---
 
 <section class="bg-[#1672F6]">
-  <HorizontalScrollContainer className="pl-[max(1rem,(100vw_-_1280px)_/_2)]">
-    <!-- <h2
-      class="sticky left-0 text-nowrap text-6xl font-bold tracking-tight text-white"
-    >
-      How TAI Can Help
-    </h2> -->
+  <HorizontalScrollContainer
+    className="flex h-svh items-center pl-[max(1rem,(100vw_-_1280px)_/_2)]"
+  >
     <ul
-      class="challenge-content flex h-dvh items-center after:min-w-[max(1rem,(100vw_-_1280px)_/_2)] after:h-1 "
+      class="challenge-content flex h-fit max-h-[770px] gap-14 after:pr-[max(1rem,(100vw_-_1280px)_/_2)]"
     >
       {
         content.map(([title, p]) => (
-          <li class="z-10 mr-14 box-content flex min-h-fit min-w-[750px] flex-col rounded-3xl bg-white px-24 py-[82px] text-black">
+          <li class="z-10 box-border flex min-w-[800px] flex-col rounded-3xl bg-white px-24 py-16 text-black">
             <div class="mb-12 aspect-square w-64 rounded-3xl bg-[#CDF1F3]" />
             <h3 class="mb-6 text-3xl font-bold uppercase tracking-tight text-[#1672F7]">
               {title}
@@ -41,4 +38,3 @@ const content = [
     </ul>
   </HorizontalScrollContainer>
 </section>
-

@@ -22,25 +22,31 @@ const content = [
 ];
 ---
 
-<section>
-  <HorizontalScrollContainer className="pl-[max(1rem,(100vw_-_1280px)_/_2)]">
-    <h3
-      class="sticky left-0 text-nowrap text-6xl font-bold tracking-tight text-white"
-    >
-     <AnimateText textList={["How TAI Can Help"]} />
-    </h3>
-    <ul class="challenge-content flex after:pr-[max(1rem,(100vw_-_1280px)_/_2)]">
-      {
-        content.map(([title, p]) => (
-          <li class="z-10 mr-14 box-content flex min-h-fit py-[82px] px-24 min-w-[750px] flex-col bg-white rounded-3xl text-black">
-            <div class="aspect-square w-64 rounded-3xl bg-[#CDF1F3] mb-12" />
-            <h3 class="mb-6 text-3xl font-bold uppercase tracking-tight text-[#1672F7]">
-              {title}
-            </h3>
-            <p class="text-lg">{p}</p>
-          </li>
-        ))
-      }
-    </ul>
+<section class="relative">
+  <HorizontalScrollContainer
+    className="flex h-svh items-center pl-[max(1rem,(100vw_-_1280px)_/_2)]"
+  >
+    <div class="flex h-full max-h-[770px] flex-col justify-between">
+      <h3
+        class="sticky left-0 w-fit text-nowrap text-6xl font-bold tracking-tight text-white"
+      >
+        <AnimateText textList={["How TAI Can Help"]} />
+      </h3>
+      <ul
+        class="flex gap-14 after:pr-[max(1rem,(100vw_-_1280px)_/_2)]"
+      >
+        {
+          content.map(([title, p]) => (
+            <li class="z-10 box-border flex h-[660px] min-w-[800px] flex-col rounded-3xl bg-white px-24 py-20 text-black">
+              <div class="mb-12 aspect-square w-64 rounded-3xl bg-[#CDF1F3]" />
+              <h3 class="mb-6 text-3xl font-bold uppercase tracking-tight text-[#1672F7]">
+                {title}
+              </h3>
+              <p class="text-lg">{p}</p>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
   </HorizontalScrollContainer>
 </section>
