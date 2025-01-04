@@ -9,24 +9,24 @@ import WhatCanWeDoToday from "../assets/what-can-we-do.svg"
 ---
 
 
-<HorizontalScrollContainer className="flex w-svw font-bold text-[4.92vh] leading-tight -tracking-[1%] [&_li]:min-w-fit [&_li]:min-h-svh [&_li]:px-[12.68vw] [&_li]:grid [&_li]:grid-cols-2 [&_li]:items-center [&_li]:before:absolute [&_li]:before:-z-50 [&_li]:before:h-[0.1vh] [&_li]:before:w-full [&_li]:before:bg-[#1672F7] [&_li]:before:bottom-[calc(100%_/_6)]">
+<HorizontalScrollContainer className="flex w-svw font-bold text-[4.92vh] leading-tight -tracking-[1%] [&_.item]:min-w-fit [&_.item]:min-h-svh [&_.item]:px-[12.68vw] [&_.item]:grid [&_.item]:grid-cols-2 [&_.item]:items-center [&_.item]:before:absolute [&_.item]:before:-z-50 [&_.item]:before:h-[0.1vh] [&_.item]:before:w-full [&_.item]:before:bg-[#1672F7] [&_.item]:before:bottom-[calc(100%_/_6)]">
   {
-    <div>
+    <div class="item">
       <p class="max-w-[15ch]">If you care about health, education, climate or another development challenge, then you need to care about fiscal space.</p>
       <Image class="h-2/3 translate-y-[4%] object-contain object-right" alt="Care about fiscal space" src={FiscalSpace}/>
     
     </div>
-    <div>
+    <div class="item">
       <p class="max-w-[15ch]">Countries are struggling to find and manage the funds to support climate and development investments</p>
       <Image class="h-2/3 translate-y-[4%] object-contain object-left" alt="Countries struggling" src={CountriesStruggling}/>
     
     </div>
-    <div>
+    <div class="item">
       <p>This makes it all the more important to help them manage debt, resource mobilization and spending effectively, fairly and accountably</p>
       <Image class="h-2/3 -translate-y-[0.9px]" alt="Countries struggling" src={ManagementHelp}/>
     
     </div>
-    <div class="before:-translate-x-[12.68vw]">
+    <div class="item before:-translate-x-[12.68vw]">
       <div>
         <h1 class="text-[8vh] leading-tight mb-6 max-w-[15ch] text-pretty">
           What can we do today?
