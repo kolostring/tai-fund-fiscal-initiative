@@ -16,9 +16,9 @@ const { className } = Astro.props as Props;
 ---
 
 <footer class={`mx-auto grid max-w-7xl gap-y-20 pb-24 ${className}`}>
-  <div class="grid grid-cols-4">
+  <div class="grid grid-cols-[auto_1fr_auto]">
     <div
-      class="bg- col-span-2 flex justify-items-center [&_[fill=white]]:fill-black"
+      class="flex justify-items-center [&_[fill=white]]:fill-black"
     >
       <Fragment set:html={Logo} />
       <Image
@@ -27,12 +27,12 @@ const { className } = Astro.props as Props;
         alt="TAI Logo"
       />
     </div>
-    <section class="flex flex-col gap-5">
+    <section class="flex justify-self-center max-w-80 flex-col gap-5">
       <h2 class="pb-2 font-semibold uppercase text-[#1672F7]">Contact Us</h2>
       <a href="mailto:jlah@taicollaborative.org">jlah@taicollaborative.org</a>
       <p>1100 13th St NW, Suite 800 Washington, DC 20005, United States</p>
     </section>
-    <section class="flex flex-col gap-5">
+    <section class="flex justify-self-end flex-col gap-5">
       <h2 class="pb-2 font-semibold uppercase text-[#1672F7]">
         Links to Related Content
       </h2>

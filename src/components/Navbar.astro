@@ -11,7 +11,7 @@ const { className } = Astro.props as Props;
 <div class="sticky top-0 z-[100]">
   <div
     id="navbar"
-    class="absolute w-full -translate-y-full bg-[#0128A2] bg-opacity-60 py-2 text-white backdrop-blur"
+    class="absolute w-full -translate-y-full bg-opacity-60 py-2 text-white backdrop-blur"
   >
     <nav class={`mx-auto flex max-w-7xl justify-between py-1 ${className}`}>
       <a href="/">
@@ -74,6 +74,7 @@ const { className } = Astro.props as Props;
         navbar.parentElement.getBoundingClientRect().top <= 0;
 
       navbar.style.transform = `translateY(${transformable ? translateY : 0}px)`;
+      navbar.style.backgroundColor = transformable ? "#0128A2" : "transparent";
     });
 
     cleanupFunctions.push(scrollCallback);
