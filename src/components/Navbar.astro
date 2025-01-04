@@ -17,6 +17,7 @@ const { className } = Astro.props as Props;
       <a href="/">
         <!-- <Image src={LogoIcon} alt="Logo" /> -->
         <Fragment set:html={LogoIcon} />
+        <span class="sr-only">Home</span>
       </a>
 
       <ul class="ml-auto flex shrink-0 items-center justify-evenly gap-6">
@@ -72,7 +73,7 @@ const { className } = Astro.props as Props;
         navbar.parentElement &&
         navbar.parentElement.getBoundingClientRect().top <= 0;
 
-      navbar.style.transform = `translateY(${(transformable ? translateY : 0)}px)`;
+      navbar.style.transform = `translateY(${transformable ? translateY : 0}px)`;
     });
 
     cleanupFunctions.push(scrollCallback);

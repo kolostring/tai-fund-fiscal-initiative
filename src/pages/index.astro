@@ -1,6 +1,5 @@
 ---
 import AnimateText from "../components/AnimateText.astro";
-import ScrollTriggerLink from "../components/ScrollTriggerLink.astro";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../sections/Footer.astro";
 import WelcomePresentation from "../sections/WelcomePresentation.astro";
@@ -11,6 +10,10 @@ import Navbar from "../components/Navbar.astro";
 ---
 
 <Layout title="Welcome">
+  <header>
+    <h1 class="sr-only">Fund Fiscal Space</h1>
+  </header>
+
   <main>
     <WelcomePresentation />
     <section class="bg-[#0128A2] pb-40">
