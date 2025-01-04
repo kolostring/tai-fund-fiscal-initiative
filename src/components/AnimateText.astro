@@ -8,13 +8,13 @@ const { className, textList } = Astro.props as Props;
 ---
 
 <>
-  {textList.map((text) => (
-    <div
-      class={`animate-text ${className}`}
-    >
-      <span>{text}</span>
-    </div>
-  ))}
+  {
+    textList.map((text) => (
+      <span class={`animate-text block ${className}`}>
+        <span>{text}</span>
+      </span>
+    ))
+  }
 </>
 
 <style>
@@ -40,19 +40,28 @@ const { className, textList } = Astro.props as Props;
   });
 
   function initEventListeners() {
-    const containers = document.querySelectorAll(".animate-text") as NodeListOf<HTMLElement>;
-    
+    const containers = document.querySelectorAll(
+      ".animate-text"
+    ) as NodeListOf<HTMLElement>;
+
     containers.forEach((container) => {
       const text = container.querySelector("span") as HTMLElement;
 
       const inViewCallback = inView(
         container,
         () => {
-          animate(text, {
-            y: [text.offsetHeight, 0],
-          }, {ease: "easeOut", onComplete: ()=> {
-            container.style.overflowY = "visible";
-          }});
+          animate(
+            text,
+            {
+              y: [text.offsetHeight, 0],
+            },
+            {
+              ease: "easeOut",
+              onComplete: () => {
+                container.style.overflowY = "visible";
+              },
+            }
+          );
         },
         {
           amount: 1,
