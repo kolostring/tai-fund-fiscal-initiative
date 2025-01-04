@@ -7,6 +7,7 @@ import UrgentOportunities from "../metasections/UrgentOportunities.astro";
 import WhatIsTheFiscalSpace from "../metasections/WhatIsTheFiscalSpace.astro";
 import CreatingSustainableFiscalSpace from "../metasections/CreatingSustainableFiscalSpace.astro";
 import Navbar from "../components/Navbar.astro";
+import ArrowIcon from "../assets/arrow.svg?raw";
 ---
 
 <Layout title="Welcome">
@@ -47,6 +48,31 @@ import Navbar from "../components/Navbar.astro";
       <CreatingSustainableFiscalSpace />
       <WhatIsTheFiscalSpace />
     </div>
+
+    <dialog id="contact-tai" class="isolate bg-transparent">
+      <div onclick="document.getElementById('contact-tai').close()"
+       class="overlay fixed -z-10 inset-0 bg-[#090045] bg-opacity-60 backdrop-blur"></div>
+      
+       <form action="post" class="grid w-svw max-w-[448px]" >
+        <h3 class="text-white font-extrabold text-3xl mb-8">Contact TAI</h3>
+        <div class="grid text-start text-[#374151] bg-white w-full py-8 px-10 rounded-lg [&_label]:after:content-['*'] [&_label]:text-sm [&_label]:mb-1 [&_input]:border [&_input]:border-[#D1D5DB] [&_input]:rounded-md [&_input]:p-2 [&_input]:mb-6">
+          <label for="name">Name</label>
+          <input type="text" id="name" name="name" required />
+          <label for="organization">Organization</label>
+          <input type="text" id="organization" name="organization" required />
+          <label for="email">Email</label>
+          <input type="email" id="email" name="email" required />
+          <label for="description">Description</label>
+          <textarea class="border border-[#D1D5DB] rounded-md p-2 mb-6" id="message" name="message" required></textarea>
+          <button class="bg-[#090045] justify-self-center w-fit gap-x-5 text-white items-center flex rounded-full p-1 pl-6"> 
+            <span> Send </span>
+            <span class="text-[#090045] [&>svg]:fill-white [&>svg]:size-9">
+              <Fragment set:html={ArrowIcon} />
+            </span>
+          </button>
+        </div>
+      </form>
+    </dialog>
   </main>
   <Footer />
 </Layout>

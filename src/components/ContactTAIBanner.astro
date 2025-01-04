@@ -1,0 +1,18 @@
+---
+import ArrowIcon from "../assets/arrow.svg?raw";
+import AnimateText from "./AnimateText.astro";
+---
+
+<section class="bg-[#090045] grid gap-11 justify-items-center rounded-3xl max-w-7xl mx-auto py-24 text-center">
+  <h3 class="text-white font-bold text-8xl">
+    <AnimateText textList={["Lorem ipsum", "dolor sit amet"]} />
+  </h3>
+
+  <button onclick="document.getElementById('contact-tai').showModal()"
+  class="bg-[#1672F7] gap-x-5 text-white items-center flex rounded-full p-1 pl-6"> 
+    <span> Contact TAI </span>
+    <span class="text-[#1672F7] [&>svg]:fill-white [&>svg]:size-9">
+      <Fragment set:html={ArrowIcon} />
+    </span>
+  </button>
+</section>
