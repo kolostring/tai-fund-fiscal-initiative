@@ -60,7 +60,7 @@ const { containerClassName, className, stickyParent } = Astro.props;
               contentWrapper.scrollWidth * scrollMul +
               (isParentSticky
                 ? Math.abs(
-                    container.offsetTop -
+                    (container as HTMLElement).offsetTop -
                       container.parentElement!.parentElement!.offsetTop
                   )
                 : 0),
