@@ -5,11 +5,11 @@ interface Props {
   stickyParent?: boolean;
 }
 
-const { containerClassName, className, stickyParent } = Astro.props;
+const { containerClassName, className } = Astro.props;
 ---
 
 <div
-  class={`${stickyParent && "with-sticky-parent"} horizontal-scroll-container relative contain-paint ${containerClassName}`}
+  class={`horizontal-scroll-container relative contain-paint ${containerClassName}`}
 >
   <div
     class={`horizontal-scroll-content-wrapper overflow-x-hidden sticky top-0 ${className}`}
@@ -40,15 +40,20 @@ const { containerClassName, className, stickyParent } = Astro.props;
         ".horizontal-scroll-content-wrapper"
       ) as HTMLDivElement;
 
-      const updateContainerHeight = () => {
+      function updateContainerHeight() {
         if (!container) return;
         (container as HTMLDivElement).style.height =
           `${contentWrapper.scrollWidth}px`;
-      };
+      }
+
       updateContainerHeight();
       window.addEventListener("resize", updateContainerHeight);
 
-      const isParentSticky = container.classList.contains("with-sticky-parent");
+      const stickyParent = container.closest(".sticky") as HTMLElement | null;
+
+      const relativeAncestor = stickyParent?.closest(
+        ".relative"
+      ) as HTMLElement | null;
 
       const scrollCallback = scroll(
         (progress: number) => {
@@ -58,10 +63,10 @@ const { containerClassName, className, stickyParent } = Astro.props;
           contentWrapper.scrollTo({
             left:
               contentWrapper.scrollWidth * scrollMul +
-              (isParentSticky
+              (stickyParent && relativeAncestor
                 ? Math.abs(
-                    (container as HTMLElement).offsetTop -
-                      container.parentElement!.parentElement!.offsetTop
+                    stickyParent.getBoundingClientRect().top -
+                      relativeAncestor.getBoundingClientRect().top
                   )
                 : 0),
           });

@@ -2,41 +2,122 @@
 import HorizontalScrollContainer from "../components/HorizontalScrollContainer.astro";
 import { Image } from "astro:assets";
 
-import FiscalSpace from "../assets/fiscal-space.png"
-import CountriesStruggling from "../assets/countries-struggling.svg"
-import ManagementHelp from "../assets/management-help.svg"
-import WhatCanWeDoToday from "../assets/what-can-we-do.svg"
+import FiscarRealities from "../assets/fiscal-realities.png";
+import CountriesStruggling from "../assets/countries-struggling.svg";
+import ManagementHelp from "../assets/management-help.svg";
+import WhatCanWeDoToday from "../assets/what-can-we-do.svg";
+import ArrowIcon from "../assets/Arrow.svg?raw";
+import AnimateText from "../components/AnimateText.astro";
 ---
 
-<section>
+<section id="welcome-presentation-section">
   <h2 class="sr-only">Welcome to The Fiscal Space</h2>
-  <HorizontalScrollContainer className="flex w-svw font-bold text-[4.92vh] leading-tight -tracking-[1%] [&_.item]:min-w-fit [&_.item]:min-h-svh [&_.item]:px-[12.68vw] [&_.item]:grid [&_.item]:grid-cols-2 [&_.item]:items-center [&_.item]:before:absolute [&_.item]:before:-z-50 [&_.item]:before:h-[0.1vh] [&_.item]:before:w-full [&_.item]:before:bg-[#1672F7] [&_.item]:before:bottom-[calc(100%_/_6)]" stickyParent>
-    {
-      <div class="item">
-      <h3 class="max-w-[15ch]">If you care about health, education, climate or another development challenge, then you need to care about fiscal space.</h3>
-      <Image class="h-2/3 translate-y-[4%] object-contain object-right" alt="Care about fiscal space" src={FiscalSpace}/>
-    
+  <HorizontalScrollContainer
+    className="flex w-svw text-[4.92vh] font-bold leading-tight -tracking-[1%] [&_.item]:grid [&_.item]:min-h-svh [&_.item]:min-w-fit [&_.item]:grid-cols-2 [&_.item]:items-center [&_.item]:px-[12.68vw] [&_.item]:before:absolute [&_.item]:before:bottom-[calc(100%_/_6)] [&_.item]:before:-z-50 [&_.item]:before:h-[0.1vh] [&_.item]:before:w-full [&_.item]:before:bg-[#1672F7]"
+    stickyParent
+  >
+    <div class="item">
+      <div>
+        <h3 class="mb-6 max-w-[15ch] text-pretty text-[8vh] leading-tight">
+          <AnimateText textList={["Fiscal realities", "matter"]} />
+        </h3>
+        <p class="max-w-[45ch] text-[2.3vh] font-normal leading-normal">
+          A recent report by the Independent Expert Group on Debt, Nature, and
+          Climate reveals that many of the world’s 144 developing economies are
+          on an unsustainable fiscal trajectory. Countries cannot invest in
+          their development and social progress if in fiscal distress.
+        </p>
+
+        <a
+          href="#"
+          class="group mt-10 flex w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-base text-white"
+        >
+          <span> More details </span>
+          <span
+            class="rotate-45 text-[#1672F7] transition-transform group-hover:rotate-0 [&>svg]:size-9 [&>svg]:fill-white"
+          >
+            <Fragment set:html={ArrowIcon} />
+          </span>
+        </a>
+      </div>
+      <Image
+        class="h-2/3 object-contain object-right"
+        alt="Care about fiscal space"
+        src={FiscarRealities}
+      />
     </div>
     <div class="item">
-      <h3 class="max-w-[15ch]">Countries are struggling to find and manage the funds to support climate and development investments</h3>
-      <Image class="h-2/3 translate-y-[4%] object-contain object-left" alt="Countries struggling" src={CountriesStruggling}/>
-    
+      <div>
+        <h3 class="mb-6 max-w-[15ch] text-pretty text-[8vh] leading-tight">
+          <AnimateText textList={["Regressive taxes", "harm the poor."]} />
+        </h3>
+        <p class="max-w-[45ch] text-[2.3vh] font-normal leading-normal">
+          Countries need to consider the implications for social equality and
+          stability as they raise additional revenues for public investment.
+          Regressive taxes harm the poor and destabilize communities. In 2024,
+          youth protests in Kenya stopped a Finance Bill that lacked legitimacy.
+        </p>
+
+        <a
+          href="#"
+          class="group mt-10 flex w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-base text-white"
+        >
+          <span> More details </span>
+          <span
+            class="rotate-45 text-[#1672F7] transition-transform group-hover:rotate-0 [&>svg]:size-9 [&>svg]:fill-white"
+          >
+            <Fragment set:html={ArrowIcon} />
+          </span>
+        </a>
+      </div>
+      <Image
+        class="h-2/3 translate-y-[4%] object-contain object-left"
+        alt="Countries struggling"
+        src={CountriesStruggling}
+      />
     </div>
     <div class="item">
-      <h3>This makes it all the more important to help them manage debt, resource mobilization and spending effectively, fairly and accountably</h3>
-      <Image class="h-2/3 -translate-y-[0.9px]" alt="Countries struggling" src={ManagementHelp}/>
-    
+      <div>
+        <h3 class="mb-6 max-w-[15ch] text-pretty text-[8vh] leading-tight">
+          <AnimateText textList={["Debt Crisis Stalls", "Development"]} />
+        </h3>
+        <p class="max-w-[45ch] text-[2.3vh] font-normal leading-normal">
+          Low -and middle- income countries are burdened by trillions of dollars
+          of public debt, and the list of those approaching a debt crisis is
+          growing fast. Debt payments are eating up the lion’s share of national
+          budgets, leaving little for development priorities.
+        </p>
+      </div>
+      <Image
+        class="h-2/3 -translate-y-[0.9px]"
+        alt="Countries struggling"
+        src={ManagementHelp}
+      />
     </div>
     <div class="item before:-translate-x-[12.68vw]">
       <div>
-        <h3 class="text-[8vh] leading-tight mb-6 max-w-[15ch] text-pretty">
-          What can we do today?
+        <h3 class="mb-6 max-w-[15ch] text-pretty text-[8vh] leading-tight">
+          <AnimateText
+            textList={["Philanthropy", "Neglects Fiscal", "Issues"]}
+          />
         </h3>
-        <p class="text-[2.3vh] leading-normal font-normal max-w-[45ch] ">Lorem ipsum dolor sit amet consectetur. Vel id integer imperdiet venenatis viverra rhoncus nulla. Sed orci neque ornare sed. Ac mattis posuere lectus nulla ullamcorper pretium ultricies. </p>
+        <p class="max-w-[45ch] text-[2.3vh] font-normal leading-normal">
+          These issues are vitally important, but philanthropic investment in
+          tax, debt, and accountability is extremely low compared to total
+          international grantmaking. The OECD estimates that 40 philanthropies
+          spent a total of $11 billion in 2022, but only about $5 million went
+          to just one fiscal area, tax-related issues.
+        </p>
       </div>
-      <Image class="h-2/3 -translate-y-3" alt="Countries struggling" src={WhatCanWeDoToday}/>
-    
+      <Image
+        class="h-2/3 -translate-y-3"
+        alt="Countries struggling"
+        src={WhatCanWeDoToday}
+      />
     </div>
-  }
-</HorizontalScrollContainer>
+  </HorizontalScrollContainer>
+
+  <div class="h-[50svh]">
+    <!-- THIS IS FOR DELAYED SCROLL -->
+  </div>
 </section>

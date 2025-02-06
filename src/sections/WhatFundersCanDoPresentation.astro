@@ -1,0 +1,60 @@
+---
+import AnimateText from "../components/AnimateText.astro";
+import HorizontalScrollContainer from "../components/HorizontalScrollContainer.astro";
+
+const content = [
+  [
+    "Support stakeholder participation",
+    "in fiscal processes at local, national, regional, and global levels. TAI’s funding scan found that civil society can do impactful work, but needs support to be in the rooms where decisions are taken, as do Global South governments, universities, think tanks, and unions.",
+  ],
+  [
+    "Invest in evidence and data",
+    "to inform stakeholders and the design of potential policy reforms, such as on the progressivity of taxes and tax incentives and considerations for new types of taxes like wealth taxes and digital economy-related taxes.",
+  ],
+  [
+    "Provide long-term support",
+    "recognizing that securing fiscal equity and sustainability will take time. With longer-term grants, organizations will have the space to hire staff rather than consultants, be ready for emerging opportunities, work closely with communities and media, and more. In addition, funds for field building could lead to better coordination and bridging efforts across tax, debt, and budget accountability communities.",
+  ],
+  [
+    "Use your voice and convening power",
+    "to draw attention to the importance of these issues and encourage other funders to engage, noting how fiscal challenges risk undermining the impact of existing investments. Philanthropies can also use their voice to stand against corruption in spending, for public participation in policy-making and monitoring, and for the transparency of fiscal data.",
+  ],
+];
+---
+
+<section>
+  <HorizontalScrollContainer
+    className="flex h-svh items-center pl-[max(1rem,(100vw_-_1280px)_/_2)]"
+  >
+    <div class="relative flex h-full max-h-[720px] flex-col justify-between">
+      <h3
+        class="sticky left-0 w-fit text-nowrap text-6xl font-bold tracking-tight text-white"
+      >
+        <AnimateText
+          textList={[
+            "There are many things that funders can do that",
+            "will have a swift positive impact, including:",
+          ]}
+        />
+      </h3>
+
+      <ul
+        class="challenge-content flex h-fit max-h-[770px] gap-14 after:pr-[max(1rem,(100vw_-_1280px)_/_2)]"
+      >
+        {
+          content.map(([title, p]) => (
+            <li class="z-10 box-border grid min-w-[680px] grid-rows-[4fr_5fr] gap-9 rounded-3xl bg-white text-black">
+              <div class="h-full w-full rounded-t-3xl bg-[#CDF1F3]" />
+              <div class="px-16 pb-9">
+                <h3 class="mb-6 text-3xl font-bold uppercase tracking-tight text-[#1672F7]">
+                  {title}
+                </h3>
+                <p class="text-lg">{p}</p>
+              </div>
+            </li>
+          ))
+        }
+      </ul>
+    </div>
+  </HorizontalScrollContainer>
+</section>

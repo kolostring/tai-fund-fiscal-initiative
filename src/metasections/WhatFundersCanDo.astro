@@ -1,0 +1,68 @@
+---
+import AnimateText from "../components/AnimateText.astro";
+import WhatFundersCanDoPresentation from "../sections/WhatFundersCanDoPresentation.astro";
+import ArrowIcon from "../assets/Arrow.svg?raw";
+
+const howCanTaiHelp = [
+  [
+    "Advise on potential investments depending on your interests building on recently completed field mappings for the tax, deb, and budget fields",
+  ],
+  [
+    "Connect you with peer funders who have shared interests and experience of funding on these issues",
+  ],
+  [
+    "Invite you to relevant funder convenings and spaces to learn more, including about the ongoing FfD process",
+  ],
+  ["Share our regular digests of relevant news, research and events."],
+];
+---
+
+<section class="bg-[#090045] text-white">
+  <div class="relative h-[200svh] bg-gradient-to-b from-[#1600AB] to-[#090045]">
+    <div class="sticky top-0 grid h-svh place-content-center">
+      <h2
+        class="text-center text-[135px] font-bold leading-tight tracking-tighter"
+      >
+        <AnimateText textList={["What is The", "Fiscal Space"]} />
+      </h2>
+    </div>
+  </div>
+
+  <WhatFundersCanDoPresentation />
+
+  <section class="relative h-[200svh] text-center">
+    <div class="sticky top-0 flex h-svh flex-col items-center justify-center">
+      <h3 class="mb-8 text-6xl font-bold">
+        <AnimateText textList={["How can TAI help?"]} />
+      </h3>
+      <p class="mx-auto max-w-[63ch] text-lg">
+        The Trust, Accountability and Inclusion Collaborative is here to offer
+        pro bono support to funders interested in helping address today’s
+        pressing fiscal challenges. For example, we can:
+      </p>
+
+      <a
+        href="#"
+        class="group mx-auto mt-10 flex w-fit items-center gap-x-5 rounded-full bg-white p-1 pl-6 text-base text-[#090045]"
+      >
+        <span> More details </span>
+        <span
+          class="rotate-45 text-white transition-transform group-hover:rotate-0 [&>svg]:size-9 [&>svg]:fill-[#1672F7]"
+        >
+          <Fragment set:html={ArrowIcon} />
+        </span>
+      </a>
+
+      <div class="mt-16 flex gap-x-16">
+        {
+          howCanTaiHelp.map(([text]) => (
+            <div class="flex flex-1 flex-col items-center gap-6">
+              <div class="aspect-square w-40 rounded-full bg-[#CDF1F333]" />
+              <p class="mb-6 max-w-[20ch] text-center text-lg">{text}</p>
+            </div>
+          ))
+        }
+      </div>
+    </div>
+  </section>
+</section>

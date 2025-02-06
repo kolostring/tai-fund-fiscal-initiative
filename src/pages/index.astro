@@ -2,12 +2,17 @@
 import AnimateText from "../components/AnimateText.astro";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../sections/Footer.astro";
-import WelcomePresentation from "../sections/WelcomePresentation.astro";
-import UrgentOportunities from "../metasections/UrgentOportunities.astro";
-import WhatIsTheFiscalSpace from "../metasections/WhatIsTheFiscalSpace.astro";
-import CreatingSustainableFiscalSpace from "../metasections/CreatingSustainableFiscalSpace.astro";
+import WhatFundersCanDo from "../metasections/WhatFundersCanDo.astro";
+import TheActionAgenda from "../metasections/TheActionAgenda.astro";
 import Navbar from "../components/Navbar.astro";
 import ArrowIcon from "../assets/Arrow.svg?raw";
+import WelcomeToFiscalSpace from "../metasections/WelcomeToFiscalSpace.astro";
+import ChallengePresentation from "../sections/ChallengePresentation.astro";
+import TheOpportunity2025 from "../metasections/TheOpportunity2025.astro";
+import ContactTAIBanner from "../components/ContactTAIBanner.astro";
+import FollowUs from "../sections/FollowUs.astro";
+import KeepUpdated from "../sections/KeepUpdated.astro";
+import TheFiscalSpaceResources from "../metasections/TheFiscalSpaceResources.astro";
 ---
 
 <Layout title="Welcome">
@@ -15,47 +20,74 @@ import ArrowIcon from "../assets/Arrow.svg?raw";
     <h1 class="sr-only">Fund Fiscal Space</h1>
   </header>
 
-  <main>
-    <div class="relative">
-      <div class="sticky top-0 -z-[10]">
-        <WelcomePresentation />
-      </div>
-      <section class="bg-[#0128A2] py-40">
+  <main class="relative isolate">
+    <WelcomeToFiscalSpace />
+    <div class="relative bg-white">
+      <div class="relative h-[200svh]">
         <div
-          class="mb- mb-36 flex flex-col items-center justify-center leading-tight tracking-tighter"
+          class="sticky top-0 mx-auto grid h-svh max-w-7xl grid-cols-2 gap-8 py-24"
         >
-          <h2 class="text-center text-[135px] font-bold text-[#02B5D1]">
-            <AnimateText textList={["Welcome to", "The Fiscal Space:"]} />
-          </h2>
-          <p class="max-w-[35ch] text-center text-4xl text-white">
-            for funders to explore why fiscal issues matter and how to offer
-            impactful support.
-          </p>
-        </div>
-
-        <div class="container mx-auto grid max-w-7xl grid-cols-2 gap-8">
           {
-            ["", "", "", ""].map(() => {
-              return <div class="aspect-video rounded-3xl bg-white/20" />;
-            })
+            [
+              ["#", "The Opportunity in 2025"],
+              ["#", "The Action Agenda"],
+              ["#", "What Funders Can Do"],
+              ["#", "The Fiscal Space Resources"],
+            ].map(([href, title]) => (
+              <a
+                href={href}
+                class="group grid grid-cols-[1fr_auto] items-end rounded-3xl bg-[#CDF1F3] px-14 py-10 text-black"
+              >
+                <span class="block max-w-[14ch] text-pretty text-5xl font-bold">
+                  {title}
+                </span>
+                <div class="aspect-square h-12 rotate-45 rounded-full text-white transition-transform *:size-full group-hover:rotate-0 first:[&_path]:stroke-black [&_svg]:fill-black">
+                  <Fragment set:html={ArrowIcon} />
+                </div>
+              </a>
+            ))
           }
         </div>
-      </section>
-    </div>
-    <div class="relative">
+      </div>
       <Navbar />
-      <UrgentOportunities />
-      <CreatingSustainableFiscalSpace />
-      <WhatIsTheFiscalSpace />
+      <TheOpportunity2025 />
+
+      <div class="relative isolate">
+        <div class="sticky top-0 -z-20">
+          <ChallengePresentation />
+        </div>
+        <TheActionAgenda />
+      </div>
+
+      <div class="relative isolate bg-[#1672F6]">
+        <div class="sticky top-0 -z-20 grid h-svh items-center *:w-full">
+          <ContactTAIBanner />
+        </div>
+
+        <WhatFundersCanDo />
+      </div>
+
+      <div class="relative isolate h-[200svh] bg-[#090045]">
+        <div class="sticky top-0 -z-20 grid h-svh place-items-center *:w-full">
+          <FollowUs />
+        </div>
+
+        <TheFiscalSpaceResources />
+      </div>
     </div>
 
     <dialog id="contact-tai" class="isolate bg-transparent">
-      <div onclick="document.getElementById('contact-tai').close()"
-       class="overlay fixed -z-10 inset-0 bg-[#090045] bg-opacity-60 backdrop-blur"></div>
-      
-       <form action="post" class="grid w-svw max-w-[448px]" >
-        <h3 class="text-white font-extrabold text-3xl mb-8">Contact TAI</h3>
-        <div class="grid text-start text-[#374151] bg-white w-full py-8 px-10 rounded-lg [&_label]:after:content-['*'] [&_label]:text-sm [&_label]:mb-1 [&_input]:border [&_input]:border-[#D1D5DB] [&_input]:rounded-md [&_input]:p-2 [&_input]:mb-6">
+      <div
+        onclick="document.getElementById('contact-tai').close()"
+        class="overlay fixed inset-0 -z-10 bg-[#090045] bg-opacity-60 backdrop-blur"
+      >
+      </div>
+
+      <form action="post" class="grid w-svw max-w-[448px]">
+        <h3 class="mb-8 text-3xl font-extrabold text-white">Contact TAI</h3>
+        <div
+          class="grid w-full rounded-lg bg-white px-10 py-8 text-start text-[#374151] [&_input]:mb-6 [&_input]:rounded-md [&_input]:border [&_input]:border-[#D1D5DB] [&_input]:p-2 [&_label]:mb-1 [&_label]:text-sm [&_label]:after:content-['*']"
+        >
           <label for="name">Name</label>
           <input type="text" id="name" name="name" required />
           <label for="organization">Organization</label>
@@ -63,10 +95,16 @@ import ArrowIcon from "../assets/Arrow.svg?raw";
           <label for="email">Email</label>
           <input type="email" id="email" name="email" required />
           <label for="description">Description</label>
-          <textarea class="border border-[#D1D5DB] rounded-md p-2 mb-6" id="message" name="message" required></textarea>
-          <button class="bg-[#090045] justify-self-center w-fit gap-x-5 text-white items-center flex rounded-full p-1 pl-6"> 
+          <textarea
+            class="mb-6 rounded-md border border-[#D1D5DB] p-2"
+            id="message"
+            name="message"
+            required></textarea>
+          <button
+            class="flex w-fit items-center gap-x-5 justify-self-center rounded-full bg-[#090045] p-1 pl-6 text-white"
+          >
             <span> Send </span>
-            <span class="text-[#090045] [&>svg]:fill-white [&>svg]:size-9">
+            <span class="text-[#090045] [&>svg]:size-9 [&>svg]:fill-white">
               <Fragment set:html={ArrowIcon} />
             </span>
           </button>

@@ -1,0 +1,45 @@
+---
+import AnimateText from "../components/AnimateText.astro";
+import Card from "../components/Card.astro";
+import KeepUpdated from "../sections/KeepUpdated.astro";
+import ReportsPublications from "../sections/ReportsPublications.astro";
+import WhatIsFiscalSpaceSection from "../sections/WhatIsFiscalSpaceSection.astro";
+
+const resources = [
+  [
+    "#",
+    "Setting the global agenda for tax, debt and international aid through 2035 - Financing for Development Brief for Philanthropy",
+  ],
+  [
+    "#",
+    "Expanding Funding and Commitment to Transparency and Participation in Fiscal Policy",
+  ],
+  ["#", "Civil Society Engagement in Tax Reform"],
+  ["#", "Funding Trends in International Tax Justice"],
+  ["#", "Philanthropy’s Tax Blindspot "],
+  ["#", "Civil Society Engagement in Implementing Domestic Tax Policy"],
+];
+---
+
+<section class="bg-white">
+  <div class="relative h-[200svh]">
+    <div class="sticky top-0">
+      <h2
+        class="grid h-svh place-content-center text-center text-[135px] font-bold leading-tight tracking-tighter text-[#1672F7]"
+      >
+        <AnimateText textList={["The Fiscal Space", "Resources"]} />
+      </h2>
+    </div>
+  </div>
+  <div class="container mx-auto flex max-w-7xl flex-col items-center py-24">
+    <ul class="grid grid-cols-3 gap-8">
+      {
+        resources.map(([href, title]) => (
+          <Card imageURL={""} title={title} href={href} />
+        ))
+      }
+    </ul>
+  </div>
+
+  <KeepUpdated />
+</section>

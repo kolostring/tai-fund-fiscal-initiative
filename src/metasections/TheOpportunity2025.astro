@@ -1,0 +1,95 @@
+---
+import AnimateText from "../components/AnimateText.astro";
+import Card from "../components/Card.astro";
+import ArrowIcon from "../assets/Arrow.svg?raw";
+
+const evidences = [
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+  ["Tempor pellentesque tincidunt nibh vitae elit volutpat massa", "#"],
+];
+---
+
+<section id="opportunity-in-2025" class="bg-white">
+  <div class="bg-white pb-40">
+    <div class="relative h-[200svh]">
+      <div class="sticky top-0 flex h-svh flex-col items-center justify-center">
+        <h2
+          class="text-center text-[135px] font-bold leading-tight tracking-tighter text-[#1672F7]"
+        >
+          <AnimateText textList={["The Opportunity", "in 2025"]} />
+        </h2>
+      </div>
+    </div>
+    <section
+      class="container mx-auto grid max-w-7xl grid-cols-2 gap-x-14 pb-40 text-black"
+    >
+      <div class="row-span-3 h-full w-full rounded-3xl bg-[#CDF1F3]"></div>
+      <h3 class="sr-only pb-12 pt-14 text-6xl font-bold leading-tight">
+        <AnimateText textList={["Today’s", "opportunity"]} />
+      </h3>
+      <p class="pb-6 pt-14 text-lg">
+        Today, the world faces a $4 trillion financing gap to achieve the
+        Sustainable Development Goals (SDGs). That cannot come from aid alone.
+        Most must be raised by the countries themselves. Governments need to
+        create more fiscal space, defined by the International Monetary Fund
+        (IMF) as the room in a government’s budget to fund national priorities,
+        such as education or climate adaptation, without jeopardizing the
+        sustainability of its fiscal position or the stability of the economy. 
+        As the IMF explains, governments can create fiscal space by raising
+        taxes, securing outside grants, cutting expenditures, borrowing
+        resources (from citizens or foreign lenders), or borrowing from the
+        banking system (thereby expanding the money supply).  At the same time,
+        governments need to consider who bears the costs of reforms. Austerity
+        measures that cut spending to service debts typically hit the poorest
+        the hardest, deepening inequality.  Negotiations are underway for the
+        Fourth International Financing for Development Conference (FfD4) – a
+        once-in-a-decade process guided by the United Nations (UN). FfD4 will
+        set the agenda for mobilizing funding for today’s pressing development
+        needs through taxation, borrowing, and international assistance.
+      </p>
+      <a
+        href="#"
+        class="group mb-14 flex w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-base text-white"
+      >
+        <span> More details </span>
+        <span
+          class="rotate-45 text-[#1672F7] transition-transform group-hover:rotate-0 [&>svg]:size-9 [&>svg]:fill-white"
+        >
+          <Fragment set:html={ArrowIcon} />
+        </span>
+      </a>
+    </section>
+  </div>
+
+  <section class="h-[200svh]">
+    <div class="sticky top-0 grid h-svh place-content-center gap-16">
+      <h3 class="text-center text-6xl font-bold">
+        <AnimateText textList={["This can reinforce ongoing", "efforts to:"]} />
+      </h3>
+      <ul class="mx-auto grid max-w-7xl list-none grid-cols-3 gap-x-8">
+        {
+          [
+            [
+              "#",
+              "#",
+              "Reform global taxation through a UN Tax Cooperation Framework.",
+            ],
+            [
+              "#",
+              "#",
+              "Create new debt restructuring and governance mechanisms.",
+            ],
+            [
+              "#",
+              "#",
+              "Demand more transparent and accountable public spending.",
+            ],
+          ].map(([href, imageURL, title]) => {
+            return <Card href={href} imageURL={imageURL} title={title} />;
+          })
+        }
+      </ul>
+    </div>
+  </section>
+</section>

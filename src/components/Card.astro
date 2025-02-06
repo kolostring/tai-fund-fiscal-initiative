@@ -10,14 +10,14 @@ const { href, title } = Astro.props;
 ---
 
 <li
-  class="overflow-hidden rounded-2xl shadow-[0px_4px_8.8px_-1px_rgba(0,0,0,0.1)]"
+  class="group overflow-hidden rounded-2xl bg-white shadow-[0px_4px_8.8px_-1px_rgba(0,0,0,0.1)]"
 >
-  <a href={href}>
+  <a class="grid h-full grid-rows-[auto_1fr]" href={href}>
     <div class="aspect-video bg-[#CDF1F3]"></div>
-    <div class="p-9">
-      <p class="mb-9 text-4xl font-medium">{title}</p>
+    <div class="flex flex-col items-start justify-between p-9">
+      <p class="mb-9 text-2xl font-medium">{title}</p>
       <div
-        class="flex aspect-square h-12 rounded-full text-white *:size-full [&_svg]:fill-black"
+        class="flex aspect-square h-12 rotate-45 rounded-full text-white transition-transform *:size-full group-hover:rotate-0 [&_svg]:fill-black"
       >
         <Fragment set:html={ArrowIcon} />
       </div>

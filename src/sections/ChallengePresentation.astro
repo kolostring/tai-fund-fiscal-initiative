@@ -1,32 +1,32 @@
 ---
 import AnimateText from "../components/AnimateText.astro";
 import HorizontalScrollContainer from "../components/HorizontalScrollContainer.astro";
+import ArrowIcon from "../assets/Arrow.svg?raw";
 
 const content = [
   [
-    "Limited funding",
-    "limited funding for helping countries create fiscal space that is equitable and accountable compared to funding for other issues, but that an increase would make a big difference to advancing all those other societal goals",
+    "Why care about taxes?",
+    "Global sovereign debt is fast rising on the global agenda due to impending debt crises in many developing countries. Debt Justice estimates that 54 countries are currently in debt crisis, while another 57 countries are at risk of a public or private debt crisis or both. Servicing debt eats up government budgets, meaning little is left to meet local needs.",
+    "#",
   ],
   [
-    "Typical grants/budgets",
-    "Lorem ipsum dolor sit amet consectetur. Vel id integer imperdiet venenatis viverra rhoncus nulla. Sed orci neque ornare sed. Ac mattis posuere lectus nulla ullamcorper pretium ultricies. Quis condimentum orci mattis duis. A adipiscing molestie ultrices risus elit elit est viverra. Tortor tempus maecenas feugiat libero phasellus diam sit. Enim aliquam tellus imperdiet condimentum pulvinar volutpat venenatis.",
+    "Why care about sovereign debt?",
+    "Global sovereign debt is fast rising on the global agenda due to impending debt crises in many developing countries. Debt Justice estimates that 54 countries are currently in debt crisis, while another 57 countries are at risk of a public or private debt crisis or both. Servicing debt eats up government budgets, meaning little is left to meet local needs.",
+    "#",
   ],
   [
-    "Links to data",
-    "Lorem ipsum dolor sit amet consectetur. Vel id integer imperdiet venenatis viverra rhoncus nulla. Sed orci neque ornare sed. Ac mattis posuere lectus nulla ullamcorper pretium ultricies. Quis condimentum orci mattis duis. A adipiscing molestie ultrices risus elit elit est viverra. Tortor tempus maecenas feugiat libero phasellus diam sit. Enim aliquam tellus imperdiet condimentum pulvinar volutpat venenatis.",
-  ],
-  [
-    "tai tax minisite",
-    "Lorem ipsum dolor sit amet consectetur. Vel id integer imperdiet venenatis viverra rhoncus nulla. Sed orci neque ornare sed. Ac mattis posuere lectus nulla ullamcorper pretium ultricies. Quis condimentum orci mattis duis. A adipiscing molestie ultrices risus elit elit est viverra. Tortor tempus maecenas feugiat libero phasellus diam sit. Enim aliquam tellus imperdiet condimentum pulvinar volutpat venenatis.",
+    "Why care about accountable, effective public spending?",
+    "Too often public resources are being spent unfairly and ineffectively, leaving millions of people without access to quality public goods and services. This transparency and accountablekind of spending is also more immune to corruption.",
+    "#",
   ],
 ];
 ---
 
-<section id="challenge-presentation" class="pt-24">
+<section id="challenge-presentation">
   <HorizontalScrollContainer
-    className="flex h-svh items-center pl-[max(1rem,(100vw_-_1280px)_/_2)]"
+    className="flex h-svh items-center bg-white pl-[max(1rem,(100vw_-_1280px)_/_2)]"
   >
-    <div class="relative flex h-full max-h-[770px] flex-col justify-between">
+    <div class="relative flex h-full max-h-[720px] flex-col justify-between">
       <h3
         class="sticky left-0 w-fit text-nowrap text-6xl font-bold tracking-tight text-[#090045]"
       >
@@ -41,6 +41,15 @@ const content = [
                   {title}
                 </h3>
                 <p class="text-lg">{p}</p>
+                <a
+                  href="#"
+                  class="group mt-4 flex w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-base text-white"
+                >
+                  <span> More details </span>
+                  <span class="rotate-45 text-[#1672F7] transition-transform group-hover:rotate-0 [&>svg]:size-9 [&>svg]:fill-white">
+                    <Fragment set:html={ArrowIcon} />
+                  </span>
+                </a>
               </div>
               <div class="aspect-square w-64 rounded-3xl bg-[#CDF1F3]" />
             </li>
@@ -51,7 +60,7 @@ const content = [
         class="rope absolute left-0"
         width="2577"
         height="390"
-        viewBox="0 0 2577 333"
+        viewBox="0 0 1800 333"
         preserveAspectRatio="none"
         fill="none"
         xmlns="http://www.w3.org/2000/svg"
@@ -68,8 +77,6 @@ const content = [
 <script>
   import { animate, scroll } from "motion";
 
-  console.log("CHALLENGE PRESENTATION");
-
   const cleanupFunctions: VoidFunction[] = [];
 
   initEventListeners();
@@ -84,22 +91,30 @@ const content = [
     const ropePath = rope?.querySelector("path") as SVGPathElement | null;
 
     if (!rope || !ropePath) return;
-    const container = document.querySelector(
-      "#challenge-presentation .horizontal-scroll-container"
+    const wrapper = document.querySelector(
+      "#challenge-presentation .horizontal-scroll-content-wrapper"
     ) as HTMLUListElement;
 
-    const scrollCallback = scroll(
-      animate(
-        ropePath,
-        {
-          pathLength: [0.3, 1],
-        },
-        {
-          ease: "easeInOut",
-        }
-      ),
-      { target: container, offset: [0, 0.9] }
+    const animation = animate(
+      ropePath,
+      {
+        pathLength: [0.3, 1],
+      },
+      {
+        ease: "linear",
+      }
     );
+
+    animation.pause();
+
+    const scrollCallback = scroll(() => {
+      const scroll = wrapper.scrollLeft;
+      const width = wrapper.scrollWidth;
+      const mult = 0.4;
+
+      const progress = scroll / width;
+      animation.time = progress * mult;
+    });
 
     cleanupFunctions.push(scrollCallback);
 
@@ -120,7 +135,7 @@ const content = [
       const ropeLeft = from.offsetLeft + from.getBoundingClientRect().width / 2;
       const ropeWidth =
         to.offsetLeft - ropeLeft + to.getBoundingClientRect().width / 2;
-      const ropeHeight = to.offsetHeight * (4 / 3);
+      const ropeHeight = to.offsetHeight * (5 / 3);
 
       rope.style.top = ropeTop + "px";
       rope.style.left = ropeLeft + "px";
