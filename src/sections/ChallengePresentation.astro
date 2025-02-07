@@ -35,10 +35,10 @@ const content = [
       <ul class="challenge-content flex pr-[max(1rem,(100vw_-_1280px)_/_2)]">
         {
           content.map(([title, p]) => (
-            <li class="z-10 mr-[25vw] flex min-w-[574px] flex-col justify-center gap-12 last:mr-0 odd:flex-col-reverse">
+            <li class="z-10 mr-[45vw] flex min-w-[574px] flex-col justify-center gap-12 opacity-0 first:opacity-100 last:mr-0 odd:flex-col-reverse">
               <div>
                 <h3 class="mb-6 text-3xl font-bold uppercase tracking-tight text-[#1672F7]">
-                  {title}
+                  <AnimateText textList={[title]} />
                 </h3>
                 <p class="text-lg">{p}</p>
                 <a
@@ -75,7 +75,7 @@ const content = [
 </section>
 
 <script>
-  import { animate, scroll } from "motion";
+  import { animate, scroll, inView } from "motion";
 
   const cleanupFunctions: VoidFunction[] = [];
 
@@ -87,6 +87,30 @@ const content = [
   });
 
   function initEventListeners() {
+    const listElements = document.querySelectorAll(
+      "#challenge-presentation .challenge-content > li"
+    ) as NodeListOf<HTMLElement>;
+
+    listElements.forEach((listElement, index) => {
+      if (index === 0) return;
+      const inViewCallback = inView(
+        listElement,
+        () => {
+          console.log("in view");
+          animate(
+            listElement,
+            { opacity: [0, 1], x: [100, 0] },
+            { ease: "circInOut" }
+          );
+        },
+        {
+          amount: 1,
+        }
+      );
+
+      cleanupFunctions.push(inViewCallback);
+    });
+
     const rope = document.querySelector(".rope") as SVGSVGElement | null;
     const ropePath = rope?.querySelector("path") as SVGPathElement | null;
 
@@ -95,17 +119,23 @@ const content = [
       "#challenge-presentation .horizontal-scroll-content-wrapper"
     ) as HTMLUListElement;
 
-    const animation = animate(
+    const ropePathAnimation = animate(
       ropePath,
       {
-        pathLength: [0.3, 1],
+        pathLength: [0, 1],
       },
       {
         ease: "linear",
       }
     );
 
-    animation.pause();
+    const ropeXTranslation = 300;
+    const ropeAnimation = animate(rope, {
+      x: [0, ropeXTranslation],
+    });
+
+    ropePathAnimation.pause();
+    ropeAnimation.pause();
 
     const scrollCallback = scroll(() => {
       const scroll = wrapper.scrollLeft;
@@ -113,7 +143,8 @@ const content = [
       const mult = 0.4;
 
       const progress = scroll / width;
-      animation.time = progress * mult;
+      ropePathAnimation.time = progress * mult;
+      ropeAnimation.time = ropePathAnimation.time;
     });
 
     cleanupFunctions.push(scrollCallback);
@@ -133,13 +164,12 @@ const content = [
 
       const ropeTop = from.offsetTop + from.offsetHeight / 4;
       const ropeLeft = from.offsetLeft + from.getBoundingClientRect().width / 2;
-      const ropeWidth =
-        to.offsetLeft - ropeLeft + to.getBoundingClientRect().width / 2;
+      const ropeWidth = to.offsetLeft - ropeLeft;
       const ropeHeight = to.offsetHeight * (5 / 3);
 
       rope.style.top = ropeTop + "px";
       rope.style.left = ropeLeft + "px";
-      rope.style.width = ropeWidth + "px";
+      rope.style.width = ropeWidth - ropeXTranslation + "px";
       rope.style.height = ropeHeight + "px";
     }
   }

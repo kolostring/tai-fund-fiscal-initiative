@@ -23,14 +23,14 @@ const howCanTaiHelp = [
       <h2
         class="text-center text-[135px] font-bold leading-tight tracking-tighter"
       >
-        <AnimateText textList={["What is The", "Fiscal Space"]} />
+        <AnimateText textList={["What Funders", "Can Do"]} />
       </h2>
     </div>
   </div>
 
   <WhatFundersCanDoPresentation />
 
-  <section class="relative h-[200svh] text-center">
+  <section id="how-can-tai-help" class="relative mt-36 h-[250svh] text-center">
     <div class="sticky top-0 flex h-svh flex-col items-center justify-center">
       <h3 class="mb-8 text-6xl font-bold">
         <AnimateText textList={["How can TAI help?"]} />
@@ -53,16 +53,45 @@ const howCanTaiHelp = [
         </span>
       </a>
 
-      <div class="mt-16 flex gap-x-16">
+      <ul class="mt-16 flex gap-x-16">
         {
           howCanTaiHelp.map(([text]) => (
-            <div class="flex flex-1 flex-col items-center gap-6">
+            <li class="flex flex-1 flex-col items-center gap-6 opacity-0">
               <div class="aspect-square w-40 rounded-full bg-[#CDF1F333]" />
               <p class="mb-6 max-w-[20ch] text-center text-lg">{text}</p>
-            </div>
+            </li>
           ))
         }
-      </div>
+      </ul>
     </div>
   </section>
 </section>
+
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  const cleanupFunctions: VoidFunction[] = [];
+
+  initEventListeners();
+  document.addEventListener("astro:after-swap", initEventListeners);
+  document.addEventListener("astro:before-preparation", () => {
+    cleanupFunctions.forEach((fn) => fn());
+    cleanupFunctions.length = 0;
+  });
+
+  function initEventListeners() {
+    inView(
+      "#how-can-tai-help ul",
+      () => {
+        animate(
+          "#how-can-tai-help li",
+          { opacity: 1, y: [100, 0] },
+          { delay: stagger(0.1), ease: "circInOut" }
+        );
+      },
+      {
+        amount: 0.9,
+      }
+    );
+  }
+</script>

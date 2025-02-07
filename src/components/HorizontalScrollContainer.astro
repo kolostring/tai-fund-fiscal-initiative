@@ -64,9 +64,13 @@ const { containerClassName, className } = Astro.props;
             left:
               contentWrapper.scrollWidth * scrollMul +
               (stickyParent && relativeAncestor
-                ? Math.abs(
-                    stickyParent.getBoundingClientRect().top -
-                      relativeAncestor.getBoundingClientRect().top
+                ? Math.max(
+                    Math.abs(
+                      stickyParent.getBoundingClientRect().top -
+                        relativeAncestor.getBoundingClientRect().top
+                    ) -
+                      window.innerHeight / 2,
+                    0
                   )
                 : 0),
           });

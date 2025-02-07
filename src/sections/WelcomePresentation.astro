@@ -13,9 +13,13 @@ import AnimateText from "../components/AnimateText.astro";
 <section id="welcome-presentation-section">
   <h2 class="sr-only">Welcome to The Fiscal Space</h2>
   <HorizontalScrollContainer
-    className="flex w-svw text-[4.92vh] font-bold leading-tight -tracking-[1%] [&_.item]:grid [&_.item]:min-h-svh [&_.item]:min-w-fit [&_.item]:grid-cols-2 [&_.item]:items-center [&_.item]:px-[12.68vw] [&_.item]:before:absolute [&_.item]:before:bottom-[calc(100%_/_6)] [&_.item]:before:-z-50 [&_.item]:before:h-[0.1vh] [&_.item]:before:w-full [&_.item]:before:bg-[#1672F7]"
+    className="flex w-svw text-[4.92vh] font-bold leading-tight -tracking-[1%] [&_.item]:grid [&_.item]:min-h-svh [&_.item]:min-w-fit [&_.item]:grid-cols-2 [&_.item]:items-center [&_.item]:px-[12.68vw] [&_.item]:before:absolute [&_.item]:before:bottom-[calc(100%_/_6)] [&_.item]:before:-z-50 [&_.item]:before:h-[0.1vh] [&_.item]:before:w-full"
     stickyParent
   >
+    <div
+      class="line absolute bottom-[calc(100%_/_6)] left-[40vw] h-px bg-[#1672F7]"
+    >
+    </div>
     <div class="item">
       <div>
         <h3 class="mb-6 max-w-[15ch] text-pretty text-[8vh] leading-tight">
@@ -121,3 +125,52 @@ import AnimateText from "../components/AnimateText.astro";
     <!-- THIS IS FOR DELAYED SCROLL -->
   </div>
 </section>
+
+<script>
+  import { animate, scroll, inView } from "motion";
+
+  const cleanupFunctions: VoidFunction[] = [];
+
+  initEventListeners();
+  document.addEventListener("astro:after-swap", initEventListeners);
+  document.addEventListener("astro:before-preparation", () => {
+    cleanupFunctions.forEach((fn) => fn());
+    cleanupFunctions.length = 0;
+  });
+
+  function initEventListeners() {
+    const listElements = document.querySelectorAll(
+      "#welcome-presentation-section .item"
+    ) as NodeListOf<HTMLElement>;
+
+    listElements.forEach((listElement) => {
+      listElement.style.opacity = "0";
+
+      const inViewCallback = inView(
+        listElement,
+        () => {
+          animate(
+            listElement,
+            { opacity: [0, 1], x: [100, 0] },
+            { ease: "circInOut" }
+          );
+        },
+        {
+          amount: 0.35,
+        }
+      );
+      cleanupFunctions.push(inViewCallback);
+    });
+
+    const horizontalScrollContentWrapper = document.querySelector(
+      "#welcome-presentation-section .horizontal-scroll-content-wrapper"
+    ) as HTMLElement;
+    const line = document.querySelector(".line") as HTMLDivElement;
+
+    const scrollCallback = scroll(() => {
+      line.style.width = `min(${horizontalScrollContentWrapper.scrollLeft}px + 50vw, ${horizontalScrollContentWrapper.scrollWidth}px - 50vw)`;
+    });
+
+    cleanupFunctions.push(scrollCallback);
+  }
+</script>

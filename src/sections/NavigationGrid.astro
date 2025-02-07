@@ -1,0 +1,63 @@
+---
+import ArrowIcon from "../assets/Arrow.svg?raw";
+---
+
+<section id="navigation-grid" class="relative h-[200svh]">
+  <div
+    class="sticky top-0 mx-auto grid h-svh max-w-7xl grid-cols-2 gap-8 py-24"
+  >
+    {
+      [
+        ["#", "The Opportunity in 2025"],
+        ["#", "The Action Agenda"],
+        ["#", "What Funders Can Do"],
+        ["#", "The Fiscal Space Resources"],
+      ].map(([href, title]) => (
+        <a
+          href={href}
+          class="group grid grid-cols-[1fr_auto] items-end rounded-3xl bg-[#CDF1F3] px-14 py-10 text-black opacity-0"
+        >
+          <span class="block max-w-[14ch] text-pretty text-5xl font-bold">
+            {title}
+          </span>
+          <div class="aspect-square h-12 rotate-45 rounded-full text-white transition-transform *:size-full group-hover:rotate-0 first:[&_path]:stroke-black [&_svg]:fill-black">
+            <Fragment set:html={ArrowIcon} />
+          </div>
+        </a>
+      ))
+    }
+  </div>
+</section>
+
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  const cleanupFunctions: VoidFunction[] = [];
+
+  initEventListeners();
+  document.addEventListener("astro:after-swap", initEventListeners);
+  document.addEventListener("astro:before-preparation", () => {
+    cleanupFunctions.forEach((fn) => fn());
+    cleanupFunctions.length = 0;
+  });
+
+  function initEventListeners() {
+    const navigationGrid = document.querySelector(
+      "#navigation-grid"
+    ) as HTMLElement;
+
+    inView(
+      navigationGrid,
+      () => {
+        animate(
+          navigationGrid.querySelectorAll("a"),
+          { opacity: 1, y: [100, 0] },
+          { delay: stagger(0.1), ease: "circInOut" }
+        );
+      },
+      {
+        amount: 0.4,
+      }
+    );
+  }
+</script>

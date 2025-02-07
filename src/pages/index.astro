@@ -13,6 +13,7 @@ import ContactTAIBanner from "../components/ContactTAIBanner.astro";
 import FollowUs from "../sections/FollowUs.astro";
 import KeepUpdated from "../sections/KeepUpdated.astro";
 import TheFiscalSpaceResources from "../metasections/TheFiscalSpaceResources.astro";
+import NavigationGrid from "../sections/NavigationGrid.astro";
 ---
 
 <Layout title="Welcome">
@@ -23,32 +24,7 @@ import TheFiscalSpaceResources from "../metasections/TheFiscalSpaceResources.ast
   <main class="relative isolate">
     <WelcomeToFiscalSpace />
     <div class="relative bg-white">
-      <div class="relative h-[200svh]">
-        <div
-          class="sticky top-0 mx-auto grid h-svh max-w-7xl grid-cols-2 gap-8 py-24"
-        >
-          {
-            [
-              ["#", "The Opportunity in 2025"],
-              ["#", "The Action Agenda"],
-              ["#", "What Funders Can Do"],
-              ["#", "The Fiscal Space Resources"],
-            ].map(([href, title]) => (
-              <a
-                href={href}
-                class="group grid grid-cols-[1fr_auto] items-end rounded-3xl bg-[#CDF1F3] px-14 py-10 text-black"
-              >
-                <span class="block max-w-[14ch] text-pretty text-5xl font-bold">
-                  {title}
-                </span>
-                <div class="aspect-square h-12 rotate-45 rounded-full text-white transition-transform *:size-full group-hover:rotate-0 first:[&_path]:stroke-black [&_svg]:fill-black">
-                  <Fragment set:html={ArrowIcon} />
-                </div>
-              </a>
-            ))
-          }
-        </div>
-      </div>
+      <NavigationGrid />
       <Navbar />
       <TheOpportunity2025 />
 
