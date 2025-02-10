@@ -13,7 +13,7 @@ import AnimateText from "../components/AnimateText.astro";
 <section id="welcome-presentation-section">
   <h2 class="sr-only">Welcome to The Fiscal Space</h2>
   <HorizontalScrollContainer
-    className="flex w-svw text-[4.92vh] font-bold leading-tight -tracking-[1%] [&_.item]:grid [&_.item]:min-h-svh [&_.item]:min-w-fit [&_.item]:grid-cols-2 [&_.item]:items-center [&_.item]:px-[12.68vw] [&_.item]:before:absolute [&_.item]:before:bottom-[calc(100%_/_6)] [&_.item]:before:-z-50 [&_.item]:before:h-[0.1vh] [&_.item]:before:w-full"
+    className="flex w-svw flex-col text-center text-[4.92vh] font-bold leading-tight -tracking-[1%] md:flex-row [&_.item]:grid [&_.item]:min-h-svh [&_.item]:min-w-fit [&_.item]:px-6 [&_.item]:before:absolute [&_.item]:before:bottom-[calc(100%_/_6)] [&_.item]:before:-z-50 [&_.item]:before:h-[0.1vh] [&_.item]:before:w-full md:[&_.item]:grid-cols-2 md:[&_.item]:items-center md:[&_.item]:px-[12.68vw]"
     stickyParent
   >
     <div
@@ -22,10 +22,14 @@ import AnimateText from "../components/AnimateText.astro";
     </div>
     <div class="item">
       <div>
-        <h3 class="mb-6 max-w-[15ch] text-pretty text-[8vh] leading-tight">
+        <h3
+          class="mb-6 max-w-[15ch] text-pretty text-4xl leading-tight md:text-[8vh]"
+        >
           <AnimateText textList={["Fiscal realities", "matter"]} />
         </h3>
-        <p class="max-w-[45ch] text-[2.3vh] font-normal leading-normal">
+        <p
+          class="max-w-[45ch] text-center text-[2.3vh] font-normal leading-normal"
+        >
           A recent report by the Independent Expert Group on Debt, Nature, and
           Climate reveals that many of the world’s 144 developing economies are
           on an unsustainable fiscal trajectory. Countries cannot invest in
@@ -34,7 +38,7 @@ import AnimateText from "../components/AnimateText.astro";
 
         <a
           href="#"
-          class="group mt-10 flex w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-base text-white"
+          class="group mx-auto mt-10 flex w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-base text-white md:mx-0"
         >
           <span> More details </span>
           <span
@@ -45,14 +49,16 @@ import AnimateText from "../components/AnimateText.astro";
         </a>
       </div>
       <Image
-        class="h-2/3 object-contain object-right"
+        class="w-full object-contain md:h-2/3 md:object-right"
         alt="Care about fiscal space"
         src={FiscarRealities}
       />
     </div>
     <div class="item">
       <div>
-        <h3 class="mb-6 max-w-[15ch] text-pretty text-[8vh] leading-tight">
+        <h3
+          class="mb-6 max-w-[15ch] text-pretty text-4xl leading-tight md:text-[8vh]"
+        >
           <AnimateText textList={["Regressive taxes", "harm the poor."]} />
         </h3>
         <p class="max-w-[45ch] text-[2.3vh] font-normal leading-normal">
@@ -64,7 +70,7 @@ import AnimateText from "../components/AnimateText.astro";
 
         <a
           href="#"
-          class="group mt-10 flex w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-base text-white"
+          class="group mx-auto mt-10 flex w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-base text-white md:mx-0"
         >
           <span> More details </span>
           <span
@@ -75,14 +81,16 @@ import AnimateText from "../components/AnimateText.astro";
         </a>
       </div>
       <Image
-        class="h-2/3 translate-y-[4%] object-contain object-left"
+        class="w-full object-contain md:h-2/3 md:translate-y-[4%] md:object-left"
         alt="Countries struggling"
         src={CountriesStruggling}
       />
     </div>
     <div class="item">
       <div>
-        <h3 class="mb-6 max-w-[15ch] text-pretty text-[8vh] leading-tight">
+        <h3
+          class="mb-6 max-w-[15ch] text-pretty text-4xl leading-tight md:text-[8vh]"
+        >
           <AnimateText textList={["Debt Crisis Stalls", "Development"]} />
         </h3>
         <p class="max-w-[45ch] text-[2.3vh] font-normal leading-normal">
@@ -93,14 +101,16 @@ import AnimateText from "../components/AnimateText.astro";
         </p>
       </div>
       <Image
-        class="h-2/3 -translate-y-[0.9px]"
+        class="w-full md:h-2/3 md:-translate-y-[0.9px]"
         alt="Countries struggling"
         src={ManagementHelp}
       />
     </div>
     <div class="item before:-translate-x-[12.68vw]">
       <div>
-        <h3 class="mb-6 max-w-[15ch] text-pretty text-[8vh] leading-tight">
+        <h3
+          class="mb-6 max-w-[15ch] text-pretty text-4xl leading-tight md:text-[8vh]"
+        >
           <AnimateText
             textList={["Philanthropy", "Neglects Fiscal", "Issues"]}
           />
@@ -114,14 +124,14 @@ import AnimateText from "../components/AnimateText.astro";
         </p>
       </div>
       <Image
-        class="h-2/3 -translate-y-3"
+        class="w-full md:h-2/3 md:-translate-y-3"
         alt="Countries struggling"
         src={WhatCanWeDoToday}
       />
     </div>
   </HorizontalScrollContainer>
 
-  <div class="h-[50svh]">
+  <div class="md:h-[50svh]">
     <!-- THIS IS FOR DELAYED SCROLL -->
   </div>
 </section>

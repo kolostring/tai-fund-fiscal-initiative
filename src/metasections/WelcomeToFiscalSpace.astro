@@ -3,14 +3,13 @@ import AnimateText from "../components/AnimateText.astro";
 import WelcomePresentation from "../sections/WelcomePresentation.astro";
 import ArrowIcon from "../assets/Arrow.svg?raw";
 import Card from "../components/Card.astro";
-
 ---
 
-<div class="sticky top-0 -z-[20]">
+<div class="sticky-parent md:sticky md:top-0 md:-z-[20]">
   <WelcomePresentation />
 </div>
 <div
-  class="sticky top-0 -z-[10] h-[200svh] w-full bg-[#1672F7] text-center text-[8vh] text-white"
+  class="sticky top-0 -z-[10] h-[200svh] w-full bg-[#1672F7] text-center text-4xl md:text-[8vh] text-white"
 >
   <div class="sticky top-0 grid h-svh place-items-center">
     <h3>
@@ -20,34 +19,42 @@ import Card from "../components/Card.astro";
           "unlock untold millions more",
           "for development priorities.",
         ]}
+        mobileTextList={[
+          "And yet fiscal",
+          "fixes can unlock",
+          "untold millions",
+          "more for",
+          "development",
+          "priorities.",
+        ]}
       />
     </h3>
   </div>
-</div>
-<section class="bg-[#0128A2]">
+</div><section class="bg-[#0128A2]">
   <div class="min-h-[200svh]">
     <div
-      class="sticky top-0 mb-36 flex flex-col items-center justify-center py-40 leading-tight tracking-tighter"
+      class="sticky top-0 mb-36 flex min-h-svh flex-col items-center justify-center py-40 leading-tight tracking-tighter"
     >
-      <h2 class="text-center text-[135px] font-bold text-[#02B5D1]">
-        <AnimateText textList={["Welcome to", "The Fiscal Space:"]} />
+      <h2 class="text-center text-6xl font-bold text-[#02B5D1] md:text-[135px]">
+        <AnimateText textList={["Welcome to", "The Fiscal Space:"]} mobileTextList={["Welcome to", "THE FISCAL", "SPACE:"]} />
       </h2>
     </div>
   </div>
 
-  <div class="mx-auto grid max-w-7xl grid-cols-2 gap-x-32">
-    <div class="size-full rounded-3xl bg-white/20"></div>
+  <div class="mx-auto grid max-w-7xl gap-x-32 px-6 md:grid-cols-2">
+    <div class="row-start-2 size-full rounded-3xl bg-white/20 md:row-start-1">
+    </div>
     <div class="grid py-11 text-lg text-white">
       <p class="mb-12">
-        It is past time to address the fiscal blindspot and scale up support
-        for more sustainable public financing that can better serve
-        development needs. In 2025, the 4th International Conference on
-        Financing for Development (FfD4) will set the development finance
-        agenda for the next decade. Decisions will impact countries’ ability
-        to invest in development and climate responses. Thus, TAI set up a
-        Fund Fiscal project to increase funders’ investment and engagement
-        in fiscal issues. We and focused on philanthropies and support to
-        civil society based on given our needs assessment.
+        It is past time to address the fiscal blindspot and scale up support for
+        more sustainable public financing that can better serve development
+        needs. In 2025, the 4th International Conference on Financing for
+        Development (FfD4) will set the development finance agenda for the next
+        decade. Decisions will impact countries’ ability to invest in
+        development and climate responses. Thus, TAI set up a Fund Fiscal
+        project to increase funders’ investment and engagement in fiscal issues.
+        We and focused on philanthropies and support to civil society based on
+        given our needs assessment.
       </p>
 
       <a
@@ -69,8 +76,8 @@ import Card from "../components/Card.astro";
         class="mb-12 grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-12 py-6 text-2xl font-semibold"
       >
         <span class="block max-w-[25ch] text-pretty">
-          Expanding Funding and Commitment to Transparency and Participation
-          in Fiscal Policy
+          Expanding Funding and Commitment to Transparency and Participation in
+          Fiscal Policy
         </span>
         <div
           class="flex aspect-square h-12 rounded-full text-white *:size-full first:[&_path]:stroke-[#02B4D0] [&_svg]:fill-[#02B4D0]"
@@ -80,12 +87,12 @@ import Card from "../components/Card.astro";
       </a>
 
       <p class="">
-        As part of the Fund Fiscal project, the Fiscal Space site is a place
-        for fFunders (and others) interested in sectors like climate,
-        education, health, and poverty reduction that have increasingly
-        looked to learn about fiscal policy as a for long-term solution,
-        including in sectors like climate, education, health, and poverty
-        reduction that have increasingly lookeds. We seek to:
+        As part of the Fund Fiscal project, the Fiscal Space site is a place for
+        fFunders (and others) interested in sectors like climate, education,
+        health, and poverty reduction that have increasingly looked to learn
+        about fiscal policy as a for long-term solution, including in sectors
+        like climate, education, health, and poverty reduction that have
+        increasingly lookeds. We seek to:
       </p>
 
       <ul class="ml-8 mt-6 grid list-disc gap-y-4">
@@ -97,19 +104,19 @@ import Card from "../components/Card.astro";
           Discuss how funders can use their grants, voice, and other tools.
         </li>
         <li>
-          Showcase resources by TAI and other stakeholders on the landscape
-          of funding, evidence of impact, case studies, and current news.
+          Showcase resources by TAI and other stakeholders on the landscape of
+          funding, evidence of impact, case studies, and current news.
         </li>
       </ul>
     </div>
   </div>
 </section>
-<div class="sticky top-0 bg-[#0128A2]">
-  <div class="sticky top-0 grid h-svh place-content-center gap-16">
-    <h3 class="text-center text-6xl font-bold text-white">
+<div class="bg-[#0128A2] md:sticky md:top-0">
+  <div class="grid place-content-center gap-16 md:sticky md:top-0 md:h-svh">
+    <h3 class="text-center text-4xl font-bold text-white md:text-6xl">
       <AnimateText textList={["Philanthropists on Fiscal"]} />
     </h3>
-    <ul class="mx-auto grid max-w-7xl list-none grid-cols-3 gap-x-8">
+    <ul class="mx-auto grid max-w-7xl list-none gap-x-8 px-6 md:grid-cols-3">
       {
         [
           [
@@ -134,7 +141,7 @@ import Card from "../components/Card.astro";
     </ul>
   </div>
 
-  <div class="h-svh"> 
+  <div class="md:h-svh">
     <!-- THIS IS FOR DELAYED SCROLL -->
   </div>
 </div>

@@ -4,36 +4,33 @@ import AnimateText from "../components/AnimateText.astro";
 ---
 
 <section
-  class="mx-auto flex aspect-[1430/471] max-w-7xl flex-col items-center justify-center rounded-3xl bg-[#1672F7] text-white"
+  class="mx-auto flex aspect-[1430/471] max-w-7xl flex-col items-center justify-center rounded-3xl bg-[#1672F7] px-4 py-12 text-white"
 >
-  <h3 class="mb-8 text-center text-6xl font-bold leading-tight -tracking-[1%]">
+  <h3
+    class="mb-8 text-center text-4xl font-bold leading-tight -tracking-[1%] md:text-6xl"
+  >
     <AnimateText
       textList={[
         "Don’t hesitate to reach out to us",
         "and follow TAI on social media.",
       ]}
+      mobileTextList={[
+        "Don’t hesitate",
+        "to reach out to",
+        "us and follow",
+        "TAI on social",
+        "media.",
+      ]}
     />
   </h3>
 
-  <form
-    onsubmit="return false"
-    class="relative flex w-full max-w-[425px] items-center rounded-full bg-[#CDF1F3] p-1"
+  <a
+    href="#"
+    class="flex items-center gap-x-5 rounded-full bg-[#090045] p-1 pl-6 text-white"
   >
-    <label class="w-full rounded-full">
-      <span class="sr-only">Your Email</span>
-      <input
-        type="email"
-        class="w-full rounded-full bg-transparent p-3 placeholder:text-[#090045]"
-        name="user-email"
-        placeholder="Enter your Email"
-      />
-    </label>
-    <button
-      class="absolute inset-1 left-auto text-[#090045] [&_svg]:h-full [&_svg]:w-full"
-      type="submit"
-    >
+    <span> Follow us </span>
+    <span class="text-[#090045] [&>svg]:size-9 [&>svg]:fill-white">
       <Fragment set:html={ArrowIcon} />
-      <span class="sr-only">Subscribe</span>
-    </button>
-  </form>
+    </span>
+  </a>
 </section>

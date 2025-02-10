@@ -2,27 +2,40 @@
 interface Props {
   className?: string;
   textList: string[];
+  mobileTextList?: string[];
 }
 
-const { className, textList } = Astro.props as Props;
+const { className, textList, mobileTextList } = Astro.props as Props;
 ---
 
 <>
-  {
-    textList.map((text) => (
-      <span class={`animate-text block ${className}`}>
-        <span>{text}</span>
-      </span>
-    ))
-  }
+  <span class="animate-text-container">
+    {
+      mobileTextList?.map((text) => (
+        <span class={`animate-text-mobile block ${className}`}>
+          <span>{text}</span>
+        </span>
+      ))
+    }
+
+    {
+      textList.map((text) => (
+        <span class={`animate-text block ${className}`}>
+          <span>{text}</span>
+        </span>
+      ))
+    }
+  </span>
 </>
 
 <style>
-  .animate-text {
+  .animate-text,
+  .animate-text-mobile {
     @apply block overflow-y-hidden;
   }
 
-  .animate-text > * {
+  .animate-text > *,
+  .animate-text-mobile > * {
     @apply block translate-y-full;
   }
 </style>
@@ -43,6 +56,19 @@ const { className, textList } = Astro.props as Props;
     const containers = document.querySelectorAll(
       ".animate-text"
     ) as NodeListOf<HTMLElement>;
+    const mobileContainers = document.querySelectorAll(
+      ".animate-text-mobile"
+    ) as NodeListOf<HTMLElement>;
+
+    const responsiveContainers = document.querySelectorAll(
+      ".animate-text-mobile ~ .animate-text"
+    ) as NodeListOf<HTMLElement>;
+
+    initDisplay();
+    window.matchMedia("(max-width: 768px)").addEventListener("change", () => {
+      console.log("change");
+      initDisplay();
+    });
 
     containers.forEach((container) => {
       const text = container.querySelector("span") as HTMLElement;
@@ -70,5 +96,50 @@ const { className, textList } = Astro.props as Props;
 
       cleanupFunctions.push(inViewCallback);
     });
+
+    mobileContainers.forEach((mobileContainer) => {
+      const text = mobileContainer.querySelector("span") as HTMLElement;
+
+      const inViewCallback = inView(
+        mobileContainer,
+        () => {
+          animate(
+            text,
+            {
+              y: [text.offsetHeight, 0],
+            },
+            {
+              ease: "easeOut",
+              onComplete: () => {
+                mobileContainer.style.overflowY = "visible";
+              },
+            }
+          );
+        },
+        {
+          amount: 0.1,
+        }
+      );
+
+      cleanupFunctions.push(inViewCallback);
+    });
+
+    function initDisplay() {
+      if (window.innerWidth < 768) {
+        mobileContainers.forEach((mobileContainer) => {
+          mobileContainer.style.display = "block";
+        });
+        responsiveContainers.forEach((responsiveContainer) => {
+          responsiveContainer.style.display = "none";
+        });
+      } else {
+        mobileContainers.forEach((mobileContainer) => {
+          mobileContainer.style.display = "none";
+        });
+        responsiveContainers.forEach((responsiveContainer) => {
+          responsiveContainer.style.display = "block";
+        });
+      }
+    }
   }
 </script>

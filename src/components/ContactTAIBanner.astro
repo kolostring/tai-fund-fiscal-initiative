@@ -3,15 +3,19 @@ import ArrowIcon from "../assets/Arrow.svg?raw";
 import AnimateText from "./AnimateText.astro";
 ---
 
-<section class="bg-[#090045] grid gap-11 justify-items-center rounded-3xl max-w-7xl mx-auto py-24 text-center">
-  <h3 class="text-white font-bold text-8xl">
+<section
+  class="grid max-w-7xl justify-items-center gap-11 rounded-3xl bg-[#090045] py-16 text-center md:mx-auto md:py-24"
+>
+  <h3 class="text-4xl font-bold text-white md:text-8xl">
     <AnimateText textList={["Lorem ipsum", "dolor sit amet"]} />
   </h3>
 
-  <button onclick="document.getElementById('contact-tai').showModal()"
-  class="bg-[#1672F7] gap-x-5 text-white items-center flex rounded-full p-1 pl-6"> 
+  <button
+    onclick="document.getElementById('contact-tai').showModal()"
+    class="flex items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-white"
+  >
     <span> Contact TAI </span>
-    <span class="text-[#1672F7] [&>svg]:fill-white [&>svg]:size-9">
+    <span class="text-[#1672F7] [&>svg]:size-9 [&>svg]:fill-white">
       <Fragment set:html={ArrowIcon} />
     </span>
   </button>

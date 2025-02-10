@@ -21,7 +21,7 @@ const howCanTaiHelp = [
   <div class="relative h-[200svh] bg-gradient-to-b from-[#1600AB] to-[#090045]">
     <div class="sticky top-0 grid h-svh place-content-center">
       <h2
-        class="text-center text-[135px] font-bold leading-tight tracking-tighter"
+        class="text-center text-6xl font-bold leading-tight tracking-tighter md:text-[135px]"
       >
         <AnimateText textList={["What Funders", "Can Do"]} />
       </h2>
@@ -30,9 +30,14 @@ const howCanTaiHelp = [
 
   <WhatFundersCanDoPresentation />
 
-  <section id="how-can-tai-help" class="relative mt-36 h-[250svh] text-center">
-    <div class="sticky top-0 flex h-svh flex-col items-center justify-center">
-      <h3 class="mb-8 text-6xl font-bold">
+  <section
+    id="how-can-tai-help"
+    class="relative mt-36 text-center md:h-[250svh]"
+  >
+    <div
+      class="sticky top-0 flex flex-col items-center justify-center md:h-svh"
+    >
+      <h3 class="mb-8 text-4xl font-bold md:text-6xl">
         <AnimateText textList={["How can TAI help?"]} />
       </h3>
       <p class="mx-auto max-w-[63ch] text-lg">
@@ -53,10 +58,10 @@ const howCanTaiHelp = [
         </span>
       </a>
 
-      <ul class="mt-16 flex gap-x-16">
+      <ul class="mt-16 flex flex-col gap-x-16 md:flex-row">
         {
           howCanTaiHelp.map(([text]) => (
-            <li class="flex flex-1 flex-col items-center gap-6 opacity-0">
+            <li class="flex flex-1 flex-col items-center gap-6 md:opacity-0">
               <div class="aspect-square w-40 rounded-full bg-[#CDF1F333]" />
               <p class="mb-6 max-w-[20ch] text-center text-lg">{text}</p>
             </li>

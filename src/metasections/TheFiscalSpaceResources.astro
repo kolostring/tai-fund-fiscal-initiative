@@ -19,18 +19,21 @@ const resources = [
 ];
 ---
 
-<section class="bg-white">
+<section class="bg-white px-6">
   <div class="relative h-[200svh]">
     <div class="sticky top-0">
       <h2
-        class="grid h-svh place-content-center text-center text-[135px] font-bold leading-tight tracking-tighter text-[#1672F7]"
+        class="grid h-svh place-content-center text-center text-6xl font-bold leading-tight tracking-tighter text-[#1672F7] md:text-[135px]"
       >
-        <AnimateText textList={["The Fiscal Space", "Resources"]} />
+        <AnimateText
+          textList={["The Fiscal Space", "Resources"]}
+          mobileTextList={["The Fiscal", "Space", "Resources"]}
+        />
       </h2>
     </div>
   </div>
   <div class="container mx-auto flex max-w-7xl flex-col items-center py-24">
-    <ul class="grid grid-cols-3 gap-8">
+    <ul class="grid md:grid-cols-3 gap-8">
       {
         resources.map(([href, title]) => (
           <Card imageURL={""} title={title} href={href} />

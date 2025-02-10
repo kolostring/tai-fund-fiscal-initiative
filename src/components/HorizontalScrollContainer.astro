@@ -42,6 +42,10 @@ const { containerClassName, className } = Astro.props;
 
       function updateContainerHeight() {
         if (!container) return;
+        if (window.innerWidth < 768) {
+          (container as HTMLDivElement).style.height = "auto";
+          return;
+        }
         (container as HTMLDivElement).style.height =
           `${contentWrapper.scrollWidth}px`;
       }
@@ -49,7 +53,7 @@ const { containerClassName, className } = Astro.props;
       updateContainerHeight();
       window.addEventListener("resize", updateContainerHeight);
 
-      const stickyParent = container.closest(".sticky") as HTMLElement | null;
+      const stickyParent = container.closest(".sticky-parent, .sticky") as HTMLElement | null;
 
       const relativeAncestor = stickyParent?.closest(
         ".relative"
@@ -57,6 +61,13 @@ const { containerClassName, className } = Astro.props;
 
       const scrollCallback = scroll(
         (progress: number) => {
+          if (window.innerWidth < 768) {
+            contentWrapper.scrollTo({
+              left: 0,
+            });
+            return;
+          }
+
           const scrollMul =
             obtainScrollableSpace(container as HTMLElement, contentWrapper) *
             progress;

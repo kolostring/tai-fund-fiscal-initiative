@@ -2,7 +2,7 @@
 import { Image } from "astro:assets";
 
 import ArrowIcon from "../assets/Arrow.svg?raw";
-import Logo from "../assets/logo.svg?raw";
+import Logo from "../assets/logo.svg";
 import TAILogo from "../assets/tai-logo.png";
 
 import LinkedinLogo from "../assets/linkedin.svg?raw";
@@ -15,24 +15,24 @@ interface Props {
 const { className } = Astro.props as Props;
 ---
 
-<footer class={`mx-auto grid max-w-7xl gap-y-20 pb-24 ${className}`}>
-  <div class="grid grid-cols-[auto_1fr_auto]">
-    <div
-      class="flex justify-items-center [&_[fill=white]]:fill-black"
-    >
-      <Fragment set:html={Logo} />
+<footer class={`mx-auto grid max-w-7xl px-6 gap-y-20 pb-24 ${className}`}>
+  <div
+    class="grid justify-items-center text-center md:grid-cols-[auto_1fr_auto] md:justify-items-start md:text-start"
+  >
+    <div class="flex justify-items-center [&_[fill=white]]:fill-black">
+      <Image class="max-h-9 w-fit md:h-fit" src={Logo} alt="TAI Logo" />
       <Image
-        class="ml-14 h-fit border-l border-[#090045] pl-14"
+        class="ml-7 max-h-9 w-fit border-l-2 border-[#090045] pl-7 md:ml-14 md:h-fit md:pl-14"
         src={TAILogo}
         alt="TAI Logo"
       />
     </div>
-    <section class="flex justify-self-center max-w-80 flex-col gap-5">
+    <section class="flex max-w-80 flex-col gap-5 md:justify-self-center">
       <h2 class="pb-2 font-semibold uppercase text-[#1672F7]">Contact Us</h2>
       <a href="mailto:jlah@taicollaborative.org">jlah@taicollaborative.org</a>
       <p>1100 13th St NW, Suite 800 Washington, DC 20005, United States</p>
     </section>
-    <section class="flex justify-self-end flex-col gap-5">
+    <section class="flex flex-col gap-5 md:justify-self-end">
       <h2 class="pb-2 font-semibold uppercase text-[#1672F7]">
         Links to Related Content
       </h2>
@@ -42,11 +42,13 @@ const { className } = Astro.props as Props;
     </section>
   </div>
 
-  <div class="grid grid-cols-5">
+  <div class="grid md:grid-cols-5">
     <section
-      class="grid grid-cols-4 items-center border border-l-0 border-[#090045] pl-0"
+      class="grid grid-cols-[1fr_auto_auto] items-center border-y border-[#090045] pl-0 md:grid-cols-4 md:border md:border-l-0"
     >
-      <h2 class="col-span-2 text-pretty font-semibold text-[#1672F7]">
+      <h2
+        class="max-w-[10ch] text-pretty font-semibold text-[#1672F7] md:col-span-2"
+      >
         Follow us for more details
       </h2>
       <a href="#"
@@ -58,7 +60,7 @@ const { className } = Astro.props as Props;
       >
     </section>
     <section
-      class="col-span-4 flex items-center border-y border-[#090045] p-12 pr-0"
+      class="flex flex-col border-[#090045] md:col-span-4 md:flex-row md:items-center md:border-y md:p-12 md:pr-0"
     >
       <h2>Keep updated with TAI WEEKLY</h2>
       <form

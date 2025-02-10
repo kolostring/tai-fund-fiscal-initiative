@@ -24,11 +24,13 @@ const content = [
 
 <section>
   <HorizontalScrollContainer
-    className="flex h-svh items-center pl-[max(1rem,(100vw_-_1280px)_/_2)]"
+    className="flex items-center md:h-svh md:pl-[max(1rem,(100vw_-_1280px)_/_2)]"
   >
-    <div class="relative flex h-full max-h-[720px] flex-col justify-between">
+    <div
+      class="relative flex w-full flex-col justify-between md:h-full md:max-h-[720px] md:w-auto"
+    >
       <h3
-        class="sticky left-0 w-fit text-nowrap text-6xl font-bold tracking-tight text-white"
+        class="w-fit text-nowrap text-4xl font-bold tracking-tight text-white md:sticky md:left-0 md:text-6xl"
       >
         <AnimateText
           textList={[
@@ -39,11 +41,11 @@ const content = [
       </h3>
 
       <ul
-        class="challenge-content flex h-fit max-h-[770px] gap-14 after:pr-[max(1rem,(100vw_-_1280px)_/_2)]"
+        class="flex flex-col gap-14 after:pr-[max(1rem,(100vw_-_1280px)_/_2)] md:h-fit md:max-h-[770px] md:flex-row"
       >
         {
           content.map(([title, p]) => (
-            <li class="z-10 box-border grid min-w-[680px] grid-rows-[4fr_5fr] gap-9 rounded-3xl bg-white text-black">
+            <li class="z-10 box-border grid grid-rows-[4fr_5fr] gap-9 rounded-3xl bg-white text-black md:min-w-[680px]">
               <div class="h-full w-full rounded-t-3xl bg-[#CDF1F3]" />
               <div class="px-16 pb-9">
                 <h3 class="mb-6 text-3xl font-bold uppercase tracking-tight text-[#1672F7]">

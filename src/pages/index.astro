@@ -29,7 +29,7 @@ import NavigationGrid from "../sections/NavigationGrid.astro";
       <TheOpportunity2025 />
 
       <div class="relative isolate">
-        <div class="sticky top-0 -z-20">
+        <div class="sticky-parent md:sticky md:top-0 md:-z-20">
           <ChallengePresentation />
         </div>
         <TheActionAgenda />
@@ -37,7 +37,9 @@ import NavigationGrid from "../sections/NavigationGrid.astro";
 
       <div class="relative isolate bg-[#1672F6]">
         <div class="sticky top-0 -z-20 h-[200svh]">
-          <div class="sticky top-0 grid h-svh items-center *:w-full">
+          <div
+            class="grid items-center px-6 *:w-full md:sticky md:top-0 md:h-svh"
+          >
             <ContactTAIBanner />
           </div>
         </div>
@@ -47,7 +49,7 @@ import NavigationGrid from "../sections/NavigationGrid.astro";
 
       <div class="relative isolate bg-[#090045]">
         <div class="sticky top-0 -z-20 h-[200svh]">
-          <div class="sticky top-0 grid h-svh place-items-center *:w-full">
+          <div class="sticky top-0 grid h-svh place-items-center px-6 *:w-full">
             <FollowUs />
           </div>
         </div>

@@ -2,9 +2,9 @@
 import ArrowIcon from "../assets/Arrow.svg?raw";
 ---
 
-<section id="navigation-grid" class="relative h-[200svh]">
+<section id="navigation-grid" class="relative md:h-[200svh]">
   <div
-    class="sticky top-0 mx-auto grid h-svh max-w-7xl grid-cols-2 gap-8 py-24"
+    class="mx-auto grid md:h-svh max-w-7xl gap-8 px-6 py-24 [grid-auto-rows:_1fr] md:sticky md:top-0 md:grid-cols-2"
   >
     {
       [
@@ -15,9 +15,11 @@ import ArrowIcon from "../assets/Arrow.svg?raw";
       ].map(([href, title]) => (
         <a
           href={href}
-          class="group grid grid-cols-[1fr_auto] items-end rounded-3xl bg-[#CDF1F3] px-14 py-10 text-black opacity-0"
+          class="group relative isolate grid grid-cols-[1fr_auto] items-end gap-4 text-black opacity-0 md:px-14 md:py-10"
         >
-          <span class="block max-w-[14ch] text-pretty text-5xl font-bold">
+          <div class="col-span-2 aspect-video rounded-3xl bg-[#CDF1F3] md:absolute md:inset-0 md:-z-10 md:col-auto md:aspect-auto" />
+
+          <span class="block max-w-[14ch] text-pretty text-3xl font-bold md:text-5xl">
             {title}
           </span>
           <div class="aspect-square h-12 rotate-45 rounded-full text-white transition-transform *:size-full group-hover:rotate-0 first:[&_path]:stroke-black [&_svg]:fill-black">

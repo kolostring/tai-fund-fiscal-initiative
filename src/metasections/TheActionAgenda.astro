@@ -28,20 +28,29 @@ const resources = [
   <div class="relative h-[200svh]">
     <div class="sticky top-0 grid h-svh place-content-center">
       <h2
-        class="mb-4 text-center text-[135px] font-bold leading-tight tracking-tighter text-[#CDF1F3]"
+        class="mb-4 text-center text-6xl font-bold leading-tight tracking-tighter text-[#CDF1F3] md:text-[135px]"
       >
-        <AnimateText textList={["The Action Agenda"]} />
+        <AnimateText
+          textList={["The Action Agenda"]}
+          mobileTextList={["The Action", "Agenda"]}
+        />
       </h2>
-      <p class="text-center text-3xl font-bold uppercase text-[#02B5D1]">
+      <p
+        class="text-center text-2xl font-bold uppercase text-[#02B5D1] md:text-3xl"
+      >
         <AnimateText textList={["Funder and Practitioner", "Perspectives"]} />
       </p>
     </div>
   </div>
 
-  <section class="mx-auto mb-24 max-w-7xl">
-    <div class="relative h-[200svh]">
-      <div class="sticky top-0 grid h-svh place-content-center text-center">
-        <div class="mx-auto mb-14 aspect-square h-80 rounded-lg bg-[#CDF1F333]">
+  <section class="mx-auto mb-24 max-w-7xl px-6">
+    <div class="relative md:h-[200svh]">
+      <div
+        class="grid place-content-center text-center md:sticky md:top-0 md:h-svh"
+      >
+        <div
+          class="mx-auto mb-14 aspect-square h-48 rounded-lg bg-[#CDF1F333] md:h-80"
+        >
         </div>
         <p class="max-w-[60ch] text-white">
           Many exciting ideas are being generated and experiments tested to
@@ -54,7 +63,7 @@ const resources = [
         </p>
       </div>
     </div>
-    <ul class="grid grid-cols-3 gap-8 text-black">
+    <ul class="grid gap-8 text-black md:grid-cols-3">
       {
         resources.map(([href, title]) => (
           <Card imageURL={""} title={title} href={href} />
