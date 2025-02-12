@@ -22,7 +22,7 @@ const content = [
 ];
 ---
 
-<section>
+<section id="what-funders-can-do-presentation">
   <HorizontalScrollContainer
     className="flex items-center px-6 md:h-svh md:pl-[max(1rem,(100vw_-_1280px)_/_2)]"
   >
@@ -46,23 +46,80 @@ const content = [
         />
       </h3>
 
-      <ul
-        class="flex flex-col gap-14 after:pr-[max(1rem,(100vw_-_1280px)_/_2)] md:h-fit md:max-h-[770px] md:flex-row"
-      >
-        {
-          content.map(([title, p]) => (
-            <li class="z-10 box-border grid grid-rows-[4fr_5fr] gap-9 rounded-3xl bg-white text-black md:min-w-[680px]">
-              <div class="h-full w-full rounded-t-3xl bg-[#CDF1F3]" />
-              <div class="px-6 pb-9 md:px-16 md:pb-7">
-                <h3 class="mb-6 text-2xl font-bold uppercase tracking-tight text-[#1672F7] md:text-3xl">
-                  {title}
-                </h3>
-                <p class="text-lg">{p}</p>
-              </div>
-            </li>
-          ))
-        }
-      </ul>
+      <div class="swiper w-full overflow-hidden md:flex">
+        <ul
+          class="swiper-wrapper after:pr-[max(1rem,(100vw_-_1280px)_/_2)] md:flex md:h-fit md:max-h-[770px] md:flex-row md:gap-14"
+        >
+          {
+            content.map(([title, p]) => (
+              <li class="swiper-slide z-10 box-border !grid w-full flex-shrink-0 !grid-rows-[164px_1fr] gap-9 rounded-3xl bg-white text-black md:min-w-[680px] md:!flex-shrink md:grid-rows-[4fr_5fr]">
+                <div class="h-full w-full rounded-t-3xl bg-[#CDF1F3]" />
+                <div class="px-6 pb-9 md:px-16 md:pb-7">
+                  <h3 class="mb-6 text-2xl font-bold uppercase tracking-tight text-[#1672F7] md:text-3xl">
+                    {title}
+                  </h3>
+                  <p class="text-lg">{p}</p>
+                </div>
+              </li>
+            ))
+          }
+        </ul>
+
+        <div
+          class="swiper-pagination !static mt-4 *:!size-3 *:!opacity-100 *:outline *:outline-2 *:outline-[#02B5D1] [&>.swiper-pagination-bullet-active]:!bg-[#02B5D1] [&>.swiper-pagination-bullet]:bg-transparent"
+        >
+        </div>
+      </div>
     </div>
   </HorizontalScrollContainer>
 </section>
+
+<script>
+  import Swiper from "swiper";
+  import { Pagination } from "swiper/modules";
+  import "swiper/css";
+  import "swiper/css/pagination";
+
+  let swiper: null | Swiper = null;
+
+  updateSwiper();
+  window.addEventListener("resize", () => {
+    updateSwiper();
+  });
+
+  function updateSwiper() {
+    if (window.innerWidth < 768) {
+      initSwiper();
+    } else {
+      destroySwiper();
+    }
+  }
+
+  function destroySwiper() {
+    if (!swiper) return;
+    swiper.destroy();
+    swiper = null;
+  }
+
+  function initSwiper() {
+    if (swiper) return;
+    swiper = new Swiper("#what-funders-can-do-presentation .swiper", {
+      // configure Swiper to use modules
+      modules: [Pagination],
+      direction: "horizontal",
+      loop: true,
+      spaceBetween: 60,
+      noSwiping: false,
+      pagination: {
+        el: ".swiper-pagination",
+        clickable: true,
+      },
+
+      breakpoints: {
+        768: {
+          noSwiping: true,
+        },
+      },
+    });
+  }
+</script>
