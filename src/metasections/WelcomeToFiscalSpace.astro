@@ -5,11 +5,11 @@ import ArrowIcon from "../assets/Arrow.svg?raw";
 import Card from "../components/Card.astro";
 ---
 
-<div class="sticky-parent md:sticky md:top-0 md:-z-[20]">
+<div class="sticky-parent pt-24 md:sticky md:top-0 md:-z-[20] md:pt-0">
   <WelcomePresentation />
 </div>
 <div
-  class="sticky top-0 -z-[10] h-[200svh] w-full bg-[#1672F7] text-center text-4xl md:text-[8vh] text-white"
+  class="sticky top-0 -z-[10] h-[200svh] w-full bg-[#1672F7] text-center text-5xl leading-tight text-white md:text-[8vh]"
 >
   <div class="sticky top-0 grid h-svh place-items-center">
     <h3>
@@ -33,18 +33,25 @@ import Card from "../components/Card.astro";
 </div><section class="bg-[#0128A2]">
   <div class="min-h-[200svh]">
     <div
-      class="sticky top-0 mb-36 flex min-h-svh flex-col items-center justify-center py-40 leading-tight tracking-tighter"
+      class="sticky top-0 flex min-h-svh flex-col items-center justify-center py-40 leading-tight tracking-tighter"
     >
       <h2 class="text-center text-6xl font-bold text-[#02B5D1] md:text-[135px]">
-        <AnimateText textList={["Welcome to", "The Fiscal Space:"]} mobileTextList={["Welcome to", "THE FISCAL", "SPACE:"]} />
+        <AnimateText
+          textList={["Welcome to", "The Fiscal Space:"]}
+          mobileTextList={["Welcome to", "THE FISCAL", "SPACE:"]}
+        />
       </h2>
     </div>
   </div>
 
-  <div class="mx-auto grid max-w-7xl gap-x-32 px-6 md:grid-cols-2">
-    <div class="row-start-2 size-full rounded-3xl bg-white/20 md:row-start-1">
+  <div
+    class="mx-auto grid max-w-7xl gap-x-32 gap-y-10 px-6 pb-16 md:grid-cols-2"
+  >
+    <div
+      class="row-start-2 size-full min-h-svh rounded-3xl bg-white/20 md:row-start-1"
+    >
     </div>
-    <div class="grid py-11 text-lg text-white">
+    <div class="grid text-lg text-white md:py-11">
       <p class="mb-12">
         It is past time to address the fiscal blindspot and scale up support for
         more sustainable public financing that can better serve development
@@ -112,11 +119,16 @@ import Card from "../components/Card.astro";
   </div>
 </section>
 <div class="bg-[#0128A2] md:sticky md:top-0">
-  <div class="grid place-content-center gap-16 md:sticky md:top-0 md:h-svh">
+  <div
+    class="grid place-content-center gap-x-16 gap-y-8 pb-20 md:sticky md:top-0 md:h-svh md:pb-0"
+  >
     <h3 class="text-center text-4xl font-bold text-white md:text-6xl">
-      <AnimateText textList={["Philanthropists on Fiscal"]} />
+      <AnimateText
+        textList={["Philanthropists on Fiscal"]}
+        mobileTextList={["Philanthropists on", "Fiscal"]}
+      />
     </h3>
-    <ul class="mx-auto grid max-w-7xl list-none gap-x-8 px-6 md:grid-cols-3">
+    <ul class="mx-auto grid max-w-7xl list-none gap-8 px-6 md:grid-cols-3">
       {
         [
           [

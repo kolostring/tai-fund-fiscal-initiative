@@ -17,9 +17,11 @@ const { className } = Astro.props as Props;
 
 <footer class={`mx-auto grid max-w-7xl px-6 gap-y-20 pb-24 ${className}`}>
   <div
-    class="grid justify-items-center text-center md:grid-cols-[auto_1fr_auto] md:justify-items-start md:text-start"
+    class="grid justify-items-center gap-y-14 text-center md:grid-cols-[auto_1fr_auto] md:justify-items-start md:text-start"
   >
-    <div class="flex justify-items-center [&_[fill=white]]:fill-black">
+    <div
+      class="flex justify-items-center pb-5 md:pb-0 [&_[fill=white]]:fill-black"
+    >
       <Image class="max-h-9 w-fit md:h-fit" src={Logo} alt="TAI Logo" />
       <Image
         class="ml-7 max-h-9 w-fit border-l-2 border-[#090045] pl-7 md:ml-14 md:h-fit md:pl-14"
@@ -44,10 +46,10 @@ const { className } = Astro.props as Props;
 
   <div class="grid md:grid-cols-5">
     <section
-      class="grid grid-cols-[1fr_auto_auto] items-center border-y border-[#090045] pl-0 md:grid-cols-4 md:border md:border-l-0"
+      class="mb-11 grid grid-cols-[1fr_auto_auto] items-center gap-x-4 md:gap-x-0 border-y border-[#090045] py-8 pl-0 md:mb-0 md:grid-cols-4 md:border md:border-l-0 md:py-0"
     >
       <h2
-        class="max-w-[10ch] text-pretty font-semibold text-[#1672F7] md:col-span-2"
+        class="max-w-[10ch] text-pretty md:text-base text-lg font-semibold text-[#1672F7] md:col-span-2"
       >
         Follow us for more details
       </h2>
@@ -62,7 +64,9 @@ const { className } = Astro.props as Props;
     <section
       class="flex flex-col border-[#090045] md:col-span-4 md:flex-row md:items-center md:border-y md:p-12 md:pr-0"
     >
-      <h2>Keep updated with TAI WEEKLY</h2>
+      <h2 class="mb-4 text-lg font-bold text-[#5B1D1C] md:mb-4">
+        Keep updated with TAI WEEKLY
+      </h2>
       <form
         onsubmit="return false"
         class="relative ml-auto flex w-full max-w-[425px] items-center rounded-full bg-[#CDF1F3] p-1"

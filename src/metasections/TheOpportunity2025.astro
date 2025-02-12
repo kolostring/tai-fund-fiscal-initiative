@@ -5,7 +5,7 @@ import ArrowIcon from "../assets/Arrow.svg?raw";
 ---
 
 <section id="opportunity-in-2025" class="bg-white">
-  <div class="bg-white pb-40">
+  <div class="bg-white">
     <div class="relative h-[200svh]">
       <div class="sticky top-0 flex h-svh flex-col items-center justify-center">
         <h2
@@ -19,13 +19,13 @@ import ArrowIcon from "../assets/Arrow.svg?raw";
       </div>
     </div>
     <section
-      class="container mx-auto grid max-w-7xl gap-x-14 px-6 pb-40 text-black md:grid-cols-2"
+      class="container mx-auto grid max-w-7xl gap-x-14 px-6 md:pb-40 text-black md:grid-cols-2"
     >
       <div class="row-span-3 h-full w-full rounded-3xl bg-[#CDF1F3]"></div>
       <h3 class="sr-only pb-12 pt-14 text-6xl font-bold leading-tight">
         <AnimateText textList={["Today’s", "opportunity"]} />
       </h3>
-      <p class="pb-6 pt-14 text-lg">
+      <p class="pb-6 md:pt-14 text-lg">
         Today, the world faces a $4 trillion financing gap to achieve the
         Sustainable Development Goals (SDGs). That cannot come from aid alone.
         Most must be raised by the countries themselves. Governments need to
@@ -60,14 +60,14 @@ import ArrowIcon from "../assets/Arrow.svg?raw";
   </div>
 
   <section class="md:h-[200svh]">
-    <div class="sticky top-0 grid place-content-center gap-16 md:h-svh">
+    <div class="sticky top-0 grid place-content-center gap-x-16 gap-y-8 md:h-svh">
       <h3 class="text-center text-4xl font-bold md:text-6xl">
         <AnimateText
           textList={["This can reinforce ongoing", "efforts to:"]}
           mobileTextList={["This can reinforce", " ongoing efforts to:"]}
         />
       </h3>
-      <ul class="mx-auto grid max-w-7xl list-none gap-x-8 px-6 md:grid-cols-3">
+      <ul class="mx-auto grid max-w-7xl list-none gap-8 px-6 md:grid-cols-3">
         {
           [
             [

@@ -22,57 +22,53 @@ const content = [
 ];
 ---
 
-<section id="challenge-presentation">
+<section id="challenge-presentation" class="my-24">
   <HorizontalScrollContainer
-    className="block bg-white md:flex md:h-svh md:items-center md:pl-[max(1rem,(100vw_-_1280px)_/_2)]"
+    className="block bg-white overflow-y-hidden md:flex md:h-svh md:items-center md:pl-[max(1rem,(100vw_-_1280px)_/_2)]"
   >
-    <div class="relative justify-between md:flex md:max-h-[720px] md:flex-col">
-      <h3
-        class="w-fit text-nowrap text-4xl font-bold tracking-tight text-[#090045] md:sticky md:left-0 md:text-6xl"
-      >
-        <AnimateText textList={["The Challenge"]} />
-      </h3>
-      <ul
-        class="challenge-content flex flex-col px-6 md:flex-row md:pr-[max(1rem,(100vw_-_1280px)_/_2)]"
-      >
-        {
-          content.map(([title, p]) => (
-            <li class="z-10 flex flex-col-reverse justify-center gap-12 text-center opacity-0 first:opacity-100 md:mr-[45vw] md:min-w-[574px] md:flex-col md:text-left md:last:mr-0 md:odd:flex-col-reverse">
-              <div>
-                <h3 class="mb-6 text-2xl font-bold uppercase tracking-tight text-[#1672F7] md:text-3xl">
-                  <AnimateText textList={[title]} />
-                </h3>
-                <p class="text-lg">{p}</p>
-                <a
-                  href="#"
-                  class="group mt-4 flex w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-base text-white"
-                >
-                  <span> More details </span>
-                  <span class="rotate-45 text-[#1672F7] transition-transform group-hover:rotate-0 [&>svg]:size-9 [&>svg]:fill-white">
-                    <Fragment set:html={ArrowIcon} />
-                  </span>
-                </a>
-              </div>
-              <div class="mx-auto aspect-square w-64 rounded-3xl bg-[#CDF1F3] md:mx-0" />
-            </li>
-          ))
-        }
-      </ul>
-      <svg
-        class="rope left-0 md:absolute"
-        width="2577"
-        height="390"
-        viewBox="0 0 1800 333"
-        preserveAspectRatio="none"
-        fill="none"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M0 1C332.5 1 474 315.5 838 331C1202 346.5 1440 1 1746.5 1C2053 1 2239 331 2577 331"
-          stroke="#1672F7"
-          stroke-width="2"></path>
-      </svg>
-    </div>
+    <h3 class="sr-only">
+      <AnimateText textList={["The Challenge"]} />
+    </h3>
+    <ul
+      class="challenge-content flex flex-col gap-y-16 px-6 md:flex-row md:pr-[max(1rem,(100vw_-_1280px)_/_2)]"
+    >
+      {
+        content.map(([title, p]) => (
+          <li class="z-10 flex flex-col-reverse justify-center gap-12 text-center opacity-0 first:opacity-100 md:mr-[45vw] md:min-w-[574px] md:flex-col md:text-left md:last:mr-0 md:odd:flex-col-reverse">
+            <div>
+              <h3 class="mb-6 text-2xl font-bold uppercase tracking-tight text-[#1672F7] md:text-3xl">
+                <AnimateText textList={[title]} />
+              </h3>
+              <p class="text-lg">{p}</p>
+              <a
+                href="#"
+                class="group mx-auto mt-4 flex w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-base text-white md:mx-0"
+              >
+                <span> More details </span>
+                <span class="rotate-45 text-[#1672F7] transition-transform group-hover:rotate-0 [&>svg]:size-9 [&>svg]:fill-white">
+                  <Fragment set:html={ArrowIcon} />
+                </span>
+              </a>
+            </div>
+            <div class="mx-auto aspect-square w-64 rounded-3xl bg-[#CDF1F3] md:mx-0" />
+          </li>
+        ))
+      }
+    </ul>
+    <svg
+      class="rope hidden md:block left-0 md:absolute"
+      width="2577"
+      height="390"
+      viewBox="0 0 1800 333"
+      preserveAspectRatio="none"
+      fill="none"
+      xmlns="http://www.w3.org/2000/svg"
+    >
+      <path
+        d="M0 1C332.5 1 474 315.5 838 331C1202 346.5 1440 1 1746.5 1C2053 1 2239 331 2577 331"
+        stroke="#1672F7"
+        stroke-width="2"></path>
+    </svg>
   </HorizontalScrollContainer>
 </section>
 

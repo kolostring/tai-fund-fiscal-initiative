@@ -13,7 +13,7 @@ import AnimateText from "../components/AnimateText.astro";
 <section id="welcome-presentation-section">
   <h2 class="sr-only">Welcome to The Fiscal Space</h2>
   <HorizontalScrollContainer
-    className="flex w-svw flex-col text-center text-[4.92vh] font-bold leading-tight -tracking-[1%] md:flex-row [&_.item]:grid [&_.item]:min-h-svh [&_.item]:min-w-fit [&_.item]:px-6 [&_.item]:before:absolute [&_.item]:before:bottom-[calc(100%_/_6)] [&_.item]:before:-z-50 [&_.item]:before:h-[0.1vh] [&_.item]:before:w-full md:[&_.item]:grid-cols-2 md:[&_.item]:items-center md:[&_.item]:px-[12.68vw]"
+    className="mb-20 flex w-svw flex-col gap-y-24 text-center text-[4.92vh] font-bold leading-tight -tracking-[1%] md:mb-0 md:flex-row md:text-start [&_.item]:grid [&_.item]:min-w-fit [&_.item]:px-6 [&_.item]:before:absolute [&_.item]:gap-y-16 [&_.item]:before:bottom-[calc(100%_/_6)] [&_.item]:before:-z-50 [&_.item]:before:h-[0.1vh] [&_.item]:before:w-full md:[&_.item]:min-h-svh md:[&_.item]:grid-cols-2 md:[&_.item]:items-center md:[&_.item]:px-[12.68vw]"
     stickyParent
   >
     <div
@@ -27,9 +27,7 @@ import AnimateText from "../components/AnimateText.astro";
         >
           <AnimateText textList={["Fiscal realities", "matter"]} />
         </h3>
-        <p
-          class="max-w-[45ch] text-center text-[2.3vh] font-normal leading-normal"
-        >
+        <p class="max-w-[45ch] text-[2.3vh] font-normal leading-normal">
           A recent report by the Independent Expert Group on Debt, Nature, and
           Climate reveals that many of the world’s 144 developing economies are
           on an unsustainable fiscal trajectory. Countries cannot invest in
@@ -166,7 +164,7 @@ import AnimateText from "../components/AnimateText.astro";
           );
         },
         {
-          amount: 0.35,
+          amount: window.innerWidth < 768 ? 0.1 : 0.4,
         }
       );
       cleanupFunctions.push(inViewCallback);

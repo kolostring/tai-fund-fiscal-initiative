@@ -24,18 +24,24 @@ const content = [
 
 <section>
   <HorizontalScrollContainer
-    className="flex items-center md:h-svh md:pl-[max(1rem,(100vw_-_1280px)_/_2)]"
+    className="flex items-center px-6 md:h-svh md:pl-[max(1rem,(100vw_-_1280px)_/_2)]"
   >
     <div
       class="relative flex w-full flex-col justify-between md:h-full md:max-h-[720px] md:w-auto"
     >
       <h3
-        class="w-fit text-nowrap text-4xl font-bold tracking-tight text-white md:sticky md:left-0 md:text-6xl"
+        class="mb-20 w-fit text-nowrap pt-8 text-center text-3xl font-bold tracking-tight text-white md:sticky md:left-0 md:mb-0 md:pt-0 md:text-left md:text-6xl"
       >
         <AnimateText
           textList={[
             "There are many things that funders can do that",
             "will have a swift positive impact, including:",
+          ]}
+          mobileTextList={[
+            "There are many things that",
+            "funders can do that will",
+            "have a swift positive",
+            "impact, including:",
           ]}
         />
       </h3>
@@ -47,8 +53,8 @@ const content = [
           content.map(([title, p]) => (
             <li class="z-10 box-border grid grid-rows-[4fr_5fr] gap-9 rounded-3xl bg-white text-black md:min-w-[680px]">
               <div class="h-full w-full rounded-t-3xl bg-[#CDF1F3]" />
-              <div class="px-16 pb-9">
-                <h3 class="mb-6 text-3xl font-bold uppercase tracking-tight text-[#1672F7]">
+              <div class="px-6 pb-9 md:px-16 md:pb-7">
+                <h3 class="mb-6 text-2xl font-bold uppercase tracking-tight text-[#1672F7] md:text-3xl">
                   {title}
                 </h3>
                 <p class="text-lg">{p}</p>

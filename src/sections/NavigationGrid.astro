@@ -4,7 +4,7 @@ import ArrowIcon from "../assets/Arrow.svg?raw";
 
 <section id="navigation-grid" class="relative md:h-[200svh]">
   <div
-    class="mx-auto grid md:h-svh max-w-7xl gap-8 px-6 py-24 [grid-auto-rows:_1fr] md:sticky md:top-0 md:grid-cols-2"
+    class="mx-auto grid max-w-7xl gap-8 px-6 py-24 [grid-auto-rows:_1fr] md:sticky md:top-0 md:h-svh md:grid-cols-2"
   >
     {
       [
@@ -58,7 +58,7 @@ import ArrowIcon from "../assets/Arrow.svg?raw";
         );
       },
       {
-        amount: 0.4,
+        amount: window.innerWidth < 768 ? 0.1 : 0.4,
       }
     );
   }

@@ -35,7 +35,7 @@ const howCanTaiHelp = [
     class="relative mt-36 text-center md:h-[250svh]"
   >
     <div
-      class="sticky top-0 flex flex-col items-center justify-center md:h-svh"
+      class="sticky top-0 flex flex-col items-center justify-center px-7 md:h-svh"
     >
       <h3 class="mb-8 text-4xl font-bold md:text-6xl">
         <AnimateText textList={["How can TAI help?"]} />
@@ -58,12 +58,12 @@ const howCanTaiHelp = [
         </span>
       </a>
 
-      <ul class="mt-16 flex flex-col gap-x-16 md:flex-row">
+      <ul class="mt-28 flex flex-col gap-16 md:mt-16 md:flex-row">
         {
           howCanTaiHelp.map(([text]) => (
             <li class="flex flex-1 flex-col items-center gap-6 md:opacity-0">
               <div class="aspect-square w-40 rounded-full bg-[#CDF1F333]" />
-              <p class="mb-6 max-w-[20ch] text-center text-lg">{text}</p>
+              <p class="max-w-[20ch] text-center text-2xl md:text-lg">{text}</p>
             </li>
           ))
         }
