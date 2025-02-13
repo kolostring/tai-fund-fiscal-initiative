@@ -1,27 +1,5 @@
 ---
 import AnimateText from "../components/AnimateText.astro";
-import Card from "../components/Card.astro";
-
-const resources = [
-  ["#", "The world must reshape global finance at 2025 UN summit"],
-  ["#", "Paying Taxes: The Most Democratic Move You Can Make"],
-  ["#", "Debt is Dragging Down the Developing World"],
-  ["#", "Tax Justice transformational moments of 2024"],
-  ["#", "Global Debt Crisis: It is also a development and climate crisis"],
-  [
-    "#",
-    "How to talk about tax to win support and unlock money for action on climate and development",
-  ],
-  [
-    "#",
-    "Supreme audit institutions make sure government budgets deliver for the people",
-  ],
-  ["#", "A Practical Prescription for Taxing Our World’s Richest"],
-  [
-    "#",
-    "Navigating the Governance Gap in Global Development Finance: Lessons from Ghana",
-  ],
-];
 ---
 
 <section class="bg-gradient-to-b from-[#0E0449] to-[#1672F6] pb-1 text-white">
@@ -42,33 +20,19 @@ const resources = [
       </p>
     </div>
   </div>
-
-  <section class="mx-auto mb-24 max-w-7xl px-6">
-    <div class="relative mb-16 md:h-[200svh]">
-      <div
-        class="grid place-content-center text-center md:sticky md:top-0 md:h-svh"
-      >
-        <div
-          class="mx-auto mb-12 aspect-square h-48 rounded-lg bg-[#CDF1F333] md:h-80"
-        >
-        </div>
-        <p class="max-w-[60ch] text-white">
-          Many exciting ideas are being generated and experiments tested to
-          generate more fiscal space for development and climate finance. Here
-          we offer an up-to-date sampling of perspectives from researchers,
-          advocates, and funders. We will continue to update these.
-          <br /><br />
-          For more detailed information on the practitioners most active on tax,
-          debt, and accountable spending please don’t hesitate to reach out to TAI.
-        </p>
-      </div>
+  <div class="mb-16 grid place-content-center text-center md:mb-32">
+    <div
+      class="mx-auto mb-12 aspect-square h-48 rounded-lg bg-[#CDF1F333] md:h-80"
+    >
     </div>
-    <ul class="grid gap-8 text-black md:grid-cols-3">
-      {
-        resources.map(([href, title]) => (
-          <Card imageURL={""} title={title} href={href} />
-        ))
-      }
-    </ul>
-  </section>
+    <p class="max-w-[60ch] text-white">
+      Many exciting ideas are being generated and experiments tested to generate
+      more fiscal space for development and climate finance. Here we offer an
+      up-to-date sampling of perspectives from researchers, advocates, and
+      funders. We will continue to update these.
+      <br /><br />
+      For more detailed information on the practitioners most active on tax, debt,
+      and accountable spending please don’t hesitate to reach out to TAI.
+    </p>
+  </div>
 </section>

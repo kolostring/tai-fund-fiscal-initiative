@@ -14,6 +14,9 @@ import FollowUs from "../sections/FollowUs.astro";
 import KeepUpdated from "../sections/KeepUpdated.astro";
 import TheFiscalSpaceResources from "../metasections/TheFiscalSpaceResources.astro";
 import NavigationGrid from "../sections/NavigationGrid.astro";
+import ActionAgendaResources from "../sections/ActionAgendaResources.astro";
+import ScrollReactiveSticky from "../components/ScrollReactiveSticky.astro";
+import HowCanTaiHelp from "../sections/HowCanTaiHelp.astro";
 ---
 
 <Layout title="Welcome">
@@ -36,21 +39,21 @@ import NavigationGrid from "../sections/NavigationGrid.astro";
       </div>
 
       <div class="relative isolate bg-[#1672F6]">
-        <div class="sticky top-0 -z-20 h-[200svh]">
-          <div class="grid h-svh items-center px-6 *:w-full md:sticky md:top-0">
-            <ContactTAIBanner />
-          </div>
-        </div>
+        <ScrollReactiveSticky className="-z-20">
+          <ActionAgendaResources />
+          <ContactTAIBanner className="mb-40" />
+        </ScrollReactiveSticky>
+        <div class="h-svh"></div>
 
         <WhatFundersCanDo />
       </div>
 
       <div class="relative isolate bg-[#090045]">
-        <div class="sticky top-0 -z-20 h-[200svh]">
-          <div class="sticky top-0 grid h-svh place-items-center px-6 *:w-full">
-            <FollowUs />
-          </div>
-        </div>
+        <ScrollReactiveSticky className="-z-20 pb-32 text-white">
+          <HowCanTaiHelp />
+          <FollowUs />
+        </ScrollReactiveSticky>
+        <div class="h-svh"></div>
         <TheFiscalSpaceResources />
       </div>
     </div>

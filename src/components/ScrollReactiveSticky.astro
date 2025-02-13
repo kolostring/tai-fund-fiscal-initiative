@@ -1,0 +1,53 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props as Props;
+---
+
+<div
+  class={`scroll-reactive-sticky overflow-y-hidden sticky max-h-svh top-0 ${className}`}
+>
+  <slot />
+</div>
+<div class="scroll-reactive-delay"></div>
+
+<script>
+  import { scroll } from "motion";
+
+  const elementList = document.querySelectorAll(
+    ".scroll-reactive-sticky"
+  ) as NodeListOf<HTMLElement>;
+
+  elementList.forEach((element) => {
+    const parent = element.parentElement!.closest(
+      ".relative, .relative-parent"
+    ) as HTMLElement | null;
+
+    if (!parent) {
+      throw new Error("No parent element found");
+    }
+
+    const scrollDelay = parent.querySelector(
+      ".scroll-reactive-delay"
+    ) as HTMLElement;
+
+    updateScrollDelay();
+    window.addEventListener("resize", updateScrollDelay);
+
+    scroll(() => {
+      const delta =
+        element.getBoundingClientRect().top -
+        parent.getBoundingClientRect().top;
+
+      element.scrollTo({
+        top: delta,
+      });
+    });
+
+    function updateScrollDelay() {
+      scrollDelay.style.height = `${element.scrollHeight - window.innerHeight}px`;
+    }
+  });
+</script>

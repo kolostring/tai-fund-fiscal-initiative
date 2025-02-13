@@ -1,10 +1,16 @@
 ---
 import ArrowIcon from "../assets/Arrow.svg?raw";
 import AnimateText from "./AnimateText.astro";
+
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props as Props;
 ---
 
 <section
-  class="grid max-w-7xl justify-items-center gap-11 rounded-3xl bg-[#090045] py-16 text-center md:mx-auto md:py-24"
+  class={`grid max-w-7xl justify-items-center gap-11 rounded-3xl bg-[#090045] py-16 text-center md:mx-auto md:py-24 ${className}`}
 >
   <h3 class="text-4xl font-bold text-white md:text-8xl">
     <AnimateText textList={["Lorem ipsum", "dolor sit amet"]} />

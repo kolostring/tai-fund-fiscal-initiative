@@ -9,7 +9,7 @@ import Card from "../components/Card.astro";
   <WelcomePresentation />
 </div>
 <div
-  class="sticky top-0 -z-[10] h-[200svh] w-full bg-[#1672F7] text-center text-5xl leading-tight text-white md:text-[8vh]"
+  class="sticky top-0 -z-[10] h-[200svh] w-full bg-[#1672F7] text-center text-5xl leading-tight text-white md:text-7xl"
 >
   <div class="sticky top-0 grid h-svh place-items-center">
     <h3>
@@ -45,14 +45,14 @@ import Card from "../components/Card.astro";
   </div>
 
   <div
-    class="mx-auto grid max-w-7xl gap-x-32 gap-y-10 px-6 pb-16 md:grid-cols-2"
+    class="mx-auto grid max-w-7xl gap-x-20 gap-y-10 px-6 pb-16 md:grid-cols-2"
   >
     <div
-      class="row-start-2 size-full min-h-svh rounded-3xl bg-white/20 md:row-start-1"
+      class="row-start-2 size-full min-h-svh rounded-3xl bg-white/20 md:row-start-1 md:min-h-0"
     >
     </div>
-    <div class="grid text-lg text-white md:py-11">
-      <p class="mb-12">
+    <div class="grid gap-y-6 text-lg text-white [grid-auto-rows:auto]">
+      <p>
         It is past time to address the fiscal blindspot and scale up support for
         more sustainable public financing that can better serve development
         needs. In 2025, the 4th International Conference on Financing for
@@ -66,7 +66,7 @@ import Card from "../components/Card.astro";
 
       <a
         href="#"
-        class="mb-5 grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-12 py-6 text-2xl font-semibold"
+        class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-12 py-6 text-2xl"
       >
         <span class="block max-w-[25ch] text-pretty">
           4th International Conference on Financing for Development
@@ -80,7 +80,7 @@ import Card from "../components/Card.astro";
 
       <a
         href="#"
-        class="mb-12 grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-12 py-6 text-2xl font-semibold"
+        class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-12 py-6 text-2xl"
       >
         <span class="block max-w-[25ch] text-pretty">
           Expanding Funding and Commitment to Transparency and Participation in
@@ -102,7 +102,7 @@ import Card from "../components/Card.astro";
         increasingly lookeds. We seek to:
       </p>
 
-      <ul class="ml-8 mt-6 grid list-disc gap-y-4">
+      <ul class="ml-8 grid list-disc gap-y-4">
         <li>
           Raise awareness of the importance of investing in fiscal issues,
           including by funders of the Sustainable Development Goals (SDGs).
@@ -122,7 +122,7 @@ import Card from "../components/Card.astro";
   <div
     class="grid place-content-center gap-x-16 gap-y-8 pb-20 md:sticky md:top-0 md:h-svh md:pb-0"
   >
-    <h3 class="text-center text-4xl font-bold text-white md:text-6xl">
+    <h3 class="text-center text-5xl font-semibold text-white md:text-6xl">
       <AnimateText
         textList={["Philanthropists on Fiscal"]}
         mobileTextList={["Philanthropists on", "Fiscal"]}

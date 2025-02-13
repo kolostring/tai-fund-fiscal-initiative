@@ -53,7 +53,9 @@ const { containerClassName, className } = Astro.props;
       updateContainerHeight();
       window.addEventListener("resize", updateContainerHeight);
 
-      const stickyParent = container.closest(".sticky-parent, .sticky") as HTMLElement | null;
+      const stickyParent = container.closest(
+        ".sticky-parent, .sticky"
+      ) as HTMLElement | null;
 
       const relativeAncestor = stickyParent?.closest(
         ".relative"

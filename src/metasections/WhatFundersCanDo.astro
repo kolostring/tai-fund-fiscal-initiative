@@ -1,20 +1,8 @@
 ---
 import AnimateText from "../components/AnimateText.astro";
 import WhatFundersCanDoPresentation from "../sections/WhatFundersCanDoPresentation.astro";
-import ArrowIcon from "../assets/Arrow.svg?raw";
+import FollowUs from "../sections/FollowUs.astro";
 
-const howCanTaiHelp = [
-  [
-    "Advise on potential investments depending on your interests building on recently completed field mappings for the tax, deb, and budget fields",
-  ],
-  [
-    "Connect you with peer funders who have shared interests and experience of funding on these issues",
-  ],
-  [
-    "Invite you to relevant funder convenings and spaces to learn more, including about the ongoing FfD process",
-  ],
-  ["Share our regular digests of relevant news, research and events."],
-];
 ---
 
 <section class="bg-[#090045] text-white">
@@ -29,47 +17,6 @@ const howCanTaiHelp = [
   </div>
 
   <WhatFundersCanDoPresentation />
-
-  <section
-    id="how-can-tai-help"
-    class="relative mt-36 text-center md:h-[250svh]"
-  >
-    <div
-      class="sticky top-0 flex flex-col items-center justify-center px-7 md:h-svh"
-    >
-      <h3 class="mb-8 text-4xl font-bold md:text-6xl">
-        <AnimateText textList={["How can TAI help?"]} />
-      </h3>
-      <p class="mx-auto max-w-[63ch] text-lg">
-        The Trust, Accountability and Inclusion Collaborative is here to offer
-        pro bono support to funders interested in helping address today’s
-        pressing fiscal challenges. For example, we can:
-      </p>
-
-      <a
-        href="#"
-        class="group mx-auto mt-10 flex w-fit items-center gap-x-5 rounded-full bg-white p-1 pl-6 text-base text-[#090045]"
-      >
-        <span> More details </span>
-        <span
-          class="rotate-45 text-white transition-transform group-hover:rotate-0 [&>svg]:size-9 [&>svg]:fill-[#1672F7]"
-        >
-          <Fragment set:html={ArrowIcon} />
-        </span>
-      </a>
-
-      <ul class="mt-28 flex flex-col gap-16 md:mt-16 md:flex-row">
-        {
-          howCanTaiHelp.map(([text]) => (
-            <li class="flex flex-1 flex-col items-center gap-6 md:opacity-0">
-              <div class="aspect-square w-40 rounded-full bg-[#CDF1F333]" />
-              <p class="max-w-[20ch] text-center text-2xl md:text-lg">{text}</p>
-            </li>
-          ))
-        }
-      </ul>
-    </div>
-  </section>
 </section>
 
 <script>

@@ -88,9 +88,22 @@ const { className, textList, mobileTextList } = Astro.props as Props;
               },
             }
           );
+
+          return () =>
+            animate(
+              text,
+              { y: [0, -text.offsetHeight] },
+              {
+                duration: 0.15,
+                ease: "easeIn",
+                onPlay: () => {
+                  container.style.overflowY = "hidden";
+                },
+              }
+            );
         },
         {
-          amount: 1,
+          amount: 0,
         }
       );
 
@@ -115,9 +128,22 @@ const { className, textList, mobileTextList } = Astro.props as Props;
               },
             }
           );
+
+          return () =>
+            animate(
+              text,
+              { y: [0, -text.offsetHeight] },
+              {
+                duration: 0.15,
+                ease: "easeIn",
+                onPlay: () => {
+                  mobileContainer.style.overflowY = "hidden";
+                },
+              }
+            );
         },
         {
-          amount: 0.1,
+          amount: 0,
         }
       );
 

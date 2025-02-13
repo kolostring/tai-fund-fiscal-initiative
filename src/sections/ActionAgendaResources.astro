@@ -1,0 +1,34 @@
+---
+import Card from "../components/Card.astro";
+
+const resources = [
+  ["#", "The world must reshape global finance at 2025 UN summit"],
+  ["#", "Paying Taxes: The Most Democratic Move You Can Make"],
+  ["#", "Debt is Dragging Down the Developing World"],
+  ["#", "Tax Justice transformational moments of 2024"],
+  ["#", "Global Debt Crisis: It is also a development and climate crisis"],
+  [
+    "#",
+    "How to talk about tax to win support and unlock money for action on climate and development",
+  ],
+  [
+    "#",
+    "Supreme audit institutions make sure government budgets deliver for the people",
+  ],
+  ["#", "A Practical Prescription for Taxing Our World’s Richest"],
+  [
+    "#",
+    "Navigating the Governance Gap in Global Development Finance: Lessons from Ghana",
+  ],
+];
+---
+
+<section class="mx-auto mb-24 max-w-7xl px-6">
+  <ul class="grid gap-8 text-black md:grid-cols-3">
+    {
+      resources.map(([href, title]) => (
+        <Card imageURL={""} title={title} href={href} />
+      ))
+    }
+  </ul>
+</section>

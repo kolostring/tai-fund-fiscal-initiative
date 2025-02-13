@@ -24,7 +24,7 @@ const content = [
 
 <section id="challenge-presentation" class="my-24">
   <HorizontalScrollContainer
-    className="block bg-white overflow-y-hidden md:flex md:h-svh md:items-center md:pl-[max(1rem,(100vw_-_1280px)_/_2)]"
+    className="block overflow-y-hidden bg-white md:flex md:h-svh md:items-center md:pl-[max(1rem,(100vw_-_1280px)_/_2)]"
   >
     <h3 class="sr-only">
       <AnimateText textList={["The Challenge"]} />
@@ -34,7 +34,7 @@ const content = [
     >
       {
         content.map(([title, p]) => (
-          <li class="z-10 flex flex-col-reverse justify-center gap-12 text-center opacity-0 first:opacity-100 md:mr-[45vw] md:min-w-[574px] md:flex-col md:text-left md:last:mr-0 md:odd:flex-col-reverse">
+          <li class="z-10 flex flex-col-reverse justify-center gap-12 text-center opacity-0 first:opacity-100 md:mr-[15vw] md:min-w-[574px] md:flex-col md:text-left md:last:mr-0 md:odd:flex-col-reverse">
             <div>
               <h3 class="mb-6 text-2xl font-bold uppercase tracking-tight text-[#1672F7] md:text-3xl">
                 <AnimateText textList={[title]} />
@@ -56,7 +56,7 @@ const content = [
       }
     </ul>
     <svg
-      class="rope hidden md:block left-0 md:absolute"
+      class="rope left-0 hidden md:absolute md:block"
       width="2577"
       height="390"
       viewBox="0 0 1800 333"
@@ -94,15 +94,24 @@ const content = [
       const inViewCallback = inView(
         listElement,
         () => {
-          console.log("in view");
           animate(
             listElement,
             { opacity: [0, 1], x: [100, 0] },
             { ease: "circInOut" }
           );
+
+          return () => {
+            animate(
+              listElement,
+              { opacity: [1, 0], x: [0, 100] },
+              {
+                ease: "circInOut",
+              }
+            );
+          };
         },
         {
-          amount: window.innerWidth < 768 ? 0.3 : 1,
+          amount: 0.1,
         }
       );
 
@@ -120,29 +129,22 @@ const content = [
     const ropePathAnimation = animate(
       ropePath,
       {
-        pathLength: [0, 1],
+        pathLength: [0.3, 1],
       },
       {
         ease: "linear",
       }
     );
 
-    const ropeXTranslation = 300;
-    const ropeAnimation = animate(rope, {
-      x: [0, ropeXTranslation],
-    });
-
     ropePathAnimation.pause();
-    ropeAnimation.pause();
 
     const scrollCallback = scroll(() => {
       const scroll = wrapper.scrollLeft;
       const width = wrapper.scrollWidth;
-      const mult = 0.4;
+      const mult = 0.6;
 
       const progress = scroll / width;
       ropePathAnimation.time = progress * mult;
-      ropeAnimation.time = ropePathAnimation.time;
     });
 
     cleanupFunctions.push(scrollCallback);
@@ -166,14 +168,14 @@ const content = [
         ".challenge-content > li:nth-last-child(1) .aspect-square"
       ) as HTMLLIElement;
 
-      const ropeTop = from.offsetTop + from.offsetHeight / 4;
-      const ropeLeft = from.offsetLeft + from.getBoundingClientRect().width / 2;
+      const ropeTop = from.offsetTop + from.offsetHeight / 2;
+      const ropeLeft = from.offsetLeft + from.getBoundingClientRect().width;
       const ropeWidth = to.offsetLeft - ropeLeft;
-      const ropeHeight = to.offsetHeight * (5 / 3);
+      const ropeHeight = to.offsetHeight * (4 / 3);
 
       rope.style.top = ropeTop + "px";
       rope.style.left = ropeLeft + "px";
-      rope.style.width = ropeWidth - ropeXTranslation + "px";
+      rope.style.width = ropeWidth + "px";
       rope.style.height = ropeHeight + "px";
     }
   }
