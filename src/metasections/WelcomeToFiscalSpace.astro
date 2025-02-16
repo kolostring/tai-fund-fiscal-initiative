@@ -161,8 +161,8 @@ import { Image } from "astro:assets";
               "Philanthropy’s tax blind spot by Savior Mwambwa of Open Society Foundations and Michael Jarvis of TAI.",
             ],
           ] as [string, ImageMetadata | undefined, string][]
-        ).map(([href, imageURL, title]) => {
-          return <Card href={href} image={imageURL} title={title} />;
+        ).map(([href, image, title]) => {
+          return <Card href={href} image={image} title={title} />;
         })
       }
     </ul>
