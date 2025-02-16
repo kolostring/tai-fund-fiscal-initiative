@@ -11,7 +11,7 @@ const { className } = Astro.props as Props;
 >
   <slot />
 </div>
-<div class="scroll-reactive-delay"></div>
+<div class="scroll-reactive-delay relative -z-50"></div>
 
 <script>
   import { scroll } from "motion";

@@ -1,24 +1,50 @@
 ---
 import Card from "../components/Card.astro";
+import { Image } from "astro:assets";
 
-const resources = [
-  ["#", "The world must reshape global finance at 2025 UN summit"],
-  ["#", "Paying Taxes: The Most Democratic Move You Can Make"],
-  ["#", "Debt is Dragging Down the Developing World"],
-  ["#", "Tax Justice transformational moments of 2024"],
-  ["#", "Global Debt Crisis: It is also a development and climate crisis"],
+import Resource1Image from "../assets/IMG 25.png";
+import Resource2Image from "../assets/IMG 26.png";
+import Resource3Image from "../assets/IMG 28.png";
+import Resource4Image from "../assets/IMG 29.png";
+import Resource5Image from "../assets/IMG 30.png";
+import Resource6Image from "../assets/IMG 31.png";
+import Resource7Image from "../assets/IMG 32.png";
+import Resource8Image from "../assets/IMG 33.png";
+import Resource9Image from "../assets/IMG 34.png";
+
+const resources: [string, string, ImageMetadata][] = [
+  [
+    "#",
+    "The world must reshape global finance at 2025 UN summit",
+    Resource1Image,
+  ],
+  ["#", "Paying Taxes: The Most Democratic Move You Can Make", Resource2Image],
+  ["#", "Debt is Dragging Down the Developing World", Resource3Image],
+  ["#", "Tax Justice transformational moments of 2024", Resource4Image],
+  [
+    "#",
+    "Global Debt Crisis: It is also a development and climate crisis",
+    Resource5Image,
+  ],
   [
     "#",
     "How to talk about tax to win support and unlock money for action on climate and development",
+    Resource6Image,
   ],
   [
     "#",
     "Supreme audit institutions make sure government budgets deliver for the people",
+    Resource7Image,
   ],
-  ["#", "A Practical Prescription for Taxing Our World’s Richest"],
+  [
+    "#",
+    "A Practical Prescription for Taxing Our World’s Richest",
+    Resource8Image,
+  ],
   [
     "#",
     "Navigating the Governance Gap in Global Development Finance: Lessons from Ghana",
+    Resource9Image,
   ],
 ];
 ---
@@ -26,8 +52,8 @@ const resources = [
 <section class="mx-auto mb-24 max-w-7xl px-6">
   <ul class="grid gap-8 text-black md:grid-cols-3">
     {
-      resources.map(([href, title]) => (
-        <Card imageURL={""} title={title} href={href} />
+      resources.map(([href, title, image]) => (
+        <Card image={image} title={title} href={href} />
       ))
     }
   </ul>

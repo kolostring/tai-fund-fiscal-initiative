@@ -3,21 +3,29 @@ import AnimateText from "../components/AnimateText.astro";
 import HorizontalScrollContainer from "../components/HorizontalScrollContainer.astro";
 import ArrowIcon from "../assets/Arrow.svg?raw";
 
-const content = [
+import Challenge1Image from "../assets/IMG 21.png";
+import Challenge2Image from "../assets/IMG 22.png";
+import Challenge3Image from "../assets/IMG 23.png";
+import { Image } from "astro:assets";
+
+const content: [string, string, string, ImageMetadata][] = [
   [
     "Why care about taxes?",
     "Global sovereign debt is fast rising on the global agenda due to impending debt crises in many developing countries. Debt Justice estimates that 54 countries are currently in debt crisis, while another 57 countries are at risk of a public or private debt crisis or both. Servicing debt eats up government budgets, meaning little is left to meet local needs.",
     "#",
+    Challenge1Image,
   ],
   [
     "Why care about sovereign debt?",
     "Global sovereign debt is fast rising on the global agenda due to impending debt crises in many developing countries. Debt Justice estimates that 54 countries are currently in debt crisis, while another 57 countries are at risk of a public or private debt crisis or both. Servicing debt eats up government budgets, meaning little is left to meet local needs.",
     "#",
+    Challenge2Image,
   ],
   [
     "Why care about accountable, effective public spending?",
     "Too often public resources are being spent unfairly and ineffectively, leaving millions of people without access to quality public goods and services. This transparency and accountablekind of spending is also more immune to corruption.",
     "#",
+    Challenge3Image,
   ],
 ];
 ---
@@ -33,16 +41,16 @@ const content = [
       class="challenge-content flex flex-col gap-y-16 px-6 md:flex-row md:pr-[max(1rem,(100vw_-_1280px)_/_2)]"
     >
       {
-        content.map(([title, p]) => (
-          <li class="z-10 flex flex-col-reverse justify-center gap-12 text-center opacity-0 first:opacity-100 md:mr-[15vw] md:min-w-[574px] md:flex-col md:text-left md:last:mr-0 md:odd:flex-col-reverse">
+        content.map(([title, p, href, image]) => (
+          <li class="z-10 flex flex-col-reverse justify-center gap-12 text-center opacity-0 first:opacity-100 md:mr-[15vw] md:min-w-[550px] md:flex-col md:text-left md:last:mr-0 md:odd:flex-col-reverse">
             <div>
-              <h3 class="mb-6 text-2xl font-bold uppercase tracking-tight text-[#1672F7] md:text-3xl">
+              <h3 class="mb-6 text-2xl font-bold uppercase tracking-tight text-[#1672F7] 3xl:text-3xl">
                 <AnimateText textList={[title]} />
               </h3>
-              <p class="text-lg">{p}</p>
+              <p class="text-base 3xl:text-lg">{p}</p>
               <a
                 href="#"
-                class="group mx-auto mt-4 flex w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-base text-white md:mx-0"
+                class="group mx-auto mt-10 flex w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-base text-white md:mx-0"
               >
                 <span> More details </span>
                 <span class="rotate-45 text-[#1672F7] transition-transform group-hover:rotate-0 [&>svg]:size-9 [&>svg]:fill-white">
@@ -50,7 +58,13 @@ const content = [
                 </span>
               </a>
             </div>
-            <div class="mx-auto aspect-square w-64 rounded-3xl bg-[#CDF1F3] md:mx-0" />
+            <div class="mx-auto aspect-square w-48 rounded-3xl bg-[#CDF1F3] md:mx-0 3xl:w-64">
+              <Image
+                class="size-full object-contain object-top"
+                alt="Welcome to the fiscal space"
+                src={image}
+              />
+            </div>
           </li>
         ))
       }
@@ -129,7 +143,7 @@ const content = [
     const ropePathAnimation = animate(
       ropePath,
       {
-        pathLength: [0.3, 1],
+        pathLength: [0.32, 1],
       },
       {
         ease: "linear",
@@ -141,7 +155,7 @@ const content = [
     const scrollCallback = scroll(() => {
       const scroll = wrapper.scrollLeft;
       const width = wrapper.scrollWidth;
-      const mult = 0.6;
+      const mult = 0.7;
 
       const progress = scroll / width;
       ropePathAnimation.time = progress * mult;
@@ -171,7 +185,7 @@ const content = [
       const ropeTop = from.offsetTop + from.offsetHeight / 2;
       const ropeLeft = from.offsetLeft + from.getBoundingClientRect().width;
       const ropeWidth = to.offsetLeft - ropeLeft;
-      const ropeHeight = to.offsetHeight * (4 / 3);
+      const ropeHeight = to.offsetHeight * (8 / 5);
 
       rope.style.top = ropeTop + "px";
       rope.style.left = ropeLeft + "px";

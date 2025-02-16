@@ -2,22 +2,32 @@
 import AnimateText from "../components/AnimateText.astro";
 import HorizontalScrollContainer from "../components/HorizontalScrollContainer.astro";
 
-const content = [
+import Resource1Image from "../assets/IMG 34.png";
+import Resource2Image from "../assets/IMG 35.png";
+import Resource3Image from "../assets/IMG 36.png";
+import Resource4Image from "../assets/IMG 36.png";
+import { Image } from "astro:assets";
+
+const content: [string, string, ImageMetadata][] = [
   [
     "Support stakeholder participation",
     "in fiscal processes at local, national, regional, and global levels. TAI’s funding scan found that civil society can do impactful work, but needs support to be in the rooms where decisions are taken, as do Global South governments, universities, think tanks, and unions.",
+    Resource1Image,
   ],
   [
     "Invest in evidence and data",
     "to inform stakeholders and the design of potential policy reforms, such as on the progressivity of taxes and tax incentives and considerations for new types of taxes like wealth taxes and digital economy-related taxes.",
+    Resource2Image,
   ],
   [
     "Provide long-term support",
     "recognizing that securing fiscal equity and sustainability will take time. With longer-term grants, organizations will have the space to hire staff rather than consultants, be ready for emerging opportunities, work closely with communities and media, and more. In addition, funds for field building could lead to better coordination and bridging efforts across tax, debt, and budget accountability communities.",
+    Resource3Image,
   ],
   [
     "Use your voice and convening power",
     "to draw attention to the importance of these issues and encourage other funders to engage, noting how fiscal challenges risk undermining the impact of existing investments. Philanthropies can also use their voice to stand against corruption in spending, for public participation in policy-making and monitoring, and for the transparency of fiscal data.",
+    Resource4Image,
   ],
 ];
 ---
@@ -28,10 +38,10 @@ const content = [
     stickyParent
   >
     <div
-      class="relative flex w-full flex-col justify-between md:h-full md:max-h-[680px] md:w-auto"
+      class="relative flex w-full flex-col justify-center gap-y-12 md:h-full md:max-h-[760px] md:w-auto"
     >
       <h3
-        class="mb-20 w-fit text-nowrap pt-8 text-center text-3xl font-bold tracking-tight text-white md:sticky md:left-0 md:mb-0 md:pt-0 md:text-left md:text-6xl"
+        class="mb-20 w-fit text-nowrap pt-8 text-center text-3xl font-medium tracking-normal text-white md:sticky md:left-0 md:mb-0 md:pt-0 md:text-left md:text-5xl"
       >
         <AnimateText
           textList={[
@@ -49,17 +59,23 @@ const content = [
 
       <div class="swiper w-full overflow-hidden md:flex">
         <ul
-          class="swiper-wrapper after:pr-[max(1rem,(100vw_-_1280px)_/_2)] md:flex md:h-fit md:max-h-[770px] md:flex-row md:gap-14"
+          class="swiper-wrapper after:pr-[max(1rem,(100vw_-_1280px)_/_2)] md:flex md:h-fit md:flex-row md:gap-14"
         >
           {
-            content.map(([title, p]) => (
-              <li class="swiper-slide z-10 box-border !grid w-full flex-shrink-0 !grid-rows-[164px_1fr] gap-9 rounded-3xl bg-white text-black md:min-w-[680px] md:!flex-shrink md:grid-rows-[4fr_5fr]">
-                <div class="h-full w-full rounded-t-3xl bg-[#CDF1F3]" />
-                <div class="px-6 pb-9 md:px-16 md:pb-7">
-                  <h3 class="mb-6 text-2xl font-bold uppercase tracking-tight text-[#1672F7] md:text-3xl">
+            content.map(([title, p, image]) => (
+              <li class="swiper-slide z-10 box-border !grid !h-auto w-full flex-shrink-0 grid-rows-[180px_1fr] gap-9 overflow-hidden rounded-3xl bg-white text-black md:min-w-[580px] md:!flex-shrink 3xl:grid-rows-[4fr_5fr]">
+                <div class="h-full w-full rounded-t-3xl bg-[#CDF1F3]">
+                  <Image
+                    class="size-full object-cover object-center"
+                    alt="Welcome to the fiscal space"
+                    src={image}
+                  />
+                </div>
+                <div class="px-6 pb-9 md:px-8 md:pb-6">
+                  <h3 class="mb-6 text-2xl font-bold uppercase tracking-tight text-[#1672F7]">
                     {title}
                   </h3>
-                  <p class="text-lg">{p}</p>
+                  <p class="text-base 3xl:text-lg">{p}</p>
                 </div>
               </li>
             ))

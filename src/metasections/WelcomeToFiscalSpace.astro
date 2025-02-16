@@ -3,6 +3,14 @@ import AnimateText from "../components/AnimateText.astro";
 import WelcomePresentation from "../sections/WelcomePresentation.astro";
 import ArrowIcon from "../assets/Arrow.svg?raw";
 import Card from "../components/Card.astro";
+
+import WelcomeImage from "../assets/IMG 9.png";
+
+import Resource1Image from "../assets/IMG 10.png";
+import Resource2Image from "../assets/IMG 11.png";
+import Resource3Image from "../assets/IMG 12.png";
+
+import { Image } from "astro:assets";
 ---
 
 <div class="sticky-parent pt-24 md:sticky md:top-0 md:-z-[20] md:pt-0">
@@ -47,11 +55,16 @@ import Card from "../components/Card.astro";
   <div
     class="mx-auto grid max-w-7xl gap-x-20 gap-y-10 px-6 pb-16 md:grid-cols-2"
   >
-    <div
-      class="row-start-2 size-full min-h-svh rounded-3xl bg-white/20 md:row-start-1 md:min-h-0"
-    >
+    <div class="row-start-2 size-full rounded-3xl md:row-start-1">
+      <Image
+        class="size-full object-contain object-top"
+        alt="Welcome to the fiscal space"
+        src={WelcomeImage}
+      />
     </div>
-    <div class="grid gap-y-6 text-lg text-white [grid-auto-rows:auto]">
+    <div
+      class="grid gap-y-6 text-base text-white [grid-auto-rows:auto] 3xl:text-lg"
+    >
       <p>
         It is past time to address the fiscal blindspot and scale up support for
         more sustainable public financing that can better serve development
@@ -66,7 +79,7 @@ import Card from "../components/Card.astro";
 
       <a
         href="#"
-        class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-12 py-6 text-2xl"
+        class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-12 py-6 text-xl 3xl:text-2xl"
       >
         <span class="block max-w-[25ch] text-pretty">
           4th International Conference on Financing for Development
@@ -80,7 +93,7 @@ import Card from "../components/Card.astro";
 
       <a
         href="#"
-        class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-12 py-6 text-2xl"
+        class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-12 py-6 text-xl 3xl:text-2xl"
       >
         <span class="block max-w-[25ch] text-pretty">
           Expanding Funding and Commitment to Transparency and Participation in
@@ -120,9 +133,9 @@ import Card from "../components/Card.astro";
 </section>
 <div class="bg-[#0128A2] md:sticky md:top-0">
   <div
-    class="grid place-content-center gap-x-16 gap-y-8 pb-20 md:sticky md:top-0 md:h-svh md:pb-0"
+    class="grid place-content-center gap-x-16 gap-y-16 pb-20 md:sticky md:top-0 md:h-svh md:pb-0"
   >
-    <h3 class="text-center text-5xl font-semibold text-white md:text-6xl">
+    <h3 class="text-center text-5xl font-semibold text-white">
       <AnimateText
         textList={["Philanthropists on Fiscal"]}
         mobileTextList={["Philanthropists on", "Fiscal"]}
@@ -130,24 +143,26 @@ import Card from "../components/Card.astro";
     </h3>
     <ul class="mx-auto grid max-w-7xl list-none gap-8 px-6 md:grid-cols-3">
       {
-        [
+        (
           [
-            "#",
-            "#",
-            "Debt is dragging down the developing world by Mark Suzman, CEO of the Bill and Melinda Gates Foundation.",
-          ],
-          [
-            "#",
-            "#",
-            "Why 2025 could be a ‘Bridge year’ for the global south by Kalpana Kochhar.",
-          ],
-          [
-            "#",
-            "#",
-            "Philanthropy’s tax blind spot by Savior Mwambwa of Open Society Foundations and Michael Jarvis of TAI.",
-          ],
-        ].map(([href, imageURL, title]) => {
-          return <Card href={href} imageURL={imageURL} title={title} />;
+            [
+              "#",
+              Resource1Image,
+              "Debt is dragging down the developing world by Mark Suzman, CEO of the Bill and Melinda Gates Foundation.",
+            ],
+            [
+              "#",
+              Resource2Image,
+              "Why 2025 could be a ‘Bridge year’ for the global south by Kalpana Kochhar.",
+            ],
+            [
+              "#",
+              Resource3Image,
+              "Philanthropy’s tax blind spot by Savior Mwambwa of Open Society Foundations and Michael Jarvis of TAI.",
+            ],
+          ] as [string, ImageMetadata | undefined, string][]
+        ).map(([href, imageURL, title]) => {
+          return <Card href={href} image={imageURL} title={title} />;
         })
       }
     </ul>

@@ -38,12 +38,14 @@ import HowCanTaiHelp from "../sections/HowCanTaiHelp.astro";
         <TheActionAgenda />
       </div>
 
-      <div class="relative isolate bg-[#1672F6]">
+      <div
+        class="relative isolate bg-gradient-to-b from-[#11308d] to-[#1672F6]"
+      >
         <ScrollReactiveSticky className="-z-20">
           <ActionAgendaResources />
           <ContactTAIBanner className="mb-40" />
         </ScrollReactiveSticky>
-        <div class="h-svh"></div>
+        <div class="relative -z-50 h-svh"></div>
 
         <WhatFundersCanDo />
       </div>
@@ -53,7 +55,7 @@ import HowCanTaiHelp from "../sections/HowCanTaiHelp.astro";
           <HowCanTaiHelp />
           <FollowUs />
         </ScrollReactiveSticky>
-        <div class="h-svh"></div>
+        <div class="relative -z-50 h-svh"></div>
         <TheFiscalSpaceResources />
       </div>
     </div>

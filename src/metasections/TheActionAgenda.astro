@@ -1,8 +1,11 @@
 ---
 import AnimateText from "../components/AnimateText.astro";
+
+import ActionAgendaImage from "../assets/IMG 24.png";
+import { Image } from "astro:assets";
 ---
 
-<section class="bg-gradient-to-b from-[#0E0449] to-[#1672F6] pb-1 text-white">
+<section class="bg-gradient-to-b from-[#0E0449] to-[#11308d] pb-1 text-white">
   <div class="relative h-[200svh]">
     <div class="sticky top-0 grid h-svh place-content-center">
       <h2
@@ -21,11 +24,15 @@ import AnimateText from "../components/AnimateText.astro";
     </div>
   </div>
   <div class="mb-16 grid place-content-center text-center md:mb-32">
-    <div
-      class="mx-auto mb-12 aspect-square h-48 rounded-lg bg-[#CDF1F333] md:h-80"
-    >
+    <div class="mx-auto mb-12 aspect-square max-h-64 rounded-lg md:h-80">
+      <Image
+        class="size-full object-contain object-top"
+        alt="The Action Agenda"
+        src={ActionAgendaImage}
+      />
     </div>
-    <p class="max-w-[60ch] text-white">
+    <!-- DEJAR EN 18px -->
+    <p class="max-w-[60ch] text-lg text-white">
       Many exciting ideas are being generated and experiments tested to generate
       more fiscal space for development and climate finance. Here we offer an
       up-to-date sampling of perspectives from researchers, advocates, and

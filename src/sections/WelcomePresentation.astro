@@ -2,10 +2,10 @@
 import HorizontalScrollContainer from "../components/HorizontalScrollContainer.astro";
 import { Image } from "astro:assets";
 
-import FiscarRealities from "../assets/fiscal-realities.png";
-import CountriesStruggling from "../assets/countries-struggling.svg";
-import ManagementHelp from "../assets/management-help.svg";
-import WhatCanWeDoToday from "../assets/what-can-we-do.svg";
+import FiscarRealities from "../assets/IMG 1.png";
+import CountriesStruggling from "../assets/IMG 2.png";
+import ManagementHelp from "../assets/IMG 3.png";
+import WhatCanWeDoToday from "../assets/IMG 5.png";
 import ArrowIcon from "../assets/Arrow.svg?raw";
 import AnimateText from "../components/AnimateText.astro";
 ---
@@ -27,7 +27,7 @@ import AnimateText from "../components/AnimateText.astro";
         >
           <AnimateText textList={["Fiscal realities", "matter"]} />
         </h3>
-        <p class="max-w-[45ch] text-lg font-normal leading-normal">
+        <p class="max-w-[45ch] text-base 3xl:text-lg font-normal leading-normal">
           A recent report by the Independent Expert Group on Debt, Nature, and
           Climate reveals that many of the world’s 144 developing economies are
           on an unsustainable fiscal trajectory. Countries cannot invest in
@@ -47,7 +47,7 @@ import AnimateText from "../components/AnimateText.astro";
         </a>
       </div>
       <Image
-        class="w-full object-contain md:h-2/3 md:object-right"
+        class="w-full md:h-2/3 object-contain md:object-bottom"
         alt="Care about fiscal space"
         src={FiscarRealities}
       />
@@ -59,7 +59,7 @@ import AnimateText from "../components/AnimateText.astro";
         >
           <AnimateText textList={["Regressive taxes", "harm the poor."]} />
         </h3>
-        <p class="max-w-[45ch] text-lg font-normal leading-normal">
+        <p class="max-w-[45ch] text-base 3xl:text-lg font-normal leading-normal">
           Countries need to consider the implications for social equality and
           stability as they raise additional revenues for public investment.
           Regressive taxes harm the poor and destabilize communities. In 2024,
@@ -79,7 +79,7 @@ import AnimateText from "../components/AnimateText.astro";
         </a>
       </div>
       <Image
-        class="w-full object-contain md:h-2/3 md:translate-y-[4%] md:object-left"
+        class="w-full md:h-2/3 md:object-bottom object-contain"
         alt="Countries struggling"
         src={CountriesStruggling}
       />
@@ -91,7 +91,7 @@ import AnimateText from "../components/AnimateText.astro";
         >
           <AnimateText textList={["Debt Crisis Stalls", "Development"]} />
         </h3>
-        <p class="max-w-[45ch] text-lg font-normal leading-normal">
+        <p class="max-w-[45ch] text-base 3xl:text-lg font-normal leading-normal">
           Low -and middle- income countries are burdened by trillions of dollars
           of public debt, and the list of those approaching a debt crisis is
           growing fast. Debt payments are eating up the lion’s share of national
@@ -99,7 +99,7 @@ import AnimateText from "../components/AnimateText.astro";
         </p>
       </div>
       <Image
-        class="w-full md:h-2/3 md:-translate-y-[0.9px]"
+        class="w-full md:h-2/3 object-contain md:object-bottom md:-translate-y-[0.9px]"
         alt="Countries struggling"
         src={ManagementHelp}
       />
@@ -113,7 +113,7 @@ import AnimateText from "../components/AnimateText.astro";
             textList={["Philanthropy", "Neglects Fiscal", "Issues"]}
           />
         </h3>
-        <p class="max-w-[45ch] text-lg font-normal leading-normal">
+        <p class="max-w-[45ch] text-base 3xl:text-lg font-normal leading-normal">
           These issues are vitally important, but philanthropic investment in
           tax, debt, and accountability is extremely low compared to total
           international grantmaking. The OECD estimates that 40 philanthropies
@@ -122,7 +122,7 @@ import AnimateText from "../components/AnimateText.astro";
         </p>
       </div>
       <Image
-        class="w-full md:h-2/3 md:-translate-y-3"
+        class="w-full md:h-2/3 object-contain md:object-bottom"
         alt="Countries struggling"
         src={WhatCanWeDoToday}
       />
