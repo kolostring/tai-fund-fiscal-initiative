@@ -111,21 +111,11 @@ const content: [string, string, string, ImageMetadata][] = [
           animate(
             listElement,
             { opacity: [0, 1], x: [100, 0] },
-            { ease: "circInOut" }
+            { ease: "easeOut" }
           );
-
-          return () => {
-            animate(
-              listElement,
-              { opacity: [1, 0], x: [0, 100] },
-              {
-                ease: "circInOut",
-              }
-            );
-          };
         },
         {
-          amount: 0.1,
+          amount: 0.2,
         }
       );
 
