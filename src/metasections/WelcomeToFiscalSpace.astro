@@ -10,6 +10,11 @@ import Resource1Image from "../assets/IMG 10.png";
 import Resource2Image from "../assets/IMG 11.png";
 import Resource3Image from "../assets/IMG 12.png";
 
+import Ornament1Image from "../assets/IMG 5.png";
+import Ornament2Image from "../assets/IMG 6.png";
+import Ornament3Image from "../assets/IMG 7.png";
+import Ornament4Image from "../assets/IMG 8.png";
+
 import { Image } from "astro:assets";
 ---
 
@@ -17,9 +22,9 @@ import { Image } from "astro:assets";
   <WelcomePresentation />
 </div>
 <div
-  class="sticky top-0 -z-[10] h-[200svh] w-full bg-[#1672F7] text-center text-5xl leading-tight text-white md:text-7xl"
+  class="sticky top-0 -z-[10] h-[250svh] w-full bg-[#1672F7] text-center text-5xl leading-tight text-white md:text-7xl"
 >
-  <div class="sticky top-0 grid h-svh place-items-center">
+  <div class="sticky top-0 isolate grid h-svh place-items-center">
     <h3>
       <AnimateText
         textList={[
@@ -37,8 +42,26 @@ import { Image } from "astro:assets";
         ]}
       />
     </h3>
+
+    <div
+      class="ornaments absolute inset-0 m-auto max-h-[800px] max-w-7xl [&>.ornament-item]:absolute [&_img]:relative [&_img]:size-44 3xl:[&_img]:size-60"
+    >
+      <div class="ornament-item top-4">
+        <Image class="" src={Ornament1Image} alt={"Ornament"} />
+      </div>
+      <div class="ornament-item right-0 top-16">
+        <Image class="scale-75" src={Ornament3Image} alt={"Ornament"} />
+      </div>
+      <div class="ornament-item bottom-4 left-24">
+        <Image class="scale-90" src={Ornament2Image} alt={"Ornament"} />
+      </div>
+      <div class="ornament-item bottom-0 right-16">
+        <Image class="-scale-x-100" src={Ornament4Image} alt={"Ornament"} />
+      </div>
+    </div>
   </div>
-</div><section class="bg-[#0128A2]">
+</div>
+<section class="bg-[#0128A2]">
   <div class="min-h-[200svh]">
     <div
       class="sticky top-0 flex min-h-svh flex-col items-center justify-center py-40 leading-tight tracking-tighter"
@@ -53,9 +76,11 @@ import { Image } from "astro:assets";
   </div>
 
   <div
-    class="mx-auto grid max-w-7xl gap-x-20 gap-y-10 px-6 pb-16 md:grid-cols-2"
+    class="mx-auto grid max-w-7xl gap-x-20 gap-y-10 px-6 pb-16 md:grid-cols-2 3xl:relative"
   >
-    <div class="row-start-2 size-full rounded-3xl md:row-start-1">
+    <div
+      class="row-start-2 size-full rounded-3xl md:row-start-1 3xl:sticky 3xl:top-0 3xl:h-fit"
+    >
       <Image
         class="size-full object-contain object-top"
         alt="Welcome to the fiscal space"
@@ -172,3 +197,60 @@ import { Image } from "astro:assets";
     <!-- THIS IS FOR DELAYED SCROLL -->
   </div>
 </div>
+
+<script>
+  import { animate, inView, scroll, stagger } from "motion";
+
+  const cleanupFunctions: VoidFunction[] = [];
+
+  initEventListeners();
+  document.addEventListener("astro:after-swap", initEventListeners);
+  document.addEventListener("astro:before-preparation", () => {
+    cleanupFunctions.forEach((fn) => fn());
+    cleanupFunctions.length = 0;
+  });
+
+  function initEventListeners() {
+    const ornaments = document.querySelector(".ornaments") as HTMLElement;
+    const ornamentsItems = ornaments.querySelectorAll(
+      ".ornament-item"
+    ) as NodeListOf<HTMLElement>;
+    const ornamentsImages = ornaments.querySelectorAll("img");
+
+    ornamentsImages.forEach((image) => {
+      image.style.opacity = "0";
+    });
+
+    const inViewCallback = inView(
+      ornaments,
+      () => {
+        animate(
+          ornamentsImages,
+          { opacity: [0, 1], filter: ["blur(10px)", "blur(0px)"] },
+          { delay: stagger(0.1), ease: "circInOut" }
+        );
+
+        return () =>
+          animate(ornamentsImages, {
+            opacity: [1, 0],
+            filter: ["blur(0px)", "blur(10px)"],
+          });
+      },
+      {
+        amount: 0.5,
+      }
+    );
+
+    const scrollMultipliers = [-200, -1100, -1000, -400];
+
+    const scrollOffsets = [100, 290, 200, 60];
+
+    scroll((progress: number) => {
+      ornamentsItems.forEach((item, index) => {
+        item.style.transform = `translateY(${progress * scrollMultipliers[index] + scrollOffsets[index]}px)`;
+      });
+    });
+
+    cleanupFunctions.push(inViewCallback);
+  }
+</script>
