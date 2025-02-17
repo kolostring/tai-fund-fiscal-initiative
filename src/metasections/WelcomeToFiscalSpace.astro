@@ -5,6 +5,7 @@ import ArrowIcon from "../assets/Arrow.svg?raw";
 import Card from "../components/Card.astro";
 
 import WelcomeImage from "../assets/IMG 9.png";
+import WelcomeImageSmall from "../assets/IMG 9 - Formato Small.png";
 
 import Resource1Image from "../assets/IMG 10.png";
 import Resource2Image from "../assets/IMG 11.png";
@@ -79,12 +80,17 @@ import { Image } from "astro:assets";
     class="mx-auto grid max-w-7xl gap-x-20 gap-y-10 px-6 pb-16 md:grid-cols-2 3xl:relative"
   >
     <div
-      class="row-start-2 size-full rounded-3xl md:row-start-1 3xl:sticky 3xl:top-0 3xl:h-fit"
+      class="row-start-2 size-full rounded-3xl md:sticky md:top-0 md:row-start-1 md:h-fit"
     >
       <Image
-        class="size-full object-contain object-top"
+        class="hidden size-full min-h-svh object-contain object-center 3xl:block"
         alt="Welcome to the fiscal space"
         src={WelcomeImage}
+      />
+      <Image
+        class="size-full object-contain object-top 3xl:hidden"
+        alt="Welcome to the fiscal space"
+        src={WelcomeImageSmall}
       />
     </div>
     <div

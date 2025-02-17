@@ -3,19 +3,33 @@ import AnimateText from "../components/AnimateText.astro";
 import Card from "../components/Card.astro";
 import KeepUpdated from "../sections/KeepUpdated.astro";
 
-const resources = [
+import Resource1Image from "../assets/IMG 42.png";
+import Resource2Image from "../assets/IMG 43.png";
+import Resource3Image from "../assets/IMG 44.png";
+import Resource4Image from "../assets/IMG 45.png";
+import Resource5Image from "../assets/IMG 46.png";
+import Resource6Image from "../assets/IMG 47.png";
+import { Image } from "astro:assets";
+
+const resources: [string, string, ImageMetadata][] = [
   [
     "#",
     "Setting the global agenda for tax, debt and international aid through 2035 - Financing for Development Brief for Philanthropy",
+    Resource1Image,
   ],
   [
     "#",
     "Expanding Funding and Commitment to Transparency and Participation in Fiscal Policy",
+    Resource2Image,
   ],
-  ["#", "Civil Society Engagement in Tax Reform"],
-  ["#", "Funding Trends in International Tax Justice"],
-  ["#", "Philanthropy’s Tax Blindspot "],
-  ["#", "Civil Society Engagement in Implementing Domestic Tax Policy"],
+  ["#", "Civil Society Engagement in Tax Reform", Resource3Image],
+  ["#", "Funding Trends in International Tax Justice", Resource4Image],
+  ["#", "Philanthropy’s Tax Blindspot ", Resource5Image],
+  [
+    "#",
+    "Civil Society Engagement in Implementing Domestic Tax Policy",
+    Resource6Image,
+  ],
 ];
 ---
 
@@ -32,11 +46,11 @@ const resources = [
       </h2>
     </div>
   </div>
-  <div class="container mx-auto flex max-w-7xl flex-col items-center mb-24">
-    <ul class="grid md:grid-cols-3 gap-8">
+  <div class="container mx-auto mb-24 flex max-w-7xl flex-col items-center">
+    <ul class="grid gap-8 md:grid-cols-3">
       {
-        resources.map(([href, title]) => (
-          <Card title={title} href={href} />
+        resources.map(([href, title, image]) => (
+          <Card title={title} href={href} image={image} />
         ))
       }
     </ul>

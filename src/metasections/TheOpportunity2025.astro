@@ -3,9 +3,11 @@ import AnimateText from "../components/AnimateText.astro";
 import Card from "../components/Card.astro";
 import ArrowIcon from "../assets/Arrow.svg?raw";
 
+import SectionImage from "../assets/IMG 17.png";
 import Resource1Image from "../assets/IMG 18.png";
 import Resource2Image from "../assets/IMG 19.png";
 import Resource3Image from "../assets/IMG 20.png";
+import { Image } from "astro:assets";
 ---
 
 <section id="opportunity-in-2025" class="bg-white">
@@ -25,7 +27,9 @@ import Resource3Image from "../assets/IMG 20.png";
     <section
       class="container mx-auto grid max-w-7xl gap-x-20 px-6 text-black md:grid-cols-2 md:pb-40"
     >
-      <div class="row-span-3 h-full w-full rounded-3xl bg-[#CDF1F3]"></div>
+      <div class="row-span-3 h-full w-full rounded-3xl"> 
+        <Image src={SectionImage} alt="" class="size-full object-cover" />
+      </div>
       <h3 class="sr-only">Today's opportunity</h3>
       <p class="grid gap-y-4 pb-6 text-base 3xl:text-lg">
         <span>

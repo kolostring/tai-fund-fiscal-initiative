@@ -1,18 +1,29 @@
 ---
 import AnimateText from "../components/AnimateText.astro";
 import ArrowIcon from "../assets/Arrow.svg?raw";
+import Resource1Image from "../assets/IMG 38.png";
+import Resource2Image from "../assets/IMG 39.png";
+import Resource3Image from "../assets/IMG 40.png";
+import Resource4Image from "../assets/IMG 41.png";
+import { Image } from "astro:assets";
 
-const howCanTaiHelp = [
+const howCanTaiHelp: [string, ImageMetadata][] = [
   [
     "Advise on potential investments depending on your interests building on recently completed field mappings for the tax, deb, and budget fields",
+    Resource1Image,
   ],
   [
     "Connect you with peer funders who have shared interests and experience of funding on these issues",
+    Resource2Image,
   ],
   [
     "Invite you to relevant funder convenings and spaces to learn more, including about the ongoing FfD process",
+    Resource3Image,
   ],
-  ["Share our regular digests of relevant news, research and events."],
+  [
+    "Share our regular digests of relevant news, research and events.",
+    Resource4Image,
+  ],
 ];
 ---
 
@@ -43,10 +54,14 @@ const howCanTaiHelp = [
 
   <ul class="mt-28 flex flex-col gap-16 md:mt-16 md:flex-row">
     {
-      howCanTaiHelp.map(([text]) => (
+      howCanTaiHelp.map(([text, image]) => (
         <li class="flex flex-1 flex-col items-center gap-6 md:opacity-0">
-          <div class="aspect-square w-40 rounded-full bg-[#CDF1F333]" />
-          <p class="max-w-[20ch] text-center text-2xl md:text-base 3xl:text-lg">{text}</p>
+          <div class="aspect-square w-40 rounded-full">
+            <Image src={image} alt="" class="size-full object-cover" />
+          </div>
+          <p class="max-w-[20ch] text-center text-2xl md:text-base 3xl:text-lg">
+            {text}
+          </p>
         </li>
       ))
     }

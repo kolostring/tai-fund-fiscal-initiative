@@ -8,7 +8,7 @@ export default {
       },
 
       screens: {
-        "3xl": "1920px",
+        "3xl": "1620px",
       },
     },
   },
