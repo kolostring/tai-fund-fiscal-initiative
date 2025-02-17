@@ -15,7 +15,7 @@ interface Props {
 const { className } = Astro.props as Props;
 ---
 
-<footer class={`mx-auto grid max-w-7xl px-6 gap-y-20 pb-24 ${className}`}>
+<footer class={`mx-auto grid max-w-7xl px-6 gap-y-20 pb-24 ${className} text-[#5B1D1C]`}>
   <div
     class="grid justify-items-center gap-y-14 text-center md:grid-cols-[auto_1fr_auto] md:justify-items-start md:text-start"
   >
@@ -46,10 +46,10 @@ const { className } = Astro.props as Props;
 
   <div class="grid md:grid-cols-5">
     <section
-      class="mb-11 grid grid-cols-[1fr_auto_auto] items-center gap-x-4 md:gap-x-0 border-y border-[#090045] py-8 pl-0 md:mb-0 md:grid-cols-4 md:border md:border-l-0 md:py-0"
+      class="mb-11 grid grid-cols-[1fr_auto_auto] items-center gap-x-4 border-y border-[#090045] py-8 pl-0 md:mb-0 md:grid-cols-4 md:gap-x-0 md:border md:border-l-0 md:py-0"
     >
       <h2
-        class="max-w-[10ch] text-pretty md:text-base text-lg font-semibold text-[#1672F7] md:col-span-2"
+        class="max-w-[10ch] text-pretty text-lg font-semibold text-[#1672F7] md:col-span-2 md:text-base"
       >
         Follow us for more details
       </h2>
@@ -64,7 +64,7 @@ const { className } = Astro.props as Props;
     <section
       class="flex flex-col border-[#090045] md:col-span-4 md:flex-row md:items-center md:border-y md:p-12 md:pr-0"
     >
-      <h2 class="mb-4 text-lg font-bold text-[#5B1D1C] md:mb-4">
+      <h2 class="mb-4 text-lg font-bold text-[#090045] md:mb-4">
         Keep updated with TAI WEEKLY
       </h2>
       <form
@@ -81,7 +81,7 @@ const { className } = Astro.props as Props;
           />
         </label>
         <button
-          class="absolute inset-1 left-auto text-[#090045] [&_svg]:h-full [&_svg]:w-full"
+          class="absolute inset-1 left-auto [&_svg]:fill-[#090045] text-[#CDF1F3] [&_svg]:h-full [&_svg]:w-full"
           type="submit"
         >
           <Fragment set:html={ArrowIcon} />

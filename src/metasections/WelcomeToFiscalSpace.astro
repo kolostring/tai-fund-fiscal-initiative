@@ -45,19 +45,25 @@ import { Image } from "astro:assets";
     </h3>
 
     <div
-      class="ornaments absolute inset-0 m-auto max-h-[800px] max-w-7xl [&>.ornament-item]:absolute [&_img]:relative [&_img]:size-44 3xl:[&_img]:size-60"
+      class="ornaments bg-red absolute inset-0 m-auto max-h-[800px] max-w-7xl [&>.ornament-item]:absolute [&_img]:relative [&_img]:size-32 md:[&_img]:size-44 3xl:[&_img]:size-60"
     >
-      <div class="ornament-item top-4">
-        <Image class="" src={Ornament1Image} alt={"Ornament"} />
+      <div class="ornament-item -top-16 left-0 right-0 md:right-auto md:top-4">
+        <Image class="mx-auto" src={Ornament1Image} alt={"Ornament"} />
       </div>
-      <div class="ornament-item right-0 top-16">
+      <div class="ornament-item right-0 top-16 hidden md:block">
         <Image class="scale-75" src={Ornament3Image} alt={"Ornament"} />
       </div>
-      <div class="ornament-item bottom-4 left-24">
+      <div class="ornament-item bottom-4 left-24 hidden md:block">
         <Image class="scale-90" src={Ornament2Image} alt={"Ornament"} />
       </div>
-      <div class="ornament-item bottom-0 right-16">
-        <Image class="-scale-x-100" src={Ornament4Image} alt={"Ornament"} />
+      <div
+        class="ornament-item bottom-8 left-0 right-0 md:bottom-0 md:left-auto md:right-16"
+      >
+        <Image
+          class="mx-auto -scale-x-100"
+          src={Ornament4Image}
+          alt={"Ornament"}
+        />
       </div>
     </div>
   </div>
@@ -94,7 +100,7 @@ import { Image } from "astro:assets";
       />
     </div>
     <div
-      class="grid gap-y-6 text-base text-white [grid-auto-rows:auto] 3xl:text-lg"
+      class="grid gap-y-8 text-base text-white [grid-auto-rows:auto] 3xl:text-lg"
     >
       <p>
         It is past time to address the fiscal blindspot and scale up support for
@@ -110,7 +116,7 @@ import { Image } from "astro:assets";
 
       <a
         href="#"
-        class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-12 py-6 text-xl 3xl:text-2xl"
+        class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-6 py-6 text-xl md:px-8 3xl:text-2xl"
       >
         <span class="block max-w-[25ch] text-pretty">
           4th International Conference on Financing for Development
@@ -124,7 +130,7 @@ import { Image } from "astro:assets";
 
       <a
         href="#"
-        class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-12 py-6 text-xl 3xl:text-2xl"
+        class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-6 md:px-8  py-6 text-xl 3xl:text-2xl"
       >
         <span class="block max-w-[25ch] text-pretty">
           Expanding Funding and Commitment to Transparency and Participation in
@@ -233,7 +239,10 @@ import { Image } from "astro:assets";
         animate(
           ornamentsImages,
           { opacity: [0, 1], filter: ["blur(10px)", "blur(0px)"] },
-          { delay: stagger(0.1), ease: "circInOut" }
+          {
+            delay: stagger(window.innerWidth < 768 ? 0 : 0.2),
+            ease: "circInOut",
+          }
         );
 
         return () =>
