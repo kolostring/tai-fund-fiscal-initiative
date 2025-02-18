@@ -11,7 +11,7 @@ import { Image } from "astro:assets";
 ---
 
 <section id="opportunity-in-2025" class="bg-white">
-  <div class="bg-white">
+  <div class="mb-24 bg-white md:mb-0">
     <div class="relative h-[200svh]">
       <div class="sticky top-0 flex h-svh flex-col items-center justify-center">
         <h2
@@ -27,7 +27,7 @@ import { Image } from "astro:assets";
     <section
       class="container mx-auto grid max-w-7xl gap-x-20 px-6 text-black md:grid-cols-2 md:pb-40"
     >
-      <div class="row-span-3 h-full w-full rounded-3xl"> 
+      <div class="row-span-3 h-full w-full rounded-3xl">
         <Image src={SectionImage} alt="" class="size-full object-contain" />
       </div>
       <h3 class="sr-only">Today's opportunity</h3>
@@ -62,8 +62,8 @@ import { Image } from "astro:assets";
         </span>
       </p>
       <a
-        href="#"
-        class="group mx-auto flex w-fit mt-6 items-center gap-x-5 rounded-full transition-colors hover:bg-[#1663D2] bg-[#1672F7] p-1 pl-6 text-base text-white md:mx-0"
+        href="https://www.imf.org/external/pubs/ft/fandd/2005/06/basics.htm"
+        class="group mx-auto mt-6 flex w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-base text-white transition-colors hover:bg-[#1663D2] md:mx-0"
       >
         <span> More details </span>
         <span
@@ -79,10 +79,10 @@ import { Image } from "astro:assets";
     <div
       class="sticky top-0 grid place-content-center gap-x-16 gap-y-8 md:h-svh"
     >
-      <h3 class="text-center text-5xl font-semibold">
+      <h3 class="text-center text-4xl font-semibold md:text-5xl">
         <AnimateText
           textList={["This can reinforce ongoing", "efforts to:"]}
-          mobileTextList={["This can reinforce", " ongoing efforts to:"]}
+          mobileTextList={["This can reinforce", "ongoing efforts to:"]}
         />
       </h3>
       <ul class="mx-auto grid max-w-7xl list-none gap-8 px-6 md:grid-cols-3">
@@ -90,17 +90,17 @@ import { Image } from "astro:assets";
           (
             [
               [
-                "#",
+                "https://www.un.org/en/desa/international-tax-cooperation-advancing-equality-and-sustainable-development",
                 "Reform global taxation through a UN Tax Cooperation Framework.",
                 Resource1Image,
               ],
               [
-                "#",
+                "https://www.ncronline.org/opinion/ncr-voices/debt-forgiveness-critical-during-jubilee-2025#:~:text=Francis%2C%20in%20his%20New%20Year's,us%2C%22%20the%20pope%20said.",
                 "Create new debt restructuring and governance mechanisms.",
                 Resource2Image,
               ],
               [
-                "#",
+                "https://internationalbudget.org/open-budget-survey/",
                 "Demand more transparent and accountable public spending.",
                 Resource3Image,
               ],
