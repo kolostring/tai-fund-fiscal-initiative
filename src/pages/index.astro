@@ -27,31 +27,35 @@ import HowCanTaiHelp from "../sections/HowCanTaiHelp.astro";
   <main class="relative isolate">
     <WelcomeToFiscalSpace />
     <div class="relative bg-white">
-      <NavigationGrid />
-      <Navbar />
-      <TheOpportunity2025 />
-
-      <div class="relative isolate">
-        <div class="sticky-parent md:sticky md:top-0 md:-z-20">
+      <div class="relative">
+        <div class="sticky-parent isolate md:sticky md:top-0">
           <ChallengePresentation />
         </div>
-        <TheActionAgenda />
+        <NavigationGrid />
       </div>
+      <Navbar />
 
-      <div
-        class="relative isolate bg-gradient-to-b from-[#11308d] to-[#1672F6]"
-      >
-        <ScrollReactiveSticky className="-z-20 pb-16 md:pb-40">
-          <ActionAgendaResources />
-          <ContactTAIBanner/>
+      <div id="opportunity-in-2025" class="relative isolate">
+        <ScrollReactiveSticky
+          className="-z-20 pb-16 before:absolute before:inset-0"
+        >
+          <TheOpportunity2025 />
         </ScrollReactiveSticky>
         <div class="relative -z-50 h-svh"></div>
 
-        <WhatFundersCanDo />
+        <div id="action-agenda" class="relative isolate bg-[#1672F6]">
+          <ScrollReactiveSticky className="-z-20 pb-16">
+            <TheActionAgenda />
+            <ContactTAIBanner />
+          </ScrollReactiveSticky>
+          <div class="relative -z-50 h-svh"></div>
+
+          <WhatFundersCanDo />
+        </div>
       </div>
 
       <div class="relative isolate bg-[#090045]">
-        <ScrollReactiveSticky className="-z-20 pb-16 md:pb-40 text-white">
+        <ScrollReactiveSticky className="-z-20 pb-16 text-white md:pb-40">
           <HowCanTaiHelp />
           <FollowUs />
         </ScrollReactiveSticky>

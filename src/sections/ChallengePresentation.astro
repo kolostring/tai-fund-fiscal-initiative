@@ -11,7 +11,7 @@ import { Image } from "astro:assets";
 const content: [string, string, string, ImageMetadata][] = [
   [
     "Why care about taxes?",
-    "Global sovereign debt is fast rising on the global agenda due to impending debt crises in many developing countries. Debt Justice estimates that 54 countries are currently in debt crisis, while another 57 countries are at risk of a public or private debt crisis or both. Servicing debt eats up government budgets, meaning little is left to meet local needs.",
+    "An effective tax system not only raises revenues needed for funding public services, but can also support development goals, for example, by helping combat illicit financial flows, reducing inequality through redistribution, and addressing social and environmental objectives by influencing taxpayer behavior. You can see examples of funder theories of change for investing on tax reform here.",
     "https://tax.transparency-initiative.org/",
     Challenge1Image,
   ],
@@ -23,16 +23,16 @@ const content: [string, string, string, ImageMetadata][] = [
   ],
   [
     "Why care about accountable, effective public spending?",
-    "Too often public resources are being spent unfairly and ineffectively, leaving millions of people without access to quality public goods and services. This transparency and accountablekind of spending is also more immune to corruption.",
+    "Too often public resources are being spent unfairly and ineffectively, leaving millions of people without access to quality public goods and services. Transparent and accountable spending is also more immune to corruption.",
     "#",
     Challenge3Image,
   ],
 ];
 ---
 
-<section id="challenge-presentation" class="my-24">
+<section id="challenge-presentation">
   <HorizontalScrollContainer
-    className="block overflow-y-hidden bg-white md:flex md:h-svh md:items-center md:pl-[max(1rem,(100vw_-_1280px)_/_2)]"
+    className="block overflow-y-hidden bg-[#0128A2] text-white md:flex md:h-svh md:items-center md:pl-[max(1rem,(100vw_-_1280px)_/_2)] pb-24 md:pb-0"
   >
     <h3 class="sr-only">
       <AnimateText textList={["The Challenge"]} />
@@ -43,8 +43,8 @@ const content: [string, string, string, ImageMetadata][] = [
       {
         content.map(([title, p, href, image]) => (
           <li class="z-10 flex flex-col-reverse justify-center gap-12 text-center opacity-0 first:opacity-100 md:mr-[15vw] md:min-w-[550px] md:flex-col md:text-left md:last:mr-0 md:odd:flex-col-reverse">
-            <div>
-              <h3 class="mb-6 text-2xl font-bold uppercase tracking-tight text-[#1672F7] 3xl:text-3xl">
+            <div class="max-w-[45ch]">
+              <h3 class="mb-6 text-2xl font-bold uppercase tracking-tight 3xl:text-3xl">
                 <AnimateText textList={[title]} />
               </h3>
               <p class="text-base 3xl:text-lg">{p}</p>
@@ -60,7 +60,7 @@ const content: [string, string, string, ImageMetadata][] = [
             </div>
             <div class="mx-auto aspect-square w-48 rounded-3xl bg-[#CDF1F3] md:mx-0 3xl:w-64">
               <Image
-                class="size-full object-contain object-top"
+                class="bg-red size-full rounded-3xl object-contain object-top"
                 alt="Welcome to the fiscal space"
                 src={image}
               />
@@ -169,15 +169,20 @@ const content: [string, string, string, ImageMetadata][] = [
 
       const from = document.querySelector(
         ".challenge-content > li:nth-child(1) .aspect-square"
-      ) as HTMLLIElement;
+      ) as HTMLElement;
+      const through = document.querySelector(
+        ".challenge-content > li:nth-child(2) .aspect-square"
+      ) as HTMLElement;
+
       const to = document.querySelector(
         ".challenge-content > li:nth-last-child(1) .aspect-square"
-      ) as HTMLLIElement;
+      ) as HTMLElement;
 
       const ropeTop = from.offsetTop + from.offsetHeight / 2;
       const ropeLeft = from.offsetLeft + from.getBoundingClientRect().width;
       const ropeWidth = to.offsetLeft - ropeLeft;
-      const ropeHeight = to.offsetHeight * (8 / 5);
+      const ropeHeight =
+        through.getBoundingClientRect().top - from.getBoundingClientRect().top;
 
       rope.style.top = ropeTop + "px";
       rope.style.left = ropeLeft + "px";

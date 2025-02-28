@@ -4,13 +4,19 @@ import Card from "../components/Card.astro";
 import ArrowIcon from "../assets/Arrow.svg?raw";
 
 import SectionImage from "../assets/IMG 17.png";
+
 import Resource1Image from "../assets/IMG 18.png";
 import Resource2Image from "../assets/IMG 19.png";
 import Resource3Image from "../assets/IMG 20.png";
+
+import Resource4Image from "../assets/IMG 10.png";
+import Resource5Image from "../assets/IMG 11.png";
+import Resource6Image from "../assets/IMG 12.png";
+
 import { Image } from "astro:assets";
 ---
 
-<section id="opportunity-in-2025" class="bg-white">
+<section class="bg-white">
   <div class="mb-24 bg-white md:mb-0">
     <div class="relative h-[200svh]">
       <div class="sticky top-0 flex h-svh flex-col items-center justify-center">
@@ -31,54 +37,71 @@ import { Image } from "astro:assets";
         <Image src={SectionImage} alt="" class="size-full object-contain" />
       </div>
       <h3 class="sr-only">Today's opportunity</h3>
-      <p class="grid gap-y-4 pb-6 text-base 3xl:text-lg">
-        <span>
-          Today, the world faces a $4 trillion financing gap to achieve the
-          Sustainable Development Goals (SDGs). That cannot come from aid alone.
-          Most must be raised by the countries themselves. Governments need to
-          create more fiscal space, defined by the International Monetary Fund
-          (IMF) as the room in a government’s budget to fund national
-          priorities, such as education or climate adaptation, without
-          jeopardizing the sustainability of its fiscal position or the
-          stability of the economy.
-        </span>
-        <span>
-          As the IMF explains, governments can create fiscal space by raising
-          taxes, securing outside grants, cutting expenditures, borrowing
-          resources (from citizens or foreign lenders), or borrowing from the
-          banking system (thereby expanding the money supply).
-        </span>
-        <span>
-          At the same time, governments need to consider who bears the costs of
-          reforms. Austerity measures that cut spending to service debts
-          typically hit the poorest the hardest, deepening inequality.
-        </span>
-        <span>
-          Negotiations are underway for the Fourth International Financing for
-          Development Conference (FfD4) – a once-in-a-decade process guided by
-          the United Nations (UN). FfD4 will set the agenda for mobilizing
-          funding for today’s pressing development needs through taxation,
-          borrowing, and international assistance.
-        </span>
-      </p>
-      <a
-        href="https://www.imf.org/external/pubs/ft/fandd/2005/06/basics.htm"
-        class="group mx-auto mt-6 flex w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-base text-white transition-colors hover:bg-[#1663D2] md:mx-0"
-      >
-        <span> More details </span>
-        <span
-          class="rotate-45 text-[#1672F7] transition-transform group-hover:rotate-0 [&>svg]:size-9 [&>svg]:fill-white"
+      <div class="grid gap-y-6 pb-6 text-base 3xl:text-lg">
+        <p class="grid gap-y-4">
+          <span>
+            Today, the world faces a $4 trillion financing gap to achieve the
+            Sustainable Development Goals (SDGs). That cannot come from aid
+            alone. Most must be raised by the countries themselves. Governments
+            need to create more fiscal space, defined by the International
+            Monetary Fund (IMF) as the room in a government’s budget to fund
+            national priorities, such as education or climate adaptation,
+            without jeopardizing the sustainability of its fiscal position or
+            the stability of the economy.
+          </span>
+          <span>
+            Governments can create fiscal space by raising taxes, securing
+            outside grants, cutting expenditures, borrowing resources (from
+            citizens or foreign lenders), or borrowing from the banking system
+            (thereby expanding the money supply).
+          </span>
+        </p>
+        <a
+          href="https://www.imf.org/external/pubs/ft/fandd/2005/06/basics.htm"
+          class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-6 py-6 text-xl text-white md:px-8 3xl:text-2xl"
         >
-          <Fragment set:html={ArrowIcon} />
-        </span>
-      </a>
+          <span class="block max-w-[25ch] text-pretty">
+            What is fiscal space
+          </span>
+          <div
+            class="flex aspect-square h-12 rounded-full *:size-full first:[&_path]:stroke-[#02B4D0] [&_svg]:fill-[#02B4D0]"
+          >
+            <Fragment set:html={ArrowIcon} />
+          </div>
+        </a>
+        <p class="grid gap-y-4">
+          <span>
+            At the same time, governments need to consider who bears the costs
+            of reforms. Austerity measures that cut spending to service debts
+            typically hit the poorest the hardest, deepening inequality.
+          </span>
+          <span>
+            Negotiations are underway for the Fourth International Financing for
+            Development Conference (FfD4) – a once-in-a-decade process guided by
+            the United Nations (UN). FfD4 will set the agenda for mobilizing
+            funding for today’s pressing development needs through taxation,
+            borrowing, and international assistance.
+          </span>
+        </p>
+        <a
+          href="https://financing.desa.un.org/ffd4"
+          class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-6 py-6 text-xl text-white md:px-8 3xl:text-2xl"
+        >
+          <span class="block max-w-[25ch] text-pretty">
+            4th International Conference on Financing for Development
+          </span>
+          <div
+            class="flex aspect-square h-12 rounded-full *:size-full first:[&_path]:stroke-[#02B4D0] [&_svg]:fill-[#02B4D0]"
+          >
+            <Fragment set:html={ArrowIcon} />
+          </div>
+        </a>
+      </div>
     </section>
   </div>
 
-  <section class="md:h-[200svh]">
-    <div
-      class="sticky top-0 grid place-content-center gap-x-16 gap-y-8 md:h-svh"
-    >
+  <section class="mb-36">
+    <div class="grid place-content-center gap-x-16 gap-y-8">
       <h3 class="text-center text-4xl font-semibold md:text-5xl">
         <AnimateText
           textList={["This can reinforce ongoing", "efforts to:"]}
@@ -106,6 +129,42 @@ import { Image } from "astro:assets";
               ],
             ] as [string, string, ImageMetadata][]
           ).map(([href, title, image]) => {
+            return <Card href={href} image={image} title={title} />;
+          })
+        }
+      </ul>
+    </div>
+  </section>
+
+  <section>
+    <div class="grid place-content-center gap-x-16 gap-y-8">
+      <h3 class="text-center text-4xl font-semibold md:text-5xl">
+        <AnimateText
+          textList={["Philanthropists on Fiscal"]}
+          mobileTextList={["Philanthropists on", "Fiscal"]}
+        />
+      </h3>
+      <ul class="mx-auto grid max-w-7xl list-none gap-8 px-6 md:grid-cols-3">
+        {
+          (
+            [
+              [
+                "https://www.foreignaffairs.com/africa/debt-dragging-down-developing-world",
+                Resource4Image,
+                "Debt is dragging down the developing world by Mark Suzman, CEO of the Bill and Melinda Gates Foundation.",
+              ],
+              [
+                "https://www.alliancemagazine.org/blog/philanthropys-tax-blind-spot/",
+                Resource6Image,
+                "Philanthropy’s tax blind spot by Savior Mwambwa of Open Society Foundations and Michael Jarvis of TAI.",
+              ],
+              [
+                "https://www.devex.com/news/opinion-why-2025-could-be-a-bridge-year-for-the-global-south-108824?",
+                Resource5Image,
+                "Why 2025 could be a ‘Bridge year’ for the global south by Kalpana Kochhar.",
+              ],
+            ] as [string, ImageMetadata | undefined, string][]
+          ).map(([href, image, title]) => {
             return <Card href={href} image={image} title={title} />;
           })
         }

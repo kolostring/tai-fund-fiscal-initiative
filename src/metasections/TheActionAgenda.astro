@@ -3,11 +3,11 @@ import AnimateText from "../components/AnimateText.astro";
 
 import ActionAgendaImage from "../assets/IMG 24.png";
 import { Image } from "astro:assets";
+import ActionAgendaResources from "../sections/ActionAgendaResources.astro";
 ---
 
 <section
-  id="action-agenda"
-  class="bg-gradient-to-b from-[#0E0449] to-[#11308d] pb-1 text-white"
+  class="bg-gradient-to-b from-[#0E0449] via-[#101d71] to-[#1672F6] pb-1 text-white"
 >
   <div class="relative h-[200svh]">
     <div class="sticky top-0 grid h-svh place-content-center">
@@ -42,4 +42,6 @@ import { Image } from "astro:assets";
       funders. We will continue to update these.
     </p>
   </div>
+
+  <ActionAgendaResources />
 </section>

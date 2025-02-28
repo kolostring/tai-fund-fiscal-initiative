@@ -4,12 +4,7 @@ import WelcomePresentation from "../sections/WelcomePresentation.astro";
 import ArrowIcon from "../assets/Arrow.svg?raw";
 import Card from "../components/Card.astro";
 
-import WelcomeImage from "../assets/IMG 9.png";
 import WelcomeImageSmall from "../assets/IMG 9 - Formato Small.png";
-
-import Resource1Image from "../assets/IMG 10.png";
-import Resource2Image from "../assets/IMG 11.png";
-import Resource3Image from "../assets/IMG 12.png";
 
 import Ornament1Image from "../assets/IMG 5.png";
 import Ornament2Image from "../assets/IMG 6.png";
@@ -75,8 +70,8 @@ import { Image } from "astro:assets";
     >
       <h2 class="text-center text-6xl font-bold text-[#02B5D1] md:text-[135px]">
         <AnimateText
-          textList={["Welcome to", "The Fiscal Space:"]}
-          mobileTextList={["Welcome to", "THE FISCAL", "SPACE:"]}
+          textList={["Welcome to", "The Fiscal Space"]}
+          mobileTextList={["Welcome to", "THE FISCAL", "SPACE"]}
         />
       </h2>
     </div>
@@ -89,70 +84,23 @@ import { Image } from "astro:assets";
       class="row-start-2 size-full rounded-3xl md:sticky md:top-0 md:row-start-1 md:h-fit"
     >
       <Image
-        class="hidden size-full min-h-svh object-contain object-center 3xl:block"
-        alt="Welcome to the fiscal space"
-        src={WelcomeImage}
-      />
-      <Image
-        class="size-full object-contain object-top 3xl:hidden"
+        class="size-full object-contain object-top"
         alt="Welcome to the fiscal space"
         src={WelcomeImageSmall}
       />
     </div>
     <div
-      class="grid gap-y-8 text-base text-white [grid-auto-rows:auto] 3xl:text-lg"
+      class="grid h-fit max-w-[50ch] gap-y-4 self-center text-base text-white [grid-auto-rows:auto] 3xl:text-lg"
     >
       <p>
-        It is past time to address the fiscal blindspot and scale up support for
-        more sustainable public financing that can better serve development
-        needs. In 2025, the 4th International Conference on Financing for
-        Development (FfD4) will set the development finance agenda for the next
-        decade. Decisions will impact countries’ ability to invest in
-        development and climate responses. Thus, TAI set up a Fund Fiscal
-        project to increase funders’ investment and engagement in fiscal issues.
-        We are focused on philanthropies and support to civil society based on
-        given our needs assessment.
+        The Fiscal Space site is a place for fFunders (and others) interested in
+        sectors like climate, education, health, and poverty reduction that have
+        increasingly looked to learn about fiscal policy as a for long-term
+        solution, including in sectors like climate, education, health, and
+        poverty reduction that have increasingly lookeds. We seek to:
       </p>
 
-      <a
-        href="https://financing.desa.un.org/ffd4"
-        class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-6 py-6 text-xl md:px-8 3xl:text-2xl"
-      >
-        <span class="block max-w-[25ch] text-pretty">
-          4th International Conference on Financing for Development
-        </span>
-        <div
-          class="flex aspect-square h-12 rounded-full text-white *:size-full first:[&_path]:stroke-[#02B4D0] [&_svg]:fill-[#02B4D0]"
-        >
-          <Fragment set:html={ArrowIcon} />
-        </div>
-      </a>
-
-      <a
-        href="https://taicollaborative.org/expanding-funding-and-commitment-to-transparency-and-participation-in-fiscal-policy"
-        class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-6 py-6 text-xl md:px-8 3xl:text-2xl"
-      >
-        <span class="block max-w-[25ch] text-pretty">
-          Expanding Funding and Commitment to Transparency and Participation in
-          Fiscal Policy
-        </span>
-        <div
-          class="flex aspect-square h-12 rounded-full text-white *:size-full first:[&_path]:stroke-[#02B4D0] [&_svg]:fill-[#02B4D0]"
-        >
-          <Fragment set:html={ArrowIcon} />
-        </div>
-      </a>
-
-      <p class="">
-        As part of the Fund Fiscal project, the Fiscal Space site is a place for
-        funders (and others) interested in sectors like climate, education,
-        health, and poverty reduction that have increasingly looked to learn
-        about fiscal policy as a for long-term solution, including in sectors
-        like climate, education, health, and poverty reduction that have
-        increasingly lookeds. We seek to:
-      </p>
-
-      <ul class="ml-8 grid list-disc gap-y-4">
+      <ul class="ml-6 grid list-disc gap-y-4">
         <li>
           Raise awareness of the importance of investing in fiscal issues,
           including by funders of the Sustainable Development Goals (SDGs).
@@ -168,47 +116,6 @@ import { Image } from "astro:assets";
     </div>
   </div>
 </section>
-<div class="bg-[#0128A2] md:sticky md:top-0">
-  <div
-    class="grid place-content-center gap-x-16 gap-y-16 pb-20 md:sticky md:top-0 md:h-svh md:pb-0"
-  >
-    <h3 class="text-center text-4xl font-semibold text-white md:text-5xl">
-      <AnimateText
-        textList={["Philanthropists on Fiscal"]}
-        mobileTextList={["Philanthropists on", "Fiscal"]}
-      />
-    </h3>
-    <ul class="mx-auto grid max-w-7xl list-none gap-8 px-6 md:grid-cols-3">
-      {
-        (
-          [
-            [
-              "https://www.foreignaffairs.com/africa/debt-dragging-down-developing-world",
-              Resource1Image,
-              "Debt is dragging down the developing world by Mark Suzman, CEO of the Bill and Melinda Gates Foundation.",
-            ],
-            [
-              "https://www.devex.com/news/opinion-why-2025-could-be-a-bridge-year-for-the-global-south-108824?",
-              Resource2Image,
-              "Why 2025 could be a ‘Bridge year’ for the global south by Kalpana Kochhar.",
-            ],
-            [
-              "https://www.alliancemagazine.org/blog/philanthropys-tax-blind-spot/",
-              Resource3Image,
-              "Philanthropy’s tax blind spot by Savior Mwambwa of Open Society Foundations and Michael Jarvis of TAI.",
-            ],
-          ] as [string, ImageMetadata | undefined, string][]
-        ).map(([href, image, title]) => {
-          return <Card href={href} image={image} title={title} />;
-        })
-      }
-    </ul>
-  </div>
-
-  <div class="md:h-svh">
-    <!-- THIS IS FOR DELAYED SCROLL -->
-  </div>
-</div>
 
 <script>
   import { animate, inView, scroll, stagger } from "motion";
