@@ -6,6 +6,7 @@ import Resource2Image from "../assets/IMG 39.png";
 import Resource3Image from "../assets/IMG 40.png";
 import Resource4Image from "../assets/IMG 41.png";
 import { Image } from "astro:assets";
+import AnimatedList from "../components/AnimatedList.astro";
 
 const howCanTaiHelp: [string, ImageMetadata][] = [
   [
@@ -59,7 +60,7 @@ const howCanTaiHelp: [string, ImageMetadata][] = [
     For example, we can:
   </h4>
 
-  <ul class="mt-28 flex flex-col gap-16 md:mt-16 md:flex-row">
+  <AnimatedList className="mt-28 flex flex-col gap-16 md:mt-16 md:flex-row">
     {
       howCanTaiHelp.map(([text, image]) => (
         <li class="flex flex-1 flex-col items-center gap-6 md:opacity-0">
@@ -72,5 +73,5 @@ const howCanTaiHelp: [string, ImageMetadata][] = [
         </li>
       ))
     }
-  </ul>
+  </AnimatedList>
 </section>

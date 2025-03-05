@@ -5,15 +5,16 @@ import ArrowIcon from "../assets/Arrow.svg?raw";
 
 import SectionImage from "../assets/IMG 17.png";
 
-import Resource1Image from "../assets/IMG 18.png";
-import Resource2Image from "../assets/IMG 19.png";
-import Resource3Image from "../assets/IMG 20.png";
+import Resource1Image from "../assets/Frame 51.png";
+import Resource2Image from "../assets/Frame 49.png";
+import Resource3Image from "../assets/Frame 50.png";
 
 import Resource4Image from "../assets/IMG 10.png";
 import Resource5Image from "../assets/IMG 11.png";
 import Resource6Image from "../assets/IMG 12.png";
 
 import { Image } from "astro:assets";
+import AnimatedList from "../components/AnimatedList.astro";
 ---
 
 <section class="bg-white">
@@ -103,14 +104,18 @@ import { Image } from "astro:assets";
   </div>
 
   <section class="mb-36">
-    <div class="grid place-content-center gap-x-16 gap-y-8">
-      <h3 class="text-center text-4xl font-semibold md:text-5xl">
+    <div class="grid w-full gap-x-16 gap-y-20">
+      <h3
+        class="text-center text-3xl font-semibold uppercase text-[#1672F7] md:text-3xl"
+      >
         <AnimateText
           textList={["This can reinforce ongoing", "efforts to:"]}
           mobileTextList={["This can reinforce", "ongoing efforts to:"]}
         />
       </h3>
-      <ul class="mx-auto grid max-w-7xl list-none gap-8 px-6 md:grid-cols-3">
+      <AnimatedList
+        className="mx-auto grid w-full max-w-6xl list-none gap-x-8 gap-y-20 md:flex md:justify-between"
+      >
         {
           (
             [
@@ -126,15 +131,34 @@ import { Image } from "astro:assets";
               ],
               [
                 "https://internationalbudget.org/open-budget-survey/",
-                "Demand more transparent and accountable public spending.",
+                "Invite you to relevant funder spaces to learn more, including about the ongoing FfD process",
                 Resource3Image,
               ],
             ] as [string, string, ImageMetadata][]
           ).map(([href, title, image]) => {
-            return <Card href={href} image={image} title={title} />;
+            return (
+              <li class="grid justify-items-center text-xl opacity-0">
+                <Image
+                  src={image}
+                  alt=""
+                  class="mb-9 max-h-48 object-contain"
+                />
+                <p class="max-w-[26ch] pb-10 text-center">{title}</p>
+                <a
+                  href={href}
+                  target="_blank"
+                  class="group mt-auto flex h-fit w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-center text-white transition-colors hover:bg-[#1663D2]"
+                >
+                  <span> More details </span>
+                  <span class="rotate-45 text-[#1672F7] transition-transform group-hover:rotate-0 [&>svg]:size-9 [&>svg]:fill-white">
+                    <Fragment set:html={ArrowIcon} />
+                  </span>
+                </a>
+              </li>
+            );
           })
         }
-      </ul>
+      </AnimatedList>
     </div>
   </section>
 
@@ -174,3 +198,5 @@ import { Image } from "astro:assets";
     </div>
   </section>
 </section>
+
+<script></script>

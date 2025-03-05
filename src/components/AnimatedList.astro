@@ -1,0 +1,43 @@
+---
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props as Props;
+---
+
+<ul class={`animated-list ${className}`}>
+  <slot />
+</ul>
+
+<script>
+  import { animate, inView, stagger } from "motion";
+
+  const cleanupFunctions: VoidFunction[] = [];
+
+  initEventListeners();
+  document.addEventListener("astro:after-swap", initEventListeners);
+  document.addEventListener("astro:before-preparation", () => {
+    cleanupFunctions.forEach((fn) => fn());
+    cleanupFunctions.length = 0;
+  });
+
+  function initEventListeners() {
+    const circledList = document.querySelectorAll("ul.animated-list");
+    circledList.forEach((list) => {
+      inView(
+        list,
+        () => {
+          animate(
+            list.querySelectorAll("li"),
+            { opacity: 1, y: [100, 0] },
+            { delay: stagger(0.1), ease: "circInOut" }
+          );
+        },
+        {
+          amount: 0.3,
+        }
+      );
+    });
+  }
+</script>

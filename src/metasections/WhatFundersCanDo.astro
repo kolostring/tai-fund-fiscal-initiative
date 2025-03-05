@@ -1,7 +1,6 @@
 ---
 import AnimateText from "../components/AnimateText.astro";
 import WhatFundersCanDoPresentation from "../sections/WhatFundersCanDoPresentation.astro";
-
 ---
 
 <section id="what-funders-can-do" class="bg-[#090045] text-white">
@@ -17,32 +16,3 @@ import WhatFundersCanDoPresentation from "../sections/WhatFundersCanDoPresentati
 
   <WhatFundersCanDoPresentation />
 </section>
-
-<script>
-  import { animate, inView, stagger } from "motion";
-
-  const cleanupFunctions: VoidFunction[] = [];
-
-  initEventListeners();
-  document.addEventListener("astro:after-swap", initEventListeners);
-  document.addEventListener("astro:before-preparation", () => {
-    cleanupFunctions.forEach((fn) => fn());
-    cleanupFunctions.length = 0;
-  });
-
-  function initEventListeners() {
-    inView(
-      "#how-can-tai-help ul",
-      () => {
-        animate(
-          "#how-can-tai-help li",
-          { opacity: 1, y: [100, 0] },
-          { delay: stagger(0.1), ease: "circInOut" }
-        );
-      },
-      {
-        amount: 0.9,
-      }
-    );
-  }
-</script>
