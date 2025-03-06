@@ -20,25 +20,16 @@ import AnimateText from "../components/AnimateText.astro";
     and trust, delivered to your inbox every Tuesday.
   </p>
 
-  <form
-    onsubmit="return false"
-    class="relative flex w-full max-w-[425px] items-center rounded-full bg-[#CDF1F3] p-1"
+  <a
+    target="_blank"
+    href="https://transparency-initiative.us8.list-manage.com/subscribe?u=3225c2c32fc6c7023ca721588&id=1a5ff28f1e"
+    class="group flex items-center gap-x-5 rounded-full bg-[#090045] p-1 pl-6 text-white"
   >
-    <label class="w-full rounded-full">
-      <span class="sr-only">Your Email</span>
-      <input
-        type="email"
-        class="w-full rounded-full bg-transparent p-3 placeholder:text-[#090045]"
-        name="user-email"
-        placeholder="Enter your Email"
-      />
-    </label>
-    <button
-      class="absolute inset-1 left-auto text-[#CDF1F3] [&_svg]:h-full [&_svg]:w-full [&_svg]:fill-[#090045]"
-      type="submit"
+    <span> Suscribe here </span>
+    <span
+      class="rotate-45 text-[#090045] transition-transform group-hover:rotate-0 [&>svg]:size-9 [&>svg]:fill-white"
     >
       <Fragment set:html={ArrowIcon} />
-      <span class="sr-only">Subscribe</span>
-    </button>
-  </form>
+    </span>
+  </a>
 </section>
