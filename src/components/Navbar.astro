@@ -11,7 +11,7 @@ interface Props {
 const { className } = Astro.props as Props;
 ---
 
-<div class="peer fixed isolate z-[100] w-full">
+<div class="peer fixed top-0 z-[100] w-full">
   <div
     id="navbar"
     data-open="false"
@@ -27,7 +27,7 @@ const { className } = Astro.props as Props;
 <button
   id="menu-button"
   aria-controls="navbar"
-  class="group fixed right-[calc(max((100lvw-1280px)/2,_0px)+24px)] top-4 z-[100] aspect-square size-16 rounded-full p-4 transition-colors peer-has-[[data-open=false]]:bg-[#1672F7] peer-has-[[data-open=false]]:[&_.close-logo]:hidden peer-has-[[data-open=true]]:[&_.menu-logo]:hidden [&_svg]:size-full"
+  class="group sticky ml-[calc(max((100svw-1280px)/2,_0px)+min(100svw,1280px)-64px-32px)] top-4 z-[100] aspect-square size-16 rounded-full p-4 transition-colors peer-has-[[data-open=false]]:bg-[#1672F7] peer-has-[[data-open=false]]:[&_.close-logo]:hidden peer-has-[[data-open=true]]:[&_.menu-logo]:hidden [&_svg]:size-full"
 >
   <span class="menu-logo">
     <Fragment set:html={MenuLogo} />
