@@ -14,16 +14,18 @@ const { className } = Astro.props as Props;
 >
   <h3 class="text-4xl font-medium leading-[1.3] text-white md:text-5xl">
     <!-- <AnimateText textList={["Lorem ipsum", "dolor sit amet"]} /> -->
-     For more detailed information on the practitioners most active on tax, debt, and accountable spending please don’t hesitate to reach out to TAI.
+    For more detailed information on the practitioners most active on tax, debt,
+    and accountable spending please don’t hesitate to reach out to TAI.
   </h3>
 
-  <button
-    onclick="document.getElementById('contact-tai').showModal()"
+  <a
+    target="_blank"
+    href="https://www.linkedin.com/company/trust-accountability-inclusion/"
     class="flex items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-white transition-colors hover:bg-[#1663D2]"
   >
     <span> Contact TAI </span>
     <span class="text-[#1672F7] [&>svg]:size-9 [&>svg]:fill-white">
       <Fragment set:html={ArrowIcon} />
     </span>
-  </button>
+  </a>
 </section>

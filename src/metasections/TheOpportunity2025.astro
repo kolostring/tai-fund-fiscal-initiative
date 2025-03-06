@@ -60,13 +60,13 @@ import AnimatedList from "../components/AnimatedList.astro";
         <a
           target="_blank"
           href="https://www.imf.org/external/pubs/ft/fandd/2005/06/basics.htm"
-          class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-6 py-6 text-xl text-white md:px-8 3xl:text-2xl"
+          class="group grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-6 py-6 text-xl text-white transition-colors hover:bg-[#1663D2] md:px-8 3xl:text-2xl"
         >
           <span class="block max-w-[25ch] text-pretty">
             What is fiscal space
           </span>
           <div
-            class="flex aspect-square h-12 rounded-full *:size-full first:[&_path]:stroke-[#02B4D0] [&_svg]:fill-[#02B4D0]"
+            class="flex aspect-square h-12 rotate-45 rounded-full transition-transform *:size-full group-hover:rotate-0 first:[&_path]:stroke-[#02B4D0] [&_svg]:fill-[#02B4D0]"
           >
             <Fragment set:html={ArrowIcon} />
           </div>
@@ -85,20 +85,6 @@ import AnimatedList from "../components/AnimatedList.astro";
             borrowing, and international assistance.
           </span>
         </p>
-        <a
-          target="_blank"
-          href="https://financing.desa.un.org/ffd4"
-          class="grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-6 py-6 text-xl text-white md:px-8 3xl:text-2xl"
-        >
-          <span class="block max-w-[25ch] text-pretty">
-            4th International Conference on Financing for Development
-          </span>
-          <div
-            class="flex aspect-square h-12 rounded-full *:size-full first:[&_path]:stroke-[#02B4D0] [&_svg]:fill-[#02B4D0]"
-          >
-            <Fragment set:html={ArrowIcon} />
-          </div>
-        </a>
       </div>
     </section>
   </div>
