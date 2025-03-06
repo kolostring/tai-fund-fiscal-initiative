@@ -1,5 +1,8 @@
 ---
 import LogoIcon from "../assets/logo.svg?raw";
+import MenuLogo from "../assets/menu.svg?raw";
+import CloseLogo from "../assets/close.svg?raw";
+import NavigationGrid from "../sections/NavigationGrid.astro";
 
 interface Props {
   className?: string;
@@ -8,88 +11,50 @@ interface Props {
 const { className } = Astro.props as Props;
 ---
 
-<div class="sticky top-0 z-[100]">
+<div class="peer fixed isolate z-[100] w-full">
   <div
     id="navbar"
-    class="absolute w-full px-7 -translate-y-full bg-opacity-60 py-2 text-sm uppercase text-black backdrop-blur"
+    data-open="false"
+    class="h-0 w-full overflow-hidden bg-white text-sm text-black backdrop-blur transition-all data-[open=true]:h-dvh"
   >
-    <nav class={`mx-auto flex max-w-7xl justify-between py-1 ${className}`}>
-      <ul
-        class="flex w-full shrink-0 gap-6 md:items-center md:justify-between [&_a]:px-[1px] hover:[&_a]:px-0 hover:[&_a]:font-semibold hover:[&_a]:underline"
-      >
-        <li class="hidden md:block">
-          <a href="/#opportunity-in-2025">The Opportunity in 2025</a>
-        </li>
-        <li class="hidden md:block">
-          <a href="/#action-agenda">The Action Agenda</a>
-        </li>
-        <li>
-          <a href="/#welcome-to-fiscal-space" class="[&_svg]:h-12 !px-0">
-            <!-- <Image src={LogoIcon} alt="Logo" /> -->
-            <Fragment set:html={LogoIcon} />
-            <span class="!sr-only">Home</span>
-          </a>
-        </li>
-        <li class="hidden md:block">
-          <a href="/#what-funders-can-do">What Funders Can Do</a>
-        </li>
-        <li class="hidden md:block">
-          <a href="/#fiscal-space-resources">The Fiscal Space Resources</a>
-        </li>
-      </ul>
+    <nav
+      class={`absolute w-dvw h-dvh overflow-auto md:overflow-visible inset-0 mx-auto flex max-w-7xl justify-between ${className}`}
+    >
+      <NavigationGrid className="w-full" />
     </nav>
   </div>
 </div>
+<button
+  id="menu-button"
+  aria-controls="navbar"
+  class="group fixed right-[calc(max((100lvw-1280px)/2,_0px)+24px)] top-4 z-[100] aspect-square size-16 rounded-full p-4 transition-colors peer-has-[[data-open=false]]:bg-[#1672F7] peer-has-[[data-open=false]]:[&_.close-logo]:hidden peer-has-[[data-open=true]]:[&_.menu-logo]:hidden [&_svg]:size-full"
+>
+  <span class="menu-logo">
+    <Fragment set:html={MenuLogo} />
+  </span>
+  <span class="close-logo [&_svg]:fill-black">
+    <Fragment set:html={CloseLogo} />
+  </span>
+</button>
 
 <script>
-  import { scroll } from "motion";
+  const button = document.getElementById("menu-button") as HTMLElement;
+  const navbar = document.getElementById("navbar") as HTMLElement;
 
-  const cleanupFunctions: VoidFunction[] = [];
-
-  initEventListeners();
-  document.addEventListener("astro:page-load", initEventListeners);
-  document.addEventListener("astro:before-preparation", () => {
-    cleanupFunctions.forEach((fn) => fn());
-    cleanupFunctions.length = 0;
+  button.addEventListener("click", toggleNavbar);
+  navbar.querySelectorAll("a").forEach((a) => {
+    a.addEventListener("click", toggleNavbar);
   });
 
-  function initEventListeners() {
-    const navbar = document.querySelector("#navbar") as HTMLDivElement | null;
+  function toggleNavbar() {
+    const isOpen = navbar.getAttribute("data-open") === "true";
 
-    if (!navbar) return;
-    let scrollPosition = 0;
+    navbar.setAttribute("data-open", isOpen ? "false" : "true");
 
-    const scrollCallback = scroll((progress: number) => {
-      const documentHeight = document.documentElement.scrollHeight;
-      const scrolledPixels = progress * documentHeight;
-
-      const delta = scrolledPixels - scrollPosition;
-      scrollPosition = scrolledPixels;
-
-      const oldTranslateY = getTranslateXY(navbar).translateY;
-
-      const translateY = Math.max(
-        -navbar.offsetHeight,
-        Math.min(oldTranslateY - delta, 0)
-      );
-
-      const transformable =
-        navbar.parentElement &&
-        navbar.parentElement.getBoundingClientRect().top <= 0;
-
-      navbar.style.transform = `translateY(${transformable ? translateY : 0}px)`;
-      navbar.style.backgroundColor = transformable ? "white" : "transparent";
-    });
-
-    cleanupFunctions.push(scrollCallback);
-  }
-
-  function getTranslateXY(element: HTMLElement) {
-    const style = window.getComputedStyle(element);
-    const matrix = new DOMMatrixReadOnly(style.transform);
-    return {
-      translateX: matrix.m41,
-      translateY: matrix.m42,
-    };
+    if (isOpen) {
+      document.body.classList.remove("overflow-hidden");
+    } else {
+      document.body.classList.add("overflow-hidden");
+    }
   }
 </script>

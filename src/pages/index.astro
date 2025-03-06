@@ -25,15 +25,17 @@ import HowCanTaiHelp from "../sections/HowCanTaiHelp.astro";
   </header>
 
   <main class="relative isolate">
+    <Navbar />
     <WelcomeToFiscalSpace />
     <div class="relative bg-white">
       <div class="relative">
         <div class="sticky-parent isolate md:sticky md:top-0">
           <ChallengePresentation />
         </div>
-        <NavigationGrid />
+        <section id="navigation-grid" class="relative h-[200svh] bg-white">
+          <NavigationGrid className="sticky top-0" />
+        </section>
       </div>
-      <Navbar />
 
       <div id="opportunity-in-2025" class="relative isolate">
         <ScrollReactiveSticky

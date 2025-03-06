@@ -10,69 +10,73 @@ import Navigation3ImageDesktop from "../assets/IMG 15 - Desktop.png";
 import Navigation3ImageMobile from "../assets/IMG 15 - Phone.png";
 import Navigation4ImageDesktop from "../assets/IMG 16 - Desktop.png";
 import Navigation4ImageMobile from "../assets/IMG 16 - Phone.png";
+
+interface Props {
+  className?: string;
+}
+
+const { className } = Astro.props as Props;
 ---
 
-<section id="navigation-grid" class="relative md:h-[200svh] bg-white">
-  <nav
-    class="mx-auto grid max-w-7xl gap-10 px-6 py-12 [grid-auto-rows:_1fr] md:sticky md:top-0 md:h-svh md:grid-cols-2 md:gap-8 3xl:py-24"
-  >
-    {
-      (
+<nav
+  class={`navigation-grid mx-auto grid max-w-7xl gap-10 px-6 py-12 [grid-auto-rows:_1fr] md:sticky md:top-0 md:h-svh md:grid-cols-2 md:gap-8 3xl:py-24 ${className}`}
+>
+  {
+    (
+      [
         [
-          [
-            "#opportunity-in-2025",
-            "The Opportunity in 2025",
-            Navigation1ImageDesktop,
-            Navigation1ImageMobile,
-          ],
-          [
-            "#action-agenda",
-            "The Action Agenda",
-            Navigation2ImageDesktop,
-            Navigation2ImageMobile,
-          ],
-          [
-            "#what-funders-can-do",
-            "What Funders Can Do",
-            Navigation3ImageDesktop,
-            Navigation3ImageMobile,
-          ],
-          [
-            "#fiscal-space-resources",
-            "The Fiscal Space Resources",
-            Navigation4ImageDesktop,
-            Navigation4ImageMobile,
-          ],
-        ] as [string, string, ImageMetadata, ImageMetadata][]
-      ).map(([href, title, imageDesktop, imageMobile]) => (
-        <a
-          href={href}
-          class="group relative isolate grid grid-cols-[1fr_auto] items-end gap-y-6 text-black opacity-0 md:px-14 md:py-10"
-        >
-          <div class="group col-span-2 aspect-video overflow-hidden rounded-3xl bg-[#CDF1F3] md:absolute md:inset-0 md:-z-10 md:col-auto md:aspect-auto">
-            <Image
-              class="hidden size-full object-contain object-left-top transition-transform group-hover:scale-105 md:block"
-              alt="Welcome to the fiscal space"
-              src={imageDesktop}
-            />
-            <Image
-              class="size-full object-cover object-top md:hidden"
-              alt="Welcome to the fiscal space"
-              src={imageMobile}
-            />
-          </div>
+          "#opportunity-in-2025",
+          "The Opportunity in 2025",
+          Navigation1ImageDesktop,
+          Navigation1ImageMobile,
+        ],
+        [
+          "#action-agenda",
+          "The Action Agenda",
+          Navigation2ImageDesktop,
+          Navigation2ImageMobile,
+        ],
+        [
+          "#what-funders-can-do",
+          "What Funders Can Do",
+          Navigation3ImageDesktop,
+          Navigation3ImageMobile,
+        ],
+        [
+          "#fiscal-space-resources",
+          "The Fiscal Space Resources",
+          Navigation4ImageDesktop,
+          Navigation4ImageMobile,
+        ],
+      ] as [string, string, ImageMetadata, ImageMetadata][]
+    ).map(([href, title, imageDesktop, imageMobile]) => (
+      <a
+        href={href}
+        class="group relative isolate grid grid-cols-[1fr_auto] items-end gap-y-6 text-black opacity-0 md:px-14 md:py-10"
+      >
+        <div class="group col-span-2 aspect-video overflow-hidden rounded-3xl bg-[#CDF1F3] md:absolute md:inset-0 md:-z-10 md:col-auto md:aspect-auto">
+          <Image
+            class="hidden size-full object-contain object-left-top transition-transform group-hover:scale-105 md:block"
+            alt="Welcome to the fiscal space"
+            src={imageDesktop}
+          />
+          <Image
+            class="size-full object-cover object-top md:hidden"
+            alt="Welcome to the fiscal space"
+            src={imageMobile}
+          />
+        </div>
 
-          <span class="block max-w-[13ch] text-pretty text-3xl font-bold md:text-4xl 3xl:text-5xl">
-            {title}
-          </span>
-          <div class="aspect-square h-12 rotate-45 rounded-full text-white transition-transform *:size-full group-hover:rotate-0 first:[&_path]:stroke-black [&_svg]:fill-black">
-            <Fragment set:html={ArrowIcon} />
-          </div>
-        </a>
-      ))
-    }
-  </nav>
-</section>
+        <span class="block max-w-[13ch] text-pretty text-3xl font-bold md:text-4xl 3xl:text-5xl">
+          {title}
+        </span>
+        <div class="aspect-square h-12 rotate-45 rounded-full text-white transition-transform *:size-full group-hover:rotate-0 first:[&_path]:stroke-black [&_svg]:fill-black">
+          <Fragment set:html={ArrowIcon} />
+        </div>
+      </a>
+    ))
+  }
+</nav>
 
 <script>
   import { animate, inView, stagger } from "motion";
@@ -87,22 +91,29 @@ import Navigation4ImageMobile from "../assets/IMG 16 - Phone.png";
   });
 
   function initEventListeners() {
-    const navigationGrid = document.querySelector(
-      "#navigation-grid"
-    ) as HTMLElement;
+    const navigationGridList = document.querySelectorAll(".navigation-grid");
 
-    inView(
-      navigationGrid,
-      () => {
-        animate(
-          navigationGrid.querySelectorAll("a"),
-          { opacity: 1, y: [100, 0] },
-          { delay: stagger(0.1), ease: "circInOut" }
-        );
-      },
-      {
-        amount: window.innerWidth < 768 ? 0.1 : 0.4,
-      }
-    );
+    navigationGridList.forEach((navigationGrid) => {
+      inView(
+        navigationGrid,
+        () => {
+          animate(
+            navigationGrid.querySelectorAll("a"),
+            { opacity: [0, 1], y: [100, 0] },
+            { delay: stagger(0.06), ease: "circInOut" }
+          );
+
+          return () =>
+            animate(
+              navigationGrid.querySelectorAll("a"),
+              { opacity: [1, 0], y: [0, 100] },
+              { ease: "circInOut" }
+            );
+        },
+        {
+          amount: window.innerWidth < 768 ? 0.1 : 0.01,
+        }
+      );
+    });
   }
 </script>
