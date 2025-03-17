@@ -1,20 +1,16 @@
 ---
-import AnimateText from "../components/AnimateText.astro";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../sections/Footer.astro";
 import WhatFundersCanDo from "../metasections/WhatFundersCanDo.astro";
 import TheActionAgenda from "../metasections/TheActionAgenda.astro";
 import Navbar from "../components/Navbar.astro";
-import ArrowIcon from "../assets/Arrow.svg?raw";
 import WelcomeToFiscalSpace from "../metasections/WelcomeToFiscalSpace.astro";
 import ChallengePresentation from "../sections/ChallengePresentation.astro";
 import TheOpportunity2025 from "../metasections/TheOpportunity2025.astro";
 import ContactTAIBanner from "../components/ContactTAIBanner.astro";
 import FollowUs from "../sections/FollowUs.astro";
-import KeepUpdated from "../sections/KeepUpdated.astro";
 import TheFiscalSpaceResources from "../metasections/TheFiscalSpaceResources.astro";
 import NavigationGrid from "../sections/NavigationGrid.astro";
-import ActionAgendaResources from "../sections/ActionAgendaResources.astro";
 import ScrollReactiveSticky from "../components/ScrollReactiveSticky.astro";
 import HowCanTaiHelp from "../sections/HowCanTaiHelp.astro";
 ---
@@ -65,42 +61,6 @@ import HowCanTaiHelp from "../sections/HowCanTaiHelp.astro";
         <TheFiscalSpaceResources />
       </div>
     </div>
-
-    <dialog id="contact-tai" class="isolate bg-transparent">
-      <div
-        onclick="document.getElementById('contact-tai').close()"
-        class="overlay fixed inset-0 -z-10 bg-[#090045] bg-opacity-60 backdrop-blur"
-      >
-      </div>
-
-      <form action="post" class="grid w-svw max-w-[448px]">
-        <h3 class="mb-8 text-3xl font-extrabold text-white">Contact TAI</h3>
-        <div
-          class="grid w-full rounded-lg bg-white px-10 py-8 text-start text-[#374151] [&_input]:mb-6 [&_input]:rounded-md [&_input]:border [&_input]:border-[#D1D5DB] [&_input]:p-2 [&_label]:mb-1 [&_label]:text-sm [&_label]:after:content-['*']"
-        >
-          <label for="name">Name</label>
-          <input type="text" id="name" name="name" required />
-          <label for="organization">Organization</label>
-          <input type="text" id="organization" name="organization" required />
-          <label for="email">Email</label>
-          <input type="email" id="email" name="email" required />
-          <label for="description">Description</label>
-          <textarea
-            class="mb-6 rounded-md border border-[#D1D5DB] p-2"
-            id="message"
-            name="message"
-            required></textarea>
-          <button
-            class="flex w-fit items-center gap-x-5 justify-self-center rounded-full bg-[#090045] p-1 pl-6 text-white"
-          >
-            <span> Send </span>
-            <span class="text-[#090045] [&>svg]:size-9 [&>svg]:fill-white">
-              <Fragment set:html={ArrowIcon} />
-            </span>
-          </button>
-        </div>
-      </form>
-    </dialog>
   </main>
   <Footer />
 </Layout>
