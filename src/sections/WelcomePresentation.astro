@@ -9,7 +9,7 @@ import WhatCanWeDoToday from "../assets/IMG 4 Variante 1.2.png";
 import AnimateText from "../components/AnimateText.astro";
 ---
 
-<section id="welcome-presentation-section">
+<section id="welcome-presentation">
   <h2 class="sr-only">Welcome to The Fiscal Space</h2>
   <HorizontalScrollContainer
     className="mb-20 flex w-svw flex-col gap-y-24 text-center text-[4.92vh] font-bold leading-tight -tracking-[1%] md:mb-0 md:flex-row md:text-start [&_.item]:grid [&_.item]:min-w-fit [&_.item]:gap-y-16 [&_.item]:px-6 [&_.item]:before:absolute [&_.item]:before:bottom-[calc(100%_/_6)] [&_.item]:before:-z-50 [&_.item]:before:h-[0.1vh] [&_.item]:before:w-full md:[&_.item]:min-h-svh md:[&_.item]:grid-cols-2 md:[&_.item]:items-center md:[&_.item]:px-[12.68vw]"
@@ -35,17 +35,7 @@ import AnimateText from "../components/AnimateText.astro";
           their development and social progress if in fiscal distress.
         </p>
 
-        <p
-          class="sr-only mt-10 max-w-[35ch] text-sm font-normal uppercase md:absolute md:bottom-[calc(100%_/_6)] md:left-[12.68vw] 3xl:text-base"
-        >
-          How funders can help unlock develop finance equitably and accountably
-        </p>
       </div>
-      <a
-        href="#navigation-grid"
-        class="left-[12.68vw] min-w-fit text-base font-semibold uppercase text-[#1672F7] underline underline-offset-4 md:absolute md:bottom-[calc(100%_/_6)]"
-        >Skip to menu</a
-      >
       <Image
         class="w-full object-contain md:h-2/3 md:object-bottom"
         alt="Care about fiscal space"
@@ -142,7 +132,7 @@ import AnimateText from "../components/AnimateText.astro";
 
   function initEventListeners() {
     const listElements = document.querySelectorAll(
-      "#welcome-presentation-section .item"
+      "#welcome-presentation .item"
     ) as NodeListOf<HTMLElement>;
 
     listElements.forEach((listElement) => {
@@ -171,7 +161,7 @@ import AnimateText from "../components/AnimateText.astro";
     });
 
     const horizontalScrollContentWrapper = document.querySelector(
-      "#welcome-presentation-section .horizontal-scroll-content-wrapper"
+      "#welcome-presentation .horizontal-scroll-content-wrapper"
     ) as HTMLElement;
     const line = document.querySelector(".line") as HTMLDivElement;
 

@@ -1,4 +1,6 @@
 ---
+import AnimateText from "../components/AnimateText.astro";
+import ArrowIcon from "../assets/Arrow.svg?raw";
 import Layout from "../layouts/Layout.astro";
 import Footer from "../sections/Footer.astro";
 import WhatFundersCanDo from "../metasections/WhatFundersCanDo.astro";
@@ -16,11 +18,37 @@ import HowCanTaiHelp from "../sections/HowCanTaiHelp.astro";
 ---
 
 <Layout title="Welcome">
-  <header>
-    <h1 class="sr-only">Fund Fiscal Space</h1>
+  <header
+    class="sticky top-0 flex min-h-svh flex-col items-center justify-center bg-[#0128A2] leading-tight tracking-tighter text-white"
+  >
+    <h1 class="mb-7 text-center text-6xl font-bold md:text-[135px] xl:mb-14">
+      <AnimateText
+        textList={["Welcome to", "The Fiscal Space"]}
+        mobileTextList={["Welcome to", "The Fiscal", "Space"]}
+      />
+    </h1>
+    <a
+      href="#navigation-grid"
+      class="group flex h-fit w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-center text-white transition-colors hover:bg-[#1663D2]"
+    >
+      <span> Skip to menu </span>
+      <span
+        class="rotate-45 text-[#1672F7] transition-transform group-hover:rotate-0 [&>svg]:size-9 [&>svg]:fill-white"
+      >
+        <Fragment set:html={ArrowIcon} />
+      </span>
+    </a>
+    <a href="#welcome-presentation" class="absolute bottom-1 lg:bottom-8 flex">
+      <span class="sr-only">Scroll to the welcome presentation</span>
+      <span
+        class="rotate-90 text-[#1672F7] transition-transform group-hover:rotate-0 [&_path]:stroke-[0.9px] last:[&_path]:stroke-[white] [&_svg]:size-20"
+      >
+        <Fragment set:html={ArrowIcon} />
+      </span>
+    </a>
   </header>
 
-  <main class="relative isolate">
+  <main class="relative isolate bg-white">
     <WelcomeToFiscalSpace />
     <div class="relative bg-white">
       <div class="relative">
@@ -32,7 +60,7 @@ import HowCanTaiHelp from "../sections/HowCanTaiHelp.astro";
         </section>
       </div>
       <Navbar />
-      
+
       <div id="opportunity-in-2025" class="relative isolate">
         <ScrollReactiveSticky
           className="-z-20 pb-16 before:absolute before:inset-0"
@@ -62,5 +90,7 @@ import HowCanTaiHelp from "../sections/HowCanTaiHelp.astro";
       </div>
     </div>
   </main>
-  <Footer />
+  <div class="relative bg-white pt-24">
+    <Footer />
+  </div>
 </Layout>
