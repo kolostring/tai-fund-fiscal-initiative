@@ -19,63 +19,70 @@ const { className } = Astro.props as Props;
 ---
 
 <nav
-  class={`navigation-grid mx-auto grid max-w-7xl gap-10 px-6 py-12 [grid-auto-rows:_1fr] md:sticky md:top-0 md:h-svh md:grid-cols-2 md:gap-8 3xl:py-24 ${className}`}
+  class={`md:sticky md:top-0 md:h-svh grid grid-rows-[auto_1fr] gap-10 md:gap-5 3xl:gap-10 py-12 md:py-4 xl:py-12 3xl:py-24 ${className}`}
 >
-  {
-    (
-      [
+  <p class="text-center text-xl font-bold uppercase 3xl:text-3xl">
+    The Fiscal Space
+  </p>
+  <ul
+    class="navigation-grid mx-auto grid w-full max-w-7xl gap-10 px-6 [grid-auto-rows:_1fr] md:grid-cols-2 md:gap-6"
+  >
+    {
+      (
         [
-          "#opportunity-in-2025",
-          "The Opportunity in 2025",
-          Navigation1ImageDesktop,
-          Navigation1ImageMobile,
-        ],
-        [
-          "#action-agenda",
-          "The Action Agenda",
-          Navigation2ImageDesktop,
-          Navigation2ImageMobile,
-        ],
-        [
-          "#what-funders-can-do",
-          "What Funders Can Do",
-          Navigation3ImageDesktop,
-          Navigation3ImageMobile,
-        ],
-        [
-          "#fiscal-space-resources",
-          "The Fiscal Space Resources",
-          Navigation4ImageDesktop,
-          Navigation4ImageMobile,
-        ],
-      ] as [string, string, ImageMetadata, ImageMetadata][]
-    ).map(([href, title, imageDesktop, imageMobile]) => (
-      <a
-        href={href}
-        class="group relative isolate grid grid-cols-[1fr_auto] items-end gap-y-6 text-black opacity-0 md:px-14 md:py-10"
-      >
-        <div class="group col-span-2 aspect-video overflow-hidden rounded-3xl bg-[#CDF1F3] md:absolute md:inset-0 md:-z-10 md:col-auto md:aspect-auto">
-          <Image
-            class="hidden size-full object-contain object-left-top transition-transform group-hover:scale-105 md:block"
-            alt="Welcome to the fiscal space"
-            src={imageDesktop}
-          />
-          <Image
-            class="size-full object-cover object-top md:hidden"
-            alt="Welcome to the fiscal space"
-            src={imageMobile}
-          />
-        </div>
+          [
+            "#opportunity-in-2025",
+            "The Opportunity in 2025",
+            Navigation1ImageDesktop,
+            Navigation1ImageMobile,
+          ],
+          [
+            "#action-agenda",
+            "The Action Agenda",
+            Navigation2ImageDesktop,
+            Navigation2ImageMobile,
+          ],
+          [
+            "#what-funders-can-do",
+            "What Funders Can Do",
+            Navigation3ImageDesktop,
+            Navigation3ImageMobile,
+          ],
+          [
+            "#fiscal-space-resources",
+            "The Fiscal Space Resources",
+            Navigation4ImageDesktop,
+            Navigation4ImageMobile,
+          ],
+        ] as [string, string, ImageMetadata, ImageMetadata][]
+      ).map(([href, title, imageDesktop, imageMobile]) => (
+        <a
+          href={href}
+          class="group relative isolate grid grid-cols-[1fr_auto] items-end gap-y-6 text-black opacity-0 md:p-6 xl:px-14 xl:py-10"
+        >
+          <div class="group col-span-2 aspect-video overflow-hidden rounded-3xl bg-[#CDF1F3] md:absolute md:inset-0 md:-z-10 md:col-auto md:aspect-auto">
+            <Image
+              class="hidden size-full object-contain object-left-top transition-transform group-hover:scale-105 md:block"
+              alt="Welcome to the fiscal space"
+              src={imageDesktop}
+            />
+            <Image
+              class="size-full object-cover object-top md:hidden"
+              alt="Welcome to the fiscal space"
+              src={imageMobile}
+            />
+          </div>
 
-        <span class="block max-w-[13ch] text-pretty text-3xl font-bold md:text-4xl 3xl:text-5xl">
-          {title}
-        </span>
-        <div class="aspect-square h-12 rotate-45 rounded-full text-white transition-transform *:size-full group-hover:rotate-0 first:[&_path]:stroke-black [&_svg]:fill-black">
-          <Fragment set:html={ArrowIcon} />
-        </div>
-      </a>
-    ))
-  }
+          <span class="block max-w-[13ch] text-pretty text-3xl font-bold xl:text-4xl 3xl:text-5xl">
+            {title}
+          </span>
+          <div class="aspect-square h-12 rotate-45 rounded-full text-white transition-transform *:size-full group-hover:rotate-0 first:[&_path]:stroke-black [&_svg]:fill-black">
+            <Fragment set:html={ArrowIcon} />
+          </div>
+        </a>
+      ))
+    }
+  </ul>
 </nav>
 
 <script>
