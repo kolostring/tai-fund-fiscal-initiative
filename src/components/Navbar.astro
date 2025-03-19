@@ -1,8 +1,5 @@
 ---
-import LogoIcon from "../assets/logo.svg?raw";
 import MenuLogo from "../assets/menu.svg?raw";
-import CloseLogo from "../assets/close.svg?raw";
-import NavigationGrid from "../sections/NavigationGrid.astro";
 
 interface Props {
   className?: string;
@@ -11,50 +8,25 @@ interface Props {
 const { className } = Astro.props as Props;
 ---
 
-<div class="peer fixed top-0 z-[100] w-full">
-  <div
-    id="navbar"
-    data-open="false"
-    class="h-0 w-full overflow-hidden bg-white text-sm text-black backdrop-blur transition-all data-[open=true]:h-dvh"
-  >
-    <nav
-      class={`absolute w-dvw h-dvh overflow-auto md:overflow-visible inset-0 mx-auto flex max-w-7xl justify-between ${className}`}
-    >
-      <NavigationGrid className="w-full" />
-    </nav>
-  </div>
-</div>
-<button
+<a
   id="menu-button"
-  aria-controls="navbar"
-  class="group sticky ml-[calc(max((100svw-1280px)/2,_0px)+min(100svw,1280px)-64px-32px)] top-4 z-[100] aspect-square size-16 rounded-full p-4 transition-colors peer-has-[[data-open=false]]:bg-[#1672F7] peer-has-[[data-open=false]]:[&_.close-logo]:hidden peer-has-[[data-open=true]]:[&_.menu-logo]:hidden [&_svg]:size-full"
+  href="#navigation-grid"
+  class="group sticky top-4 z-[100] ml-[calc(max((100svw-1280px)/2,_0px)+min(100svw,1280px)-64px-32px)] block aspect-square size-16 rounded-full bg-[#1672F7] p-4 transition-colors [&_svg]:size-full"
 >
-  <span class="menu-logo">
+  <span>
     <Fragment set:html={MenuLogo} />
   </span>
-  <span class="close-logo [&_svg]:fill-black">
-    <Fragment set:html={CloseLogo} />
-  </span>
-</button>
+</a>
 
 <script>
-  const button = document.getElementById("menu-button") as HTMLElement;
-  const navbar = document.getElementById("navbar") as HTMLElement;
+  const menuButton = document.getElementById("menu-button");
+  if (menuButton) {
+    menuButton.addEventListener("click", async () => {
+      const html = document.documentElement;
+      html.style.scrollBehavior = "auto";
 
-  button.addEventListener("click", toggleNavbar);
-  navbar.querySelectorAll("a").forEach((a) => {
-    a.addEventListener("click", toggleNavbar);
-  });
-
-  function toggleNavbar() {
-    const isOpen = navbar.getAttribute("data-open") === "true";
-
-    navbar.setAttribute("data-open", isOpen ? "false" : "true");
-
-    if (isOpen) {
-      document.body.classList.remove("overflow-hidden");
-    } else {
-      document.body.classList.add("overflow-hidden");
-    }
+      await new Promise((resolve) => setTimeout(resolve, 100));
+      html.style.scrollBehavior = "smooth";
+    });
   }
 </script>
