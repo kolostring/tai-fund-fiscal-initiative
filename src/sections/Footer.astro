@@ -22,11 +22,11 @@ const { className } = Astro.props as Props;
     class="grid justify-items-center gap-y-14 text-center md:grid-cols-[auto_1fr_auto] md:justify-items-start md:text-start"
   >
     <div
-      class="grid grid-cols-2 md:flex justify-items-center pb-5 md:pb-0 [&_[fill=white]]:fill-black"
+      class="grid grid-cols-2 justify-items-center pb-5 md:flex md:pb-0 [&_[fill=white]]:fill-black"
     >
       <Image class="max-h-9 w-fit md:h-fit" src={Logo} alt="TAI Logo" />
       <Image
-        class="max-h-9 max-w-fit object-contain border-l-2 border-[#090045] pl-7 md:ml-14 md:h-fit md:pl-14"
+        class="max-h-9 max-w-fit border-l-2 border-[#090045] object-contain pl-7 md:ml-14 md:h-fit md:pl-14"
         src={TAILogo}
         alt="TAI Logo"
       />
@@ -55,12 +55,13 @@ const { className } = Astro.props as Props;
       >
         Follow us for more details
       </h2>
-      <a href="#"
+      <a href="https://www.linkedin.com/company/trust-accountability-inclusion#"
         ><span class="sr-only">Linkedin</span><Fragment
           set:html={LinkedinLogo}
         /></a
       >
-      <a href="#"><span class="sr-only">X</span><Fragment set:html={XLogo} /></a
+      <a href="https://twitter.com/TAInitiative"
+        ><span class="sr-only">X</span><Fragment set:html={XLogo} /></a
       >
     </section>
     <section
