@@ -18,6 +18,7 @@ import HowCanTaiHelp from "../sections/HowCanTaiHelp.astro";
 ---
 
 <Layout title="Welcome">
+  <Navbar />
   <header
     class="sticky top-0 flex min-h-svh flex-col items-center justify-center bg-[#0128A2] leading-tight tracking-tighter text-white"
   >
@@ -27,7 +28,7 @@ import HowCanTaiHelp from "../sections/HowCanTaiHelp.astro";
         mobileTextList={["Welcome to", "The Fiscal", "Space"]}
       />
     </h1>
-    <a
+    <!-- <a
       href="#navigation-grid"
       class="group flex h-fit w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-center text-white transition-colors hover:bg-[#1663D2]"
     >
@@ -37,7 +38,7 @@ import HowCanTaiHelp from "../sections/HowCanTaiHelp.astro";
       >
         <Fragment set:html={ArrowIcon} />
       </span>
-    </a>
+    </a> -->
     <a href="#welcome-presentation" class="absolute bottom-1 lg:bottom-8 flex">
       <span class="sr-only">Scroll to the welcome presentation</span>
       <span
@@ -59,7 +60,6 @@ import HowCanTaiHelp from "../sections/HowCanTaiHelp.astro";
           <NavigationGrid className="sticky top-0" />
         </section>
       </div>
-      <Navbar />
 
       <div id="opportunity-in-2025" class="relative isolate">
         <ScrollReactiveSticky

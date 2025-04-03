@@ -60,10 +60,10 @@ import AnimatedList from "../components/AnimatedList.astro";
         <a
           target="_blank"
           href="https://www.imf.org/external/pubs/ft/fandd/2005/06/basics.htm"
-          class="group grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-6 py-6 text-xl text-white transition-colors hover:bg-[#1663D2] md:px-8 3xl:text-2xl"
+          class="group grid grid-cols-[1fr_auto] items-center rounded-3xl bg-[#1672F7] px-6 py-4 text-2xl text-white transition-colors hover:bg-[#1663D2] md:px-8"
         >
-          <span class="block max-w-[25ch] text-pretty">
-            What is fiscal space, defined by the IMF
+          <span class="block text-pretty">
+            Read how the IMF defines fiscal space
           </span>
           <div
             class="flex aspect-square h-12 rotate-45 rounded-full transition-transform *:size-full group-hover:rotate-0 first:[&_path]:stroke-[#02B4D0] [&_svg]:fill-[#02B4D0]"
@@ -109,25 +109,28 @@ import AnimatedList from "../components/AnimatedList.astro";
                 "https://www.un.org/en/desa/international-tax-cooperation-advancing-equality-and-sustainable-development",
                 "Reform global taxation through a UN Tax Cooperation Framework.",
                 Resource1Image,
+                "Learn more \non the tax convention",
               ],
               [
                 "https://www.ncronline.org/opinion/ncr-voices/debt-forgiveness-critical-during-jubilee-2025#:~:text=Francis%2C%20in%20his%20New%20Year's,us%2C%22%20the%20pope%20said.",
                 "Create new debt restructuring and governance mechanisms.",
                 Resource2Image,
+                "Learn about\n the Jubilee year",
               ],
               [
                 "https://internationalbudget.org/open-budget-survey/",
-                "Invite you to relevant funder spaces to learn more, including about the ongoing FfD process",
+                "Strengthen fiscal transparency and accountability",
                 Resource3Image,
+                "Access data\n on budget transparency",
               ],
-            ] as [string, string, ImageMetadata][]
-          ).map(([href, title, image]) => {
+            ] as [string, string, ImageMetadata, string][]
+          ).map(([href, title, image, cta]) => {
             return (
               <li class="grid justify-items-center text-xl opacity-0">
                 <Image
                   src={image}
                   alt=""
-                  class="mb-9 size-48 object-cover rounded-full"
+                  class="mb-9 size-48 rounded-full object-cover"
                 />
                 <p class="max-w-[26ch] pb-10 text-center">{title}</p>
                 <a
@@ -135,7 +138,7 @@ import AnimatedList from "../components/AnimatedList.astro";
                   target="_blank"
                   class="group mt-auto flex h-fit w-fit items-center gap-x-5 rounded-full bg-[#1672F7] p-1 pl-6 text-center text-white transition-colors hover:bg-[#1663D2]"
                 >
-                  <span> Find More </span>
+                  <span class="whitespace-pre-wrap"> {cta} </span>
                   <span class="rotate-45 text-[#1672F7] transition-transform group-hover:rotate-0 [&>svg]:size-9 [&>svg]:fill-white">
                     <Fragment set:html={ArrowIcon} />
                   </span>

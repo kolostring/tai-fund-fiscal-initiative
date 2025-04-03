@@ -8,18 +8,31 @@ interface Props {
 const { className } = Astro.props as Props;
 ---
 
-<a
-  id="menu-button"
-  href="#navigation-grid"
-  class="group sticky top-4 z-[100] ml-[calc(max((100svw-1280px)/2,_0px)+min(100svw,1280px)-64px-32px)] block aspect-square size-16 rounded-full bg-[#1672F7] p-4 transition-colors [&_svg]:size-full"
+<div
+  class="fixed top-4 z-[100] ml-[calc(max((100svw-1280px)/2,_0px)+min(100svw,1280px)-64px-32px-10px)] grid justify-items-center"
 >
-  <span>
-    <Fragment set:html={MenuLogo} />
-  </span>
-</a>
+  <a
+    id="menu-button"
+    href="#navigation-grid"
+    class="group block aspect-square size-16 rounded-full bg-[#1672F7] p-4 [&_svg]:size-full"
+  >
+    <span>
+      <Fragment set:html={MenuLogo} />
+    </span>
+  </a>
+
+  <span
+    id="menu-text"
+    class="mt-2 block text-center text-xs uppercase text-white transition-opacity"
+  >
+    Skip to menu</span
+  >
+</div>
 
 <script>
+  import { scroll } from "motion";
   const menuButton = document.getElementById("menu-button");
+  const menuText = document.getElementById("menu-text");
   if (menuButton) {
     menuButton.addEventListener("click", async () => {
       const html = document.documentElement;
@@ -27,6 +40,16 @@ const { className } = Astro.props as Props;
 
       await new Promise((resolve) => setTimeout(resolve, 100));
       html.style.scrollBehavior = "smooth";
+    });
+  }
+
+  if (menuText) {
+    scroll(() => {
+      if (window.scrollY > window.innerHeight) {
+        menuText.style.opacity = "0";
+      } else {
+        menuText.style.opacity = "1";
+      }
     });
   }
 </script>
