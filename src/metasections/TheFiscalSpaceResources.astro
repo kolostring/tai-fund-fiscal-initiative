@@ -3,46 +3,9 @@ import AnimateText from "../components/AnimateText.astro";
 import Card from "../components/Card.astro";
 import KeepUpdated from "../sections/KeepUpdated.astro";
 
-import Resource1Image from "../assets/IMG 42.png";
-import Resource2Image from "../assets/IMG 43.png";
-import Resource3Image from "../assets/IMG 44.png";
-import Resource4Image from "../assets/IMG 45.png";
-import Resource5Image from "../assets/IMG 46.png";
-import Resource6Image from "../assets/IMG 47.png";
-import { Image } from "astro:assets";
+import getFiscalSpaceResources from "../pages/api/getFiscalSpaceResources";
 
-const resources: [string, string, ImageMetadata][] = [
-  [
-    "https://taicollaborative.org/setting-the-global-agenda-for-tax-debt-and-international-aid-through-2035",
-    "Setting the global agenda for tax, debt and international aid through 2035 - Financing for Development Brief for Philanthropy",
-    Resource1Image,
-  ],
-  [
-    "https://taicollaborative.org/expanding-funding-and-commitment-to-transparency-and-participation-in-fiscal-policy",
-    "Expanding Funding and Commitment to Transparency and Participation in Fiscal Policy",
-    Resource2Image,
-  ],
-  [
-    "https://taicollaborative.org/civil-society-engagement-in-tax-reform",
-    "Civil Society Engagement in Tax Reform",
-    Resource3Image,
-  ],
-  [
-    "https://taicollaborative.org/funding-trends-in-international-tax-justice",
-    "Funding Trends in International Tax Justice",
-    Resource4Image,
-  ],
-  [
-    "https://www.alliancemagazine.org/blog/philanthropys-tax-blind-spot/",
-    "Philanthropy’s Tax Blindspot ",
-    Resource5Image,
-  ],
-  [
-    "https://taicollaborative.org/civil-society-engagement-in-implementing-domestic-tax-policy",
-    "Civil Society Engagement in Implementing Domestic Tax Policy",
-    Resource6Image,
-  ],
-];
+const resources = await getFiscalSpaceResources();
 ---
 
 <section id="fiscal-space-resources" class="bg-white px-6">
@@ -67,8 +30,8 @@ const resources: [string, string, ImageMetadata][] = [
   <div class="container mx-auto mb-24 flex max-w-7xl flex-col items-center">
     <ul class="grid gap-8 md:grid-cols-3">
       {
-        resources.map(([href, title, image]) => (
-          <Card title={title} href={href} image={image} />
+        resources?.map(({ link, image, title }) => (
+          <Card title={title} href={link} imageUrl={image?.filename} />
         ))
       }
     </ul>

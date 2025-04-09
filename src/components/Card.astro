@@ -3,11 +3,12 @@ import { Image } from "astro:assets";
 import ArrowIcon from "../assets/Arrow.svg?raw";
 interface Props {
   image?: ImageMetadata;
+  imageUrl?: string;
   title: string;
   href: string;
 }
 
-const { href, title, image } = Astro.props;
+const { href, title, image, imageUrl } = Astro.props;
 ---
 
 <li
@@ -26,6 +27,17 @@ const { href, title, image } = Astro.props;
             class="size-full object-cover object-center transition-all group-hover:scale-105"
             alt="Welcome to the fiscal space"
             src={image}
+          />
+        )
+      }
+
+      {
+        !image && imageUrl && ( 
+        <Image
+            class="size-full object-cover object-center transition-all group-hover:scale-105"
+            alt="Welcome to the fiscal space"
+            src={imageUrl}
+            inferSize={true}
           />
         )
       }
