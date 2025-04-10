@@ -1,70 +1,15 @@
 ---
 import Card from "../components/Card.astro";
+import getActionAgendaResources from "../pages/api/getActionAgendaResources";
 
-import Resource1Image from "../assets/IMG 25.png";
-import Resource2Image from "../assets/IMG 26.png";
-import Resource3Image from "../assets/IMG 10.png";
-import Resource4Image from "../assets/IMG 28.png";
-import Resource5Image from "../assets/IMG 29.png";
-import Resource6Image from "../assets/IMG 30.png";
-import Resource7Image from "../assets/IMG 31.png";
-import Resource8Image from "../assets/IMG 32.png";
-import Resource9Image from "../assets/IMG 33.png";
-
-const resources: [string, string, ImageMetadata][] = [
-  [
-    "https://www.devex.com/news/opinion-the-world-must-reshape-global-finance-at-2025-un-summit-108855",
-    "The world must reshape global finance at 2025 UN summit",
-    Resource1Image,
-  ],
-  [
-    "https://www.youtube.com/watch?v=m4yR7kwL1rE",
-    "Paying Taxes: The Most Democratic Move You Can Make",
-    Resource2Image,
-  ],
-  [
-    "https://www.foreignaffairs.com/africa/debt-dragging-down-developing-world",
-    "Debt is Dragging Down the Developing World",
-    Resource3Image,
-  ],
-  [
-    "https://taxjustice.net/2024/12/26/tax-justice-transformational-moments-of-2024/",
-    "Tax Justice transformational moments of 2024",
-    Resource4Image,
-  ],
-  [
-    "https://www.vaticannews.va/en/vatican-city/news/2024-12/vatican-global-debt-crisis-pope-francis-jubilee-priority.html",
-    "Global Debt Crisis: It is also a development and climate crisis",
-    Resource5Image,
-  ],
-  [
-    "https://moneytalksresearch.org/dashboard-mt-tax-24",
-    "How to talk about tax to win support and unlock money for action on climate and development",
-    Resource6Image,
-  ],
-  [
-    "https://internationalbudget.org/stories/360-video-supreme-audit-institutions-make-sure-government-budgets-deliver-for-the-people/",
-    "Supreme audit institutions make sure government budgets deliver for the people",
-    Resource7Image,
-  ],
-  [
-    "https://inequality.org/article/a-practical-prescription-for-taxing-our-worlds-richest/",
-    "A Practical Prescription for Taxing Our World’s Richest",
-    Resource8Image,
-  ],
-  [
-    "https://findevlab.org/wp-content/uploads/2024/04/FDL_Policy-Note_Bright-Simons_Navigating-the-Governance-Gap-in-Global-Development-Finance_-Lessons-from-Ghana_April_2024_FINAL.pdf",
-    "Navigating the Governance Gap in Global Development Finance: Lessons from Ghana",
-    Resource9Image,
-  ],
-];
+const resources = await getActionAgendaResources();
 ---
 
 <section class="mx-auto mb-16 max-w-7xl px-6 md:mb-24">
   <ul class="grid gap-8 text-black md:grid-cols-3">
     {
-      resources.map(([href, title, image]) => (
-        <Card image={image} title={title} href={href} />
+      resources?.map(({ image, title, link }) => (
+        <Card imageUrl={image?.filename} title={title} href={link} />
       ))
     }
   </ul>
